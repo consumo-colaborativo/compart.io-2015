@@ -49,6 +49,17 @@ exports = module.exports = function(app, passport) {
   app.get('/contact/', require('./views/contact/index').init);
   app.post('/contact/', require('./views/contact/index').sendMessage);
 
+  // START Compartio Routes ------------------------------------------
+  // Give > View
+  app.get('/give/view/', require('./views/give/view/index').init);
+  // Give > Add 
+  app.get('/give/add/', require('./views/give/add/index').init);
+  // Need > View
+  app.get('/need/view/', require('./views/need/view/index').init);
+  // Need > Add 
+  app.get('/need/add/', require('./views/need/add/index').init);
+  // END Compartio Routes --------------------------------------------
+
   //sign up
   app.get('/signup/', require('./views/signup/index').init);
   app.post('/signup/', require('./views/signup/index').signup);
@@ -187,4 +198,6 @@ exports = module.exports = function(app, passport) {
 
   //route not found
   app.all('*', require('./views/http/index').http404);
+
+  
 };
