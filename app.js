@@ -1,69 +1,100 @@
-// server.js
+'use strict'; 
 
-'use strict';
+//dependencies
+var config = require('./config'),
+    express = require('express'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    session = require('express-session'),
+    mongoStore = require('connect-mongo')(session),
+    http = require('http'),
+    path = require('path'),
+    passport = require('passport'),
+    mongoose = require('mongoose'),
+    helmet = require('helmet'),
+    csrf = require('csurf');
 
-// set up ======================================================================
+//create express app
+var app = express();
 
-// get all the tools we need
-var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 80;
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash    = require('connect-flash');
-var jade    = require('jade');
-var expressValidator = require('express-validator');
-var nodemailer = require("nodemailer");
+//keep reference to config
+app.config = config;
 
-//var routes 	 = require('./app/server/routes');
+//setup the web server
+app.server = http.createServer(app);
 
-// Database
-var configDB = require('./config/database.js');
-// configuration 
-var db = mongoose.connect(configDB.url, function(err) {
-    if (err) throw err;
+//setup mongoose
+app.db = mongoose.createConnection(config.mongodb.uri);
+app.db.on('error', console.error.bind(console, 'mongoose connection error: '));
+app.db.once('open', function () {
+  //and... we have a data store
 });
 
-require('./config/passport')(passport); // pass passport for configuration
+//config data models
+require('./models')(app, mongoose);
 
+//settings
+app.disable('x-powered-by');
+app.set('port', config.port);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
-app.configure(function() {
-	app.set('views', __dirname + '/app/server/views');
-	app.set('view engine', 'jade');
+//middleware
+app.use(require('morgan')('dev'));
+app.use(require('compression')());
+app.use(require('serve-static')(path.join(__dirname, 'public')));
+app.use(require('method-override')());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser(config.cryptoKey));
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: config.cryptoKey,
+  store: new mongoStore({ url: config.mongodb.uri })
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(csrf({ cookie: { signed: true } }));
+helmet(app);
 
-	app.set('title', 'compart.io');
-
-	// Set pretty = false - HTML source code output
-	// It's just sending unneccesary bytes to the client slowing download speed and increasing bandwidth consumption.
-	app.locals.pretty = true;
-
-	// set up our express application
-	app.use(express.logger('dev')); // log every request to the console
-	app.use(express.cookieParser()); // read cookies (needed for auth)
-	app.use(express.bodyParser()); // get information from html forms
-	app.use(express.static(__dirname + '/app/public'));
-	
-	// required for passport
-	app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
-	app.use(passport.initialize());
-	app.use(passport.session()); // persistent login sessions
-	app.use(flash()); // use connect-flash for flash messages stored in session
-
+//response locals
+app.use(function(req, res, next) {
+  res.cookie('_csrfToken', req.csrfToken());
+  res.locals.user = {};
+  res.locals.user.defaultReturnUrl = req.user && req.user.defaultReturnUrl();
+  res.locals.user.username = req.user && req.user.username;
+  next();
 });
 
+//global locals
+app.locals.projectName = app.config.projectName;
+app.locals.copyrightYear = new Date().getFullYear();
+app.locals.copyrightName = app.config.companyName;
+app.locals.cacheBreaker = 'br34k-01';
 
-// Models =================================================================
+//setup passport
+require('./passport')(app, passport);
 
-// Routes ======================================================================
-require('./app/server/router')(app, passport, nodemailer); // load our routes and pass in our app and fully configured passport
-require('./app/server/routes/city')(app) // load routes for cities and pass in our app
-require('./app/server/routes/country')(app) // load routes for countries and pass in our app
-
-// New routes
+//setup routes
 require('./routes')(app, passport);
 
+//custom (friendly) error handler
+app.use(require('./views/http/index').http500);
 
-// launch ======================================================================
-app.listen(port);
-console.log('The magic happens on port ' + port);
+//setup utilities
+app.utility = {};
+app.utility.sendmail = require('./util/sendmail');
+app.utility.slugify = require('./util/slugify');
+app.utility.workflow = require('./util/workflow');
+/*
+Now every request can get a new workflow quickly 
+by just asking the app for a new one req.app.utility.workflow(req, res).
+The workflows we create live and die during each request/response 
+life-cycle, hence they are re-created when another subsequent request is made.
+*/
 
+//listen up
+app.server.listen(app.config.port, function(){
+  //and... we're live
+});

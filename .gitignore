@@ -44,3 +44,5 @@ app/public/bower_components/jquery/src/traversing/var/min/rneedsContext-ck.js
 app/public/bower_components/jquery/src/var/min/class2type-ck.js
 
 app/public/bower_components/jquery/src/var/min/hasOwn-ck.js
+
+config.js
