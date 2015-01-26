@@ -44,8 +44,12 @@ exports = module.exports = function(app, passport) {
   //landing
   app.get('/', require('./views/landing').init);  
 
-  app.get('/home', require('./views/index').init);
+  app.get('/home/', require('./views/index').init);
+  
+  // static
   app.get('/about/', require('./views/about/index').init);
+  app.get('/contribute/', require('./views/contribute/index').init);
+
   app.get('/contact/', require('./views/contact/index').init);
   app.post('/contact/', require('./views/contact/index').sendMessage);
 
