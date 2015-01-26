@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // DRYWALL SCHEMA
 /*
 
  Think of Accounts as the "customers" of a 

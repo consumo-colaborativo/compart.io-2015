@@ -1,16 +1,15 @@
-// app/models/message.js
+'use strict'; // COMPARTIO SCHEMA
+// message.js
+exports = module.exports = function(app, mongoose) {
+	//                            
+	// define the schema for our MESSAGE model
+	var messageSchema = new mongoose.Schema({
+	    compartio_id:   [{ ObjectId, ref: 'Compartio' }],
+	    user_id:        [{ ObjectId, ref: 'Compartio-user' }],
+	    date_time:     { type: Date, default: Date.now },
+	    content:        { type: String, default: '' },
+	    url_imagen:     { type: String, default: '' }
+	}); // end messageSchema
 
-var mongoose = require('mongoose');
-var ObjectId = mongoose.Schema.Types.ObjectId;
-
-//                            
-// define the schema for our MESSAGE model
-var messageSchema = mongoose.Schema({
-    compartio_id:   [{ ObjectId, ref: 'Compartio' }],
-    user_id:        [{ ObjectId, ref: 'User' }],
-    date_time:     { type: Date, default: Date.now },
-    content:        { type: String, default: '' },
-    url_imagen:     { type: String, default: '' }
-}); // end messageSchema
-
-module.exports = mongoose.model('Message', messageSchema);
+	app.db.model('Message', messageSchema);
+};

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // DRYWALL SCHEMA
 
 exports = module.exports = function(app, mongoose) {
   var noteSchema = new mongoose.Schema({
