@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // DRYWALL SCHEMA
 
 // /schema/Category.js defines the structure for our Category documents.
 

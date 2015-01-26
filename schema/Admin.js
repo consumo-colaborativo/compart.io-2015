@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // DRYWALL SCHEMA
 /*
 
  Admins wouldn't need this functionality since they can't register

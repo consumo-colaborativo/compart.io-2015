@@ -1,9 +1,10 @@
-'use strict';
+'use strict'; // DRYWALL SCHEMA + COMPARTIO SCHEMA
 /* The User schema was designed to facilitate the login system no matter what role is 
 being played. After a user is authenticated you have access to the roles that user can play.
 */
 exports = module.exports = function(app, mongoose) {
   var userSchema = new mongoose.Schema({
+    // General User's Field (Drywall User's Field)
     username: { type: String, unique: true },
     password: String,
     email: { type: String, unique: true },
@@ -20,7 +21,15 @@ exports = module.exports = function(app, mongoose) {
     facebook: {},
     google: {},
     tumblr: {},
-    search: [String]
+    search: [String],
+    // User's Field related to COMPART.IO
+    screen_name  : { type: String, default: 'compart.io' },
+    karma        : { type: Number, default: '0'},
+    //
+    street       : { type: String, default: 'sin definir' },
+    zip_code     : { type: Number, default: '14001' },
+    city         : { type: mongoose.Schema.Types.ObjectId,
+                     ref: 'City'}
   });
   userSchema.methods.canPlayRoleOf = function(role) {
     if (role === "admin" && this.roles.admin) {
