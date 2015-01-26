@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 var renderSettings = function(req, res, next, oauthMessage) {
   var outcome = {};
