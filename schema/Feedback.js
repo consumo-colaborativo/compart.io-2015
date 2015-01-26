@@ -13,7 +13,7 @@ exports = module.exports = function(app, mongoose) {
 	    subject  : { type: String, enum: feedback_subject}
 	}); // end categorySchema
 
-	app.db.model('Feedback', categorySchema);
+	app.db.model('Feedback', feedbackSchema);
 };
 
 

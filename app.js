@@ -30,7 +30,7 @@ app.db.once('open', function () {
   //and... we have a data store
 });
 
-//config data models
+//config data models (load models.js file)
 require('./models')(app, mongoose);
 
 //settings
