@@ -12,7 +12,8 @@ exports = module.exports = function(app, mongoose) {
 	    message:   { type: String, default: '' },
 	    subject  : { type: String, enum: feedback_subject}
 	}); // end categorySchema
-
+	feedbackSchema.plugin(require('./plugins/pagedFind'));
+	feedbackSchema.set('autoIndex', (app.get('env') === 'development'));	
 	app.db.model('Feedback', feedbackSchema);
 };
 

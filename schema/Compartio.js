@@ -25,6 +25,8 @@ exports = module.exports = function(app, mongoose) {
     					        enum: condition},
     
   });
+  compartioSchema.plugin(require('./plugins/pagedFind'));
+  compartioSchema.set('autoIndex', (app.get('env') === 'development'));
   // create the model "Compartio" for objects and expose it to our app
   app.db.model('Compartio', compartioSchema);
 };
