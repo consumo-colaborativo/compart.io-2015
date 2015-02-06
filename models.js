@@ -1,12 +1,14 @@
 'use strict';
-/* All the schemas are included here  15 */
+/* All the schemas are included here  15 DOCUMENTS */
 
 exports = module.exports = function(app, mongoose) {
   // Embeddable docs first DRYWALL 
+  
   require('./schema/Status')(app, mongoose);
   require('./schema/Category')(app, mongoose);
 
   // Then regular docs DRYWALL
+
   require('./schema/User')(app, mongoose);
   require('./schema/AdminGroup')(app, mongoose);
   require('./schema/Admin')(app, mongoose);
@@ -14,9 +16,10 @@ exports = module.exports = function(app, mongoose) {
   require('./schema/LoginAttempt')(app, mongoose);
 
   require('./schema/Note')(app, mongoose); 
-  require('./schema/StatusLog')(app, mongoose); //
+  require('./schema/StatusLog')(app, mongoose); 
 
-  // Compartio schemas 6
+  // Compartio Schemas 6
+
   require('./schema/Country')(app, mongoose);
   require('./schema/City')(app, mongoose);
 
