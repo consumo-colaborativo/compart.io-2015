@@ -5,9 +5,13 @@
 // URL: GIVE/VIEW
 // Description: GIVE/VIEW shows a compartio that someone wants to "GIVE". 
 // The compartio is searched by its ID.
+// References:
+//	- https://github.com/caolan/async
 /* ********************************************************************** */ 
-var renderSettings = function(req, res, next) {
+var renderSettings = function(req, res) {
 	var outcome = {};
+	var async = require('async');
+	var compartio_id = "54d5001e5b12230c694c5035";	
 	// Documents Needed for consult: Compartio,
 	/*
 		title         : { type: String, required: true},  
@@ -30,52 +34,73 @@ var renderSettings = function(req, res, next) {
 	    				enum: condition},
   	*/
 	// Find a compartio by ID
-	var getCompartioData = function(callback) {
-		var id = "54d5001e5b12230c694c5035";
-		req.app.db.models.Compartio.findById(id).exec(function(err, doc) {
+	async.series([
+	// compartio DOC
+	function(callback) {
+		req.app.db.models.Compartio.findById(compartio_id).exec(function(err, doc) {
 		    if (err) {
 		        callback(err, null);
 		    }
 		    outcome.compartio = doc;
-		    console.log("user: "+doc.giver_user_id);
-		    return callback(getUserData, 'done');
+		    callback();
 	    });
-	}; // end getCompartioData
-	var getUserData = function(callback) {
-		req.app.db.models.User.findById(outcome.compartio.giver_user_id).exec(function(err, user) {
+	},
+	// user DOC
+	function(callback) {
+		//  outcome.compartio.giver_user_id
+		req.app.db.models.User.findById( outcome.compartio.giver_user_id ).exec(function(err, user) {
 		    if (err) {
 		        callback(err, null);
 		    }
 	    	outcome.user = user;
+			callback();
 		});
-		return callback(null, 'done');
-	}; 
-	/*
-	var getCityData = function(callback) {
-	
-	}; // end getCityData
-	var getCategoryData = function(callback) {
-
-	}; // end getCategoryData
-	var getMessageData = function(callback) {
-		
-
-	}; // end getMessageData
-	*/
-	var asyncFinally = function(err, results) {
+	},
+	// category DOC
+	function(callback) {
+		//  outcome.compartio.category_id
+		req.app.db.models.CompartioCategory.findById( outcome.compartio.category_id ).exec(function(err, cat) {
+		    if (err) {
+		        callback(err, null);
+		    }
+	    	outcome.category = cat;
+			callback();
+		});
+	},
+	// city DOC
+	function(callback) {
+		//  outcome.compartio.category_id
+		req.app.db.models.City.findById( outcome.compartio.city_id ).exec(function(err, cat) {
+		    if (err) {
+		        callback(err, null);
+		    }
+	    	outcome.city = cat;
+			callback();
+		});
+	},
+	// message DOC
+	function(callback) {
+		//  outcome.compartio.category_id
+		req.app.db.models.Message.findById( compartio_id ).exec(function(err, cat) {
+		    if (err) {
+		        callback(err, null);
+		    }
+	    	outcome.message = cat;
+			callback();
+		});
+	},
+	], 
+	function(err) {
 	    if (err) {
 	    	return next(err);
 	    }
-	    console.log("TEST compartio: " + JSON.stringify(outcome.compartio));
-	    console.log("TEST user: " +  JSON.stringify(outcome.user));
-		/*res.render('give/view/index', {
+	    console.log(" TEST: " + JSON.stringify(outcome));
+		res.render('give/view/index', {
 			      data: {	compartio: escape(JSON.stringify(outcome.compartio))	}
-		});*/
-  	};
-  	require('async').parallel([getCompartioData], asyncFinally);
+		});	
+  	});
 };	
 // 
 exports.init = function(req, res, next){
-	console.log("give-view");
-	renderSettings(req, res, next);
+	renderSettings(req, res);
 };
