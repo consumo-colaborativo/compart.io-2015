@@ -1,70 +1,87 @@
 [	
 	{
 		"title": "AUDIOVISUAL",
-		"description": "Cámaras, carretes, tarjetas de memoria, accesorios, flashes..."
+		"description": "Cámaras, carretes, tarjetas de memoria, accesorios, flashes...",
+		"url_image": ""
 	},
 	{	
 		"title": "PARA LA CASA",
-		"description": "Muebles, alfombras, sabanas, enchufes, adornos, espejos..."
+		"description": "Muebles, alfombras, sabanas, enchufes, adornos, espejos...",
+		"url_image": ""
 	},
 	{
 		"title": "ELECTRODOMÉSTICOS",
-		"description": "Ventiladores, batidoras, televisores, reproductores, frigos..."
+		"description": "Ventiladores, batidoras, televisores, reproductores, frigos...",
+		"url_image": ""
 	},
 	{
 		"title": "ROPA Y CALZADOS",
-		"description": "De invierno o de verano, para adultos o niños, complementos y disfraces..."
+		"description": "De invierno o de verano, para adultos o niños, complementos y disfraces...",
+		"url_image": ""
 	},
 	{
 		"title": "JARDINERÍA",
-		"description": "Plantas, macetas, herramientas, riego, accesorios para el huerto..."
+		"description": "Plantas, macetas, herramientas, riego, accesorios para el huerto...",
+		"url_image": ""
 	},
 	{
 		"title": "MANITAS Y BRICOLEROS",
-		"description": "Herramientas, escaleras, material de construcción y de pintura..."
+		"description": "Herramientas, escaleras, material de construcción y de pintura...",
+		"url_image": ""
 	},
 	{
 		"title": "VAMOS QUE NOS VAMOS",
-		"description": "Todo para el viaje: maletas, bolsos, neveras, accesorios, mapas..."
+		"description": "Todo para el viaje: maletas, bolsos, neveras, accesorios, mapas...",
+		"url_image": ""
 	},
 	{
 		"title": "MANUALIDADES Y COSTURA",
-		"description": "Herramientas y máquinas específicas, materiales: papel, tela, lana, perlas..."
+		"description": "Herramientas y máquinas específicas, materiales: papel, tela, lana, perlas...",
+		"url_image": ""
 	},
 	{
 		"title": "BIBLIOTECA",
-		"description": "Libros de literatura, infantiles, escolares, artísticos, revistas..."
+		"description": "Libros de literatura, infantiles, escolares, artísticos, revistas...",
+		"url_image": ""
 	},
 	{
 		"title": "DEPORTE Y BIENESTAR",
-		"description": "Raquetas, pelotas, pesas, maquinaria, materiales y calzados específicos..."
+		"description": "Raquetas, pelotas, pesas, maquinaria, materiales y calzados específicos...",
+		"url_image": ""
 	},
 	{
 		"title": "JUGUETES",
-		"description": "Peluches, muñecos, casitas, juegos de montar, de mesa, mecánicos..."
+		"description": "Peluches, muñecos, casitas, juegos de montar, de mesa, mecánicos...",
+		"url_image": ""
 	},
 	{
 		"title": "MÚSICA",
-		"description": "Discos, auriculares, reproductores, instrumentos, piezas, particiones..."
+		"description": "Discos, auriculares, reproductores, instrumentos, piezas, particiones...",
+		"url_image": ""
 	},
 	{
 		"title": "CON RUEDAS Y MOTOR",
-		"description": "Coches, scooter, piezas de recambio, sillas para niños, accesorios,..."
+		"description": "Coches, scooter, piezas de recambio, sillas para niños, accesorios,...",
+		"url_image": ""
 	},
 	{	
 		"title": "BICICLETAS Y PATINETES",
-		"description": "Bicis, patinetes, monopatines, piezas de recambio, accesorios..."
+		"description": "Bicis, patinetes, monopatines, piezas de recambio, accesorios...",
+		"url_image": ""
 	},
 	{
 		"title": "INFORMATICA",
-		"description": "Mesas/sillas de despacho, carpetas, clips, grapadoras..."
+		"description": "Mesas/sillas de despacho, carpetas, clips, grapadoras...",
+		"url_image": ""
 	},
 	{
 		"title": "MASCOTAS",
-		"description": "Perros, gatos, peces... Pienso, arena, semillas... correas, jaulas..."
+		"description": "Perros, gatos, peces... Pienso, arena, semillas... correas, jaulas...",
+		"url_image": ""
 	},
 	{
 		"title": "CAJÓN DESASTRE",
-		"description": "Estatuas, figuras, objetos varios, souvenirs..."
+		"description": "Estatuas, figuras, objetos varios, souvenirs...",
+		"url_image": ""
 	}
 ]
