@@ -11,5 +11,5 @@ exports = module.exports = function(app, mongoose) {
 	}); // end categorySchema
 	categorySchema.plugin(require('./plugins/pagedFind'));
 	categorySchema.set('autoIndex', (app.get('env') === 'development'));
-	app.db.model('Compartio-Category', categorySchema);
+	app.db.model('CompartioCategory', categorySchema);
 };
