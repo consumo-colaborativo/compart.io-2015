@@ -5,10 +5,7 @@
 exports = module.exports = function(app, mongoose) {
 	// define the schema for our country model
 	var countrySchema = new mongoose.Schema({
-		country_short_name		: { type: String},
-		country_long_name		: { type: String},
-		country_numcode			: { type: Number},
-		country_spanish_name	: { type: String, required: true},
+		name					: { type: String, required: true},
 		isActive         		: { type: Boolean}, 
 		activation_date	  		: { type: Date },
 		creation_date	  		: { type: Date, default: Date.now }
