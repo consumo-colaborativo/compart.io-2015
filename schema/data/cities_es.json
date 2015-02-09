@@ -1,4 +1,4 @@
-{ "cities" : [
+[
   {
     "postal_code":1,
     "name":"Alava",
@@ -312,4 +312,3 @@
     "active": false
   }
 ]
-}
