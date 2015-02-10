@@ -1,34 +1,36 @@
 [
-	{	
-		"username": "mafalda",
-		"email":	"mafalda@compart.io"
+	{
+		"_id":{"$oid":"54d501b95b12230c694c5038"},
+		"username":"magda",
+		"email":"magda@compart.io"
 	},
-	{	
-		"username": "javi",
-		"email":	"javi@compart.io"
+	{
+		"_id":{"$oid":"54d501b95b12230c694c5039"},
+		"username":"javi",
+		"email":"javi@compart.io"
 	},
-	{	
+	{
+		"_id":{"$oid":"54d503445b12230c694c503a"},
 		"username":"toni",
 		"email":"toni@compart.io"
 	},
-	{	
+	{
+		"_id":{"$oid":"54d503445b12230c694c503b"},
 		"username":"delf",
 		"email":"delf@compart.io"
 	},
-	{	
-		"username":"alvaro",
-		"email":"alvaro@compart.io"
+	{
+		"_id":{"$oid":"54d503875b12230c694c503c"},
+		"username":"alvaro","email":"alvaro@compart.io"
 	},
-	{	
+	{
+		"_id":{"$oid":"54d503875b12230c694c503d"},
 		"username":"mortadelo",
 		"email":"mortadelo@compart.io"
 	},
-	{	
+	{
+		"_id":{"$oid":"54d503875b12230c694c503e"},
 		"username":"filemon",
 		"email":"filemon@compart.io"
-	},
-	{	
-		"username":"mafalda",
-		"email":"mafalda@compart.io"
 	}
 ]
