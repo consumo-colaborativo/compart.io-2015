@@ -1,0 +1,104 @@
+[
+  {
+    "_id": {"$oid": "54d918485b12230c694c533f"},
+    "title": "AUDIOVISUAL",
+    "description": "Cámaras, carretes, tarjetas de memoria, accesorios, flashes...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5340"},
+    "title": "PARA LA CASA",
+    "description": "Muebles, alfombras, sabanas, enchufes, adornos, espejos...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5341"},
+    "title": "ELECTRODOMÉSTICOS",
+    "description": "Ventiladores, batidoras, televisores, reproductores, frigos...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5342"},
+    "title": "ROPA Y CALZADOS",
+    "description": "De invierno o de verano, para adultos o niños, complementos y disfraces...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5343"},
+    "title": "JARDINERÍA",
+    "description": "Plantas, macetas, herramientas, riego, accesorios para el huerto...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5344"},
+    "title": "MANITAS Y BRICOLEROS",
+    "description": "Herramientas, escaleras, material de construcción y de pintura...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5345"},
+    "title": "VAMOS QUE NOS VAMOS",
+    "description": "Todo para el viaje: maletas, bolsos, neveras, accesorios, mapas...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5346"},
+    "title": "MANUALIDADES Y COSTURA",
+    "description": "Herramientas y máquinas específicas, materiales: papel, tela, lana, perlas...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5347"},
+    "title": "BIBLIOTECA",
+    "description": "Libros de literatura, infantiles, escolares, artísticos, revistas...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5348"},
+    "title": "DEPORTE Y BIENESTAR",
+    "description": "Raquetas, pelotas, pesas, maquinaria, materiales y calzados específicos...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c5349"},
+    "title": "JUGUETES",
+    "description": "Peluches, muñecos, casitas, juegos de montar, de mesa, mecánicos...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c534a"},
+    "title": "MÚSICA",
+    "description": "Discos, auriculares, reproductores, instrumentos, piezas, particiones...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c534b"},
+    "title": "CON RUEDAS Y MOTOR",
+    "description": "Coches, scooter, piezas de recambio, sillas para niños, accesorios,...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c534c"},
+    "title": "BICICLETAS Y PATINETES",
+    "description": "Bicis, patinetes, monopatines, piezas de recambio, accesorios...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c534d"},
+    "title": "INFORMATICA",
+    "description": "Mesas/sillas de despacho, carpetas, clips, grapadoras...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c534e"},
+    "title": "MASCOTAS",
+    "description": "Perros, gatos, peces... Pienso, arena, semillas... correas, jaulas...",
+    "url_image": ""
+  },
+  {
+    "_id": {"$oid": "54d918485b12230c694c534f"},
+    "title": "CAJÓN DESASTRE",
+    "description": "Estatuas, figuras, objetos varios, souvenirs...",
+    "url_image": ""
+  }
+]

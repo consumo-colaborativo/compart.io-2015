@@ -1,0 +1,55 @@
+[
+	{	
+		"title": "Bicicleta de montaña",
+		"description":	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus dolor, tempor ac finibus in, consequat quis enim.",
+		"is_donation": true,
+		"url_image" : "http://fotos.tsncs.com/img/20120715/7672188/bicicleta-montana-75910701_3.jpg",
+		"city_id": "54d4fe465b12230c694c500c", // Córdoba
+		"category_id": "",
+		"giver_user_id": "",
+		"receiver_user_id": "",
+		"interested_users_id": "",
+		"status": "published",
+		"condition": "used"
+	},
+	{	
+		"title": "Perchero de pie de madera",
+		"description":	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus dolor, tempor ac finibus in, consequat quis enim.",
+		"is_donation": true,
+		"url_image" : "http://pictures.venvir.net/venvir/2008/08/14/9587816.jpg",
+		"city_id": "54d4fe465b12230c694c500c",
+		"category_id": "",
+		"giver_user_id": "",
+		"receiver_user_id": "",
+		"interested_users_id": "",
+		"status": "published",
+		"condition": "used"
+	},
+	{	
+		"title": "Sofá de palets",
+		"description":	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus dolor, tempor ac finibus in, consequat quis enim.",
+		"is_donation": true,
+		"url_image" : "http://img.decoesfera.com/2010/05/sofapales2.jpg",
+		"city_id": "54d4fe465b12230c694c500c",
+		"category_id": "",
+		"giver_user_id": "",
+		"receiver_user_id": "",
+		"interested_users_id": "",
+		"status": "published",
+		"condition": "used"
+	},
+	{	
+		"title": "Bicicleta para ir a trabajar",
+		"description":	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus dolor, tempor ac finibus in, consequat quis enim.",
+		"is_donation": false,
+		"url_image" : "",
+		"city_id": "54d4fe465b12230c694c500c",
+		"category_id": "54d4fced5b12230c694c4f90",
+		"giver_user_id": "",
+		"receiver_user_id": "",
+		"interested_users_id": "",
+		"status": "published",
+		"condition": "used"
+	}
+
+]
