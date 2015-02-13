@@ -12,26 +12,10 @@ var renderSettings = function(req, res) {
 	var outcome = {};
 	var async = require('async');
 	var compartio_id = "54d5001e5b12230c694c5035";	
-	// Documents Needed for consult: Compartio,
 	/*
-		title         : { type: String, required: true},  
-	    description	  : { type: String, required: true},
-	    slug          : { type: String, lowercase: true},
-	    is_donation	  : { type: Boolean, required: true},
-	    url_image     : { type: String },
-	    created       : { type: Date, default: Date.now },
-	    updated       : { type: Date },
-	    city_id     	: { type: mongoose.Schema.Types.ObjectId, ref: 'City'},
-	    category_id	  : { type: mongoose.Schema.Types.ObjectId, ref: 'Compartio-category'},
-	    giver_user_id	: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-	    receiver_user_id	: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-	    interested_users_id : [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-	    status        : { type: String,
-    					required: true,  					
-    					enum: status,
-    					default: 'published'},
-	    condition     : { type: String,
-	    				enum: condition},
+		title, description, slug, is_donation,url_image, created,updated,
+	    city_id,category_id, giver_user_id, receiver_user_id ,
+	    interested_users_id, status, condition
   	*/
 	// Find a compartio by ID
 	async.series([
@@ -53,6 +37,18 @@ var renderSettings = function(req, res) {
 		        callback(err, null);
 		    }
 	    	outcome.user = user;
+	    	var count = outcome.compartio.interested_users_id.length;
+	    	outcome.interested_users = [];
+	    	// array of interested users in the compartio
+	    	for (var index = 0; index < count; index++) {
+	    		console.log("userid " + outcome.compartio.interested_users_id[index]);
+    			req.app.db.models.User.findById(outcome.compartio.interested_users_id[index]).exec(function(err, doc) {
+    				if (err) {
+				        callback(err, null);
+				    }
+			    	outcome.interested_users.push(doc);
+    			});
+	    	} // end each interested user
 			callback();
 		});
 	},
@@ -92,11 +88,11 @@ var renderSettings = function(req, res) {
 	], 
 	function(err) {
 	    if (err) {
-	    	return next(err);
+	    	return err;
 	    }
-	    console.log(" TEST: " + JSON.stringify(outcome));
+	    //console.log(" TEST: give/view/index " + JSON.stringify(outcome));
 		res.render('give/view/index', {
-			      data: {	compartio: escape(JSON.stringify(outcome.compartio))	}
+			      data: {compartio: escape(JSON.stringify(outcome))	}
 		});	
   	});
 };	
