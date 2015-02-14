@@ -13,5 +13,7 @@ exports = module.exports = function(app, mongoose) {
     updated       : { type: Date },
     Country       : { type: mongoose.Schema.Types.ObjectId, ref: 'Country'}
   });
+  citySchema.plugin(require('./plugins/pagedFind'));
+  citySchema.set('autoIndex', (app.get('env') === 'development'));
   app.db.model('City', citySchema);
 };

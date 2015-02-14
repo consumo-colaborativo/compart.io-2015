@@ -10,7 +10,8 @@ exports = module.exports = function(app, mongoose) {
 		activation_date	  		: { type: Date },
 		creation_date	  		: { type: Date, default: Date.now }
 	});
-
+	countrySchema.plugin(require('./plugins/pagedFind'));
+	countrySchema.set('autoIndex', (app.get('env') === 'development'));
 	// create the model "Country" for countries and expose it to our app
 	app.db.model('Country', countrySchema);
 };

@@ -10,5 +10,7 @@ exports = module.exports = function(app, mongoose) {
 	    content:        { type: String, default: '' },
 	    url_image: 	    { type: String, default: '' }
 	}); // end messageSchema
+	messageSchema.plugin(require('./plugins/pagedFind'));
+	messageSchema.set('autoIndex', (app.get('env') === 'development'));
 	app.db.model('Message', messageSchema);
 };

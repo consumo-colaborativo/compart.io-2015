@@ -9,5 +9,7 @@ exports = module.exports = function(app, mongoose) {
 	    description:  { type: String, default: '' },
 	    url_imagen:   { type: String, default: '' }
 	}); // end categorySchema
-	app.db.model('Compartio-Category', categorySchema);
+	categorySchema.plugin(require('./plugins/pagedFind'));
+	categorySchema.set('autoIndex', (app.get('env') === 'development'));
+	app.db.model('CompartioCategory', categorySchema);
 };
