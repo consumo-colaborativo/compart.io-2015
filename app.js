@@ -24,6 +24,7 @@ app.config = config;
 app.server = http.createServer(app);
 
 //setup mongoose
+/*
 app.db = mongoose.createConnection(config.mongodb.uri);
 app.db.on('error', console.error.bind(console, 'mongoose connection error: '));
 app.db.once('open', function () {
@@ -32,6 +33,7 @@ app.db.once('open', function () {
 
 //config data models (load models.js file)
 require('./models')(app, mongoose);
+*/
 
 //settings
 app.disable('x-powered-by');

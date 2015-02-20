@@ -6,7 +6,7 @@
   app = app || {};
 
   app.Contact = Backbone.Model.extend({
-    url: '/contact/',
+    url: '/contacto/',
     defaults: {
       success: false,
       errors: [],

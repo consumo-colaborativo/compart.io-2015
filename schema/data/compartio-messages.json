@@ -1,0 +1,30 @@
+[
+	{
+		"compartio_id": { "$oid": "54d5001e5b12230c694c5036"},
+		"user_id":   	{"$oid": "54d503875b12230c694c503d"},
+	    "date_time":	"",     
+	    "content":      "Lorem fistrum a gramenawer ese pedazo de pupita al ataquerl. A peich apetecan hasta luego Lucas condemor.",
+	    "url_image":  	""
+	},
+	{
+		"compartio_id": {"$oid": "54d5001e5b12230c694c5036"},
+		"user_id":   	{"$oid":"54d503875b12230c694c503e"},
+	    "date_time":	"",     
+	    "content":      "Lorem fistrum a gramenawer ese pedazo de pupita al ataquerl. A peich apetecan hasta luego Lucas condemor.",
+	    "url_image":  	""
+	},
+	{
+		"compartio_id": {"$oid": "54d5001e5b12230c694c5035"},
+		"user_id":   	{"$oid":"54d503875b12230c694c503e"},
+	    "date_time":	"",     
+	    "content":      "Lorem fistrum a gramenawer ese pedazo de pupita al ataquerl. A peich apetecan hasta luego Lucas condemor.",
+	    "url_image":  	""
+	},
+	{
+		"compartio_id": {"$oid": "54d513515b12230c694c5233"},
+		"user_id":   	{"$oid":"54d503445b12230c694c503b"},
+	    "date_time":	"",     
+	    "content":      "Qué chulo! Yo le daría mucha utilidad!",
+	    "url_image":  	""
+	}
+]
