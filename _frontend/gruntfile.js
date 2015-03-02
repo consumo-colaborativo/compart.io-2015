@@ -53,6 +53,18 @@ module.exports = function(grunt) {
             src: ['vendors.min.js'], dest: '../public/js/'
           }
         ]
+      },
+      general: {
+        files: [
+          {
+            expand: true, cwd: 'public/js/',
+            src: ['main.min.js'], dest: '../public/js/'
+          },{
+            expand: true, cwd: 'public/css/',
+            src: ['main.css'], dest: '../public/css/'
+          }
+
+        ]
       }
     },
     sass: {
@@ -97,6 +109,13 @@ module.exports = function(grunt) {
       jade: {
         files: ['jade/*.jade'],
         tasks: ['jade:compile'],
+        options: {
+          livereload: true
+        }
+      },
+      copy: {
+        files: ['public/js/main.min.js','public/css/main.css'],
+        tasks: ['copy:general'],
         options: {
           livereload: true
         }
