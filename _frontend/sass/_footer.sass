@@ -1,0 +1,66 @@
+footer
+	background-color: #B07F4E
+	padding: 10px 0
+	@include clearfix
+	>div
+		margin: 0 $margen-general 0 $margen-general
+		@media #{$tablet}
+			margin: 0 ($margen-general - 20) 0 $margen-general
+		>div
+			@media #{$tablet}
+				float: left
+				width: 50%
+				padding-right: 20px
+		ul
+			list-style: none
+			margin: 0
+			padding: 0
+			display: inline-block
+			vertical-align: middle
+			li
+				display: inline-block
+				vertical-align: middle
+				color: #fff
+				a
+					display: inline-block
+					color: #fff
+					text-decoration: none
+					margin: 0 4px
+				&.facebook
+					a
+						span:first-child
+							@include icon('before', 'facebook', true)
+							font-size: 24px
+						span:last-child
+							display: none
+				&.twitter
+					a
+						span:first-child
+							@include icon('before', 'twitter', true)
+							font-size: 24px
+						span:last-child
+							display: none
+			&.corp
+				li
+					&:before
+						display: inline-block
+						vertical-align: middle
+						content: "·"
+					&:first-child:before
+						content: ""
+					a
+						margin: 0 4px 0 8px
+		.col1
+			ul
+				li
+					a
+						font-size: 12px
+						text-transform: uppercase
+		.col2
+			@media #{$tablet}
+				text-align: right
+			ul
+				li
+					a
+						font-size: em(11px)
+						text-decoration: underline

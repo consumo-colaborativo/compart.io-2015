@@ -1,0 +1,60 @@
+header#header-home
+	$height: 460px
+	height: $height
+	.background1
+		width: 100%
+		height: $height
+		background-image: url(../_img/header_background_1.png)
+		background-size: auto $height
+	.background2
+		width: 100%
+		height: $height
+		padding: 50px $margen-general $margen-general $margen-general
+		background-image: url(../_img/header_background_2.png)
+		background-repeat: no-repeat
+		background-position: center bottom
+		background-size: auto 273px
+
+		.col1
+			@media #{$tablet}
+				float: left
+				width: 60%
+			text-align: center
+			@media #{$mobile}
+				text-align: left
+			h1
+
+				$width: 273px
+				$height: 32px
+				display: inline-block
+				width: $width
+				height: $height
+				margin: 0
+				background: url(../_img/logo.png) no-repeat center center
+				background-size: $width $height
+				text-indent: -999px
+			p
+				max-width: 340px
+				font-size: 17px
+				font-weight: 300
+				line-height: 28px
+				color: #fff
+				strong
+					font-weight: 700
+			select
+				margin-bottom: 12px
+
+		.col2
+			@media #{$tablet}
+				float: right
+				width: 40%
+			text-align: center
+			@media #{$mobile}
+				text-align: left
+			@media #{$tablet}
+				text-align: right
+			#userpanel
+				.not-logged
+
+
+				

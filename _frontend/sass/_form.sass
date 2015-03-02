@@ -1,0 +1,19 @@
+
+// Form elements
+select
+	width: 242px
+	// @include background-image( linear-gradient(to bottom, #C99D6A, #AF7E4E) )
+	background: transparent url(../_img/select-background-1.png) no-repeat right center
+	background-size: 500px 42px
+	-webkit-appearance: none
+	-moz-appearance: none
+	appearance: none
+	padding: 10px
+	border: none
+	font-size: 16px
+	color: $color-principal-1
+	outline: none
+	@include border-left-radius(6px)
+	@include border-right-radius(6px)
+	&.not-selected
+		font-style: italic

@@ -1,0 +1,53 @@
+$ancho: 158px
+body
+	margin: 0
+#container
+	@for $i from 1 through 20
+		@media (min-width: #{$i*$ancho})
+			width: #{($i*$ancho)}
+	position: relative
+	margin: 0px auto
+	border: 8px solid #fff
+	border-right: 0
+	background-color: #fff
+	.box
+		position: relative
+		&.oferta
+			&.size11
+				// background-color: #f33
+			&.size21,
+			&.size12
+				// background-color: #f66
+			&.size22
+				// background-color: #f99
+		&.demanda
+			&.size11
+				// background-color: #3f3
+			&.size21,
+			&.size12
+				// background-color: #6f6
+			&.size22
+				// background-color: #9f9
+		&.especial1
+			// background-color: #00f
+		&.especial2
+			// background-color: #66f
+		>a
+			position: absolute
+			display: none
+			top: 0
+			right: 0
+			bottom: 30px
+			left: 0
+		>span
+			display: none
+			position: absolute
+			width: 4px
+			height: 4px
+			background-color: #f00
+			top: 0
+			left: 0
+			&.point2
+				background-color: #00f
+		
+	

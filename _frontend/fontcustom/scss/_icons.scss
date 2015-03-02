@@ -1,0 +1,33 @@
+// http://jaydenseric.com/blog/font-icons-like-a-boss-with-sass-and-font-custom
+
+// Declare icon font
+@include font-face('icons', '../fonts/icons');
+
+// List icons
+$icons: (
+    facebook: "\f100",
+    flecha1-down: "\f101",
+    flecha1-left: "\f102",
+    flecha1-right: "\f103",
+    flecha1-up: "\f104",
+    twitter: "\f105",
+);
+
+// Use to apply icons
+@mixin icon($position: before, $icon: false, $styles: true) {
+    @if $position == both {
+        $position: 'before, &:after';
+    }
+    &:#{$position} {
+        @if $icon {
+            content: "#{map-get($icons, $icon)}";
+        }
+        @if $styles {
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-family: 'icons';
+        }
+        @content;
+    }
+}

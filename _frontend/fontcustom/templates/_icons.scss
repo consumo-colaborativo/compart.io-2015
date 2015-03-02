@@ -1,0 +1,28 @@
+// http://jaydenseric.com/blog/font-icons-like-a-boss-with-sass-and-font-custom
+
+// Declare icon font
+@include font-face('<%= font_name %>', '../fonts/<%= font_name %>');
+
+// List icons
+$icons: (<% @glyphs.each do |name, value| %>
+    <%= name.to_s %>: "\<%= value[:codepoint].to_s(16) %>",<% end %>
+);
+
+// Use to apply icons
+@mixin icon($position: before, $icon: false, $styles: true) {
+    @if $position == both {
+        $position: 'before, &:after';
+    }
+    &:#{$position} {
+        @if $icon {
+            content: "#{map-get($icons, $icon)}";
+        }
+        @if $styles {
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-family: '<%= font_name %>';
+        }
+        @content;
+    }
+}
