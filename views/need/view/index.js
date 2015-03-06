@@ -1,5 +1,4 @@
 'use strict';
-'use strict';
 /* ********************************************************************** */ 
 // Author: Magda Sánchez
 // Date: 09-02-2015
@@ -12,7 +11,7 @@
 var renderSettings = function(req, res) {
 	var outcome = {};
 	var async = require('async');
-	var compartio_id = "54d5001e5b12230c694c5035";	
+	var compartio_id = "54d5001e5b12230c694c5035";	/* SUSTITUIR */
 	//
 	/*
 		title ,  
@@ -22,7 +21,7 @@ var renderSettings = function(req, res) {
   	*/
 	// Find a compartio by ID
 	async.series([
-	// compartio DOC
+	// Compartio DOC
 	function(callback) {
 		req.app.db.models.Compartio.findById(compartio_id).exec(function(err, doc) {
 		    if (err) {
@@ -32,7 +31,7 @@ var renderSettings = function(req, res) {
 		    callback();
 	    });
 	},
-	// user DOC
+	// User DOC
 	function(callback) {
 		//  outcome.compartio.giver_user_id
 		req.app.db.models.User.findById( outcome.compartio.giver_user_id ).exec(function(err, user) {
@@ -40,10 +39,22 @@ var renderSettings = function(req, res) {
 		        callback(err, null);
 		    }
 	    	outcome.user = user;
+	    	var count = outcome.compartio.interested_users_id.length;
+	    	outcome.interested_users = [];
+	    	// array of interested users in the compartio
+	    	for (var index = 0; index < count; index++) {
+	    		//console.log("userid " + outcome.compartio.interested_users_id[index]);
+    			req.app.db.models.User.findById(outcome.compartio.interested_users_id[index]).exec(function(err, doc) {
+    				if (err) {
+				        callback(err, null);
+				    }
+			    	outcome.interested_users.push(doc);
+    			});
+	    	} // end each interested user
 			callback();
 		});
 	},
-	// category DOC
+	// Category DOC
 	function(callback) {
 		//  outcome.compartio.category_id
 		req.app.db.models.CompartioCategory.findById( outcome.compartio.category_id ).exec(function(err, cat) {
@@ -54,7 +65,7 @@ var renderSettings = function(req, res) {
 			callback();
 		});
 	},
-	// city DOC
+	// City DOC
 	function(callback) {
 		//  outcome.compartio.category_id
 		req.app.db.models.City.findById( outcome.compartio.city_id ).exec(function(err, cat) {
@@ -65,7 +76,7 @@ var renderSettings = function(req, res) {
 			callback();
 		});
 	},
-	// message DOC 
+	// Message DOC 
 	function(callback) {
 		//  outcome.compartio.category_id
 		req.app.db.models.Message.findById( compartio_id ).exec(function(err, cat) {
@@ -90,4 +101,4 @@ var renderSettings = function(req, res) {
 // 
 exports.init = function(req, res, next){
 	renderSettings(req, res);
-};
+}; 
