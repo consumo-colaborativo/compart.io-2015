@@ -1,0 +1,23 @@
+@mixin boton($size: 1, $color: 1)
+	display: inline-block
+	text-decoration: none
+	@if $color == 1
+		@include linear-gradient(to bottom, #45474A, #000000)
+		color: #fff
+		&:hover
+			@include linear-gradient(to bottom, lighten(#45474A,30%), lighten(#000000,40%))
+	@if $color == 2
+		@include linear-gradient(to bottom, #AF7E4D, #723B18)
+		color: #fff
+		&:hover
+			@include linear-gradient(to bottom, lighten(#AF7E4D,30%), lighten(#723B18,40%))
+	@if $size == 1
+		padding: 5px 10px
+		font-size: rem(11px)
+		border-radius: 4px
+	@if $size == 2
+		padding: 9px 16px
+		font-size: rem(14px)
+		border-radius: 5px
+	span.icon
+		float: right

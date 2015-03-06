@@ -41,8 +41,8 @@ function ensureAccount(req, res, next) {
 exports = module.exports = function(app, passport) {
   // Front end
 
-  // Landing
-  app.get('/', require('./views/landing').init);  
+  // Home
+  app.get('/', require('./views/home/index').init);  
 
   app.get('/home/', require('./views/index').init);
   
