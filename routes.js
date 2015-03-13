@@ -1,5 +1,5 @@
 'use strict';
-
+ 
 // Routes.js is where we define all the app routes.
 
 function ensureAuthenticated(req, res, next) {
