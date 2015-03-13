@@ -1,8 +1,7 @@
 'use strict'; // COMPARTIO SCHEMA
 // compartio-category.js
 exports = module.exports = function(app, mongoose) {
-	var ObjectId = mongoose.Schema.Types.ObjectId;
-	//                            
+	var ObjectId = mongoose.Schema.Types.ObjectId;                            
 	// define the schema for our MESSAGE model
 	var categorySchema = new mongoose.Schema({
 	    title:        { type: String, default: '' },
