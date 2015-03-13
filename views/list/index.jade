@@ -1,0 +1,24 @@
+extends ../../layouts/default
+
+block body
+	p donaciones en #{result.city.name}
+	- count=0;
+	for obj in result.compartio
+		if obj.giver_user_id && obj.status == "published"
+			p Título: #{obj.title}
+			p Estado: #{obj.condition}
+			p Descripción: #{obj.description}
+			p -
+			- count++;
+	p Hay #{count} DONACIONES
+	- count=0;
+	p -
+	p Peticiones en #{result.city.name}
+	for obj in result.compartio
+		if obj.receiver_user_id && obj.status == "published"
+		p Título: #{obj.title}
+		p Estado: #{obj.condition}
+		p Descripción: #{obj.description}
+		p -
+		- count++;
+	p Hay #{count} PETICIONES  

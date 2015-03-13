@@ -1,5 +1,5 @@
 'use strict';
-
+ 
 // Routes.js is where we define all the app routes.
 
 function ensureAuthenticated(req, res, next) {
@@ -42,10 +42,17 @@ exports = module.exports = function(app, passport) {
   // Front end
 
   // Home
-  app.get('/', require('./views/home/index').init);  
+  app.get('/', require('./views/home/index').init);   
+  app.get('/home/', require('./views/index').init); // falta redireccionar a home compartio
 
-  app.get('/home/', require('./views/index').init);
-  
+  // START List of Compartios filter by different values -- MAGDA --
+  app.get('/:city_slug/',require('./views/list/index').init);
+  app.get('/:city_slug/gives/',require('./views/list/index').init);
+  app.get('/:city_slug/gives/:category',require('./views/list/index').init);
+  app.get('/:city_slug/gives/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/gives/:category/search/:word',require('./views/list/index').init);
+  // END List -- MAGDA --
+
   // static
   app.get('/about/', require('./views/about/index').init);
   app.get('/contribute/', require('./views/contribute/index').init);
