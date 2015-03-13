@@ -1,5 +1,5 @@
 'use strict';
-
-exports.init = function(req, res){
-  res.render('home/index');
+// Home View
+exports.init = function(req, res, next){
+	res.render('home/index');
 };

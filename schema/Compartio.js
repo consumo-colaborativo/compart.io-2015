@@ -13,7 +13,7 @@ exports = module.exports = function(app, mongoose) {
     created       : { type: Date, default: Date.now },
     updated       : { type: Date },
     city_id     	: { type: mongoose.Schema.Types.ObjectId, ref: 'City'},
-    category_id	  : { type: mongoose.Schema.Types.ObjectId, ref: 'Compartio-category'},
+    category_id	  : { type: mongoose.Schema.Types.ObjectId, ref: 'CompartioCategory'},
     giver_user_id	: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     receiver_user_id	: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     interested_users_id : [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
