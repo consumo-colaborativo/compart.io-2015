@@ -4,5 +4,13 @@
 // \_)(_/\_/\_/ \___/\_)__)(__)(__)  (__)\___)  (__)   \__/(__)  \____/(__)  
 // 
 $(document).ready(function() {
-  $('.popupvideo').magnificPopup({type:'iframe'});
+
+	// Home
+	if($('body#home').length>0){
+  	$('.popupvideo').magnificPopup({type:'iframe'});
+	}
+
+	// Listado
+	
+
 });

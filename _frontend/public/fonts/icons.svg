@@ -1,11 +1,11 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <!--
-2015-2-16: Created with FontForge (http://fontforge.org)
+2015-3-6: Created with FontForge (http://fontforge.org)
 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20141128 at Mon Feb 16 18:47:57 2015
+Created by FontForge 20141128 at Fri Mar  6 19:41:12 2015
  By Toni Castillo
 Copyright (c) 2015, Toni Castillo
 </metadata>
@@ -22,9 +22,12 @@ Copyright (c) 2015, Toni Castillo
     bbox="0 -58.3884 500.932 441.932"
     underline-thickness="25.6"
     underline-position="-51.2"
-    unicode-range="U+F100-F105"
+    unicode-range="U+F100-F106"
   />
     <missing-glyph />
+    <glyph glyph-name="uniF106" unicode="&#xf106;" horiz-adv-x="485" 
+d="M320 390c66 0 120 -55 120 -121s-54 -120 -120 -120s-121 55 -121 123s55 118 121 118zM68 -17l94 100c11 11 13 26 5 39l35 35c29 -32 71 -50 118 -50c92 0 165 73 165 165s-73 165 -165 165s-166 -76 -166 -165c0 -34 11 -68 32 -94l-37 -37c-13 5 -28 6 -39 -5
+l-100 -95c-13 -13 -13 -34 0 -47l10 -11c13 -16 35 -16 48 0z" />
     <glyph glyph-name="uniF104" unicode="&#xf104;" horiz-adv-x="501" 
 d="M430 84h-360c-122 0 -47 96 -47 96l151 189c76 96 152 0 152 0l150 -189c76 -96 -46 -96 -46 -96z" />
     <glyph glyph-name="uniF105" unicode="&#xf105;" horiz-adv-x="446" 
