@@ -43,7 +43,6 @@ exports = module.exports = function(app, passport) {
 
   // Home
   app.get('/', require('./views/home/index').init);   
-  app.get('/home/', require('./views/index').init); // falta redireccionar a home compartio
 
   // START List of Compartios filter by different values -- MAGDA --
   app.get('/:city_slug/',require('./views/list/index').init);

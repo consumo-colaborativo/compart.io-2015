@@ -19,6 +19,7 @@ var renderSettings = function(req, res) {
 	},
 	// Compartio DOC
 	function(callback) {
+		
 		var city_id = outcome.city._id;
 		//  outcome.compartio.giver_user_id
 		req.app.db.models.Compartio.find({ city_id: city_id, status: 'published'}).exec(function(err, doc) {
