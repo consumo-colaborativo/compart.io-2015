@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "b6130b20fec7cad816eeeca72431cc59a2407e7a58ffb1df9c080957f8d20e92",
-    "current": "b6130b20fec7cad816eeeca72431cc59a2407e7a58ffb1df9c080957f8d20e92"
+    "previous": "0a1030fe0c57535285de5dd8d6618a65da304f588b8c6df392fd13219e6d4209",
+    "current": "0a1030fe0c57535285de5dd8d6618a65da304f588b8c6df392fd13219e6d4209"
   },
   "fonts": [
     "../public/fonts/icons.ttf",
@@ -10,6 +10,10 @@
     "../public/fonts/icons.eot"
   ],
   "glyphs": {
+    "busqueda": {
+      "codepoint": 61702,
+      "source": "vectors/busqueda.svg"
+    },
     "facebook": {
       "codepoint": 61696,
       "source": "vectors/facebook.svg"

@@ -19,7 +19,12 @@ module.exports = function(grunt) {
           separator: ';'
         },
         src: [
-          ['bower_components/jquery/dist/jquery.js', 'bower_components/jquery-dropdown/jquery.dropdown.js', 'bower_components/nested/jquery.nested.js', 'bower_components/snap.svg/dist/snap.svg.js', 'bower_components/magnific-popup/dist/jquery.magnific-popup.js'] 
+          ['bower_components/jquery/dist/jquery.js',
+          'bower_components/jquery-dropdown/jquery.dropdown.js',
+          'bower_components/nested/jquery.nested.js',
+          'bower_components/snap.svg/dist/snap.svg.js',
+          'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
+          'bower_components/select2-ng/select2.min.js'] 
         ],
         dest: 'public/js/vendors.min.js'
       },

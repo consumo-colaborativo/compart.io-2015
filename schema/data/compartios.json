@@ -11,7 +11,7 @@
       "$oid": "54d4fe465b12230c694c500c"
     },
     "category_id": {
-      "$oid": "54d4fced5b12230c694c4f90"
+      "$oid": "54d918485b12230c694c534c"
     },
     "giver_user_id": "",
     "receiver_user_id": {
@@ -33,7 +33,7 @@
       "$oid": "54d4fe465b12230c694c500c"
     },
     "category_id": {
-      "$oid": "54d4fced5b12230c694c4f84"
+      "$oid": "54d918485b12230c694c5340"
     },
     "giver_user_id": {
       "$oid": "54d503875b12230c694c503d"
@@ -62,7 +62,7 @@
       "$oid": "54d4fe465b12230c694c500c"
     },
     "category_id": {
-      "$oid": "54d4fced5b12230c694c4f86"
+      "$oid": "54d918485b12230c694c5342"
     },
     "giver_user_id": "",
     "receiver_user_id": "",
@@ -82,7 +82,7 @@
       "$oid": "54d4fe465b12230c694c500c"
     },
     "category_id": {
-      "$oid": "54d4fced5b12230c694c4f90"
+      "$oid": "54d918485b12230c694c534c"
     },
     "giver_user_id": {
       "$oid": "54d501b95b12230c694c5039"
@@ -103,7 +103,9 @@
     "city_id": {
       "$oid": "54d4fe465b12230c694c500c"
     },
-    "category_id": "",
+    "category_id": {
+      "$oid": "54d918485b12230c694c5340"
+    },
     "giver_user_id": {
       "$oid": "54d503445b12230c694c503b"
     },
@@ -118,7 +120,7 @@
         "$oid": "54d503445b12230c694c503a"
       }
     ],
-    "status": "published",
+    "status": "delivered",
     "condition": "broken"
   }
 ]
