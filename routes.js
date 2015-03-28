@@ -64,12 +64,15 @@ exports = module.exports = function(app, passport) {
   // Give > View  -- Falta enviar compartio_id como parámetro de entrada -
   app.get('/give/view/', require('./views/give/view/index').init);
   // Give > Add 
-  app.get('/give/add/', require('./views/give/add/index').init);
+  app.post('/give/add/', require('./views/give/add/index').create);
   // Need > View
   app.get('/need/view/', require('./views/need/view/index').init);
   // Need > Add 
   app.get('/need/add/', require('./views/need/add/index').init);
   // END Compartio Routes --------------------------------------------
+
+
+  
 
   //sign up
   app.get('/signup/', require('./views/signup/index').init);

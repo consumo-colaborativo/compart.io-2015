@@ -44,10 +44,11 @@ html(lang='en')
 							strong ¡Bienvenido!
 							br
 							| Este es un espacio donde buscar lo que necesitas y dar lo que te sobra.
+
 						select.not-selected
 							option Elije tu ciudad
-							option Albacete
-							option Córdoba
+							each ciudad in ciudades
+								option #{ciudad}
 							optgroup(label="---")
 							option No encuentras tu ciudad?
 					.col2
