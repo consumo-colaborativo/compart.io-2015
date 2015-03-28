@@ -43,14 +43,18 @@ exports = module.exports = function(app, passport) {
 
   // Home
   app.get('/', require('./views/home/index').init);   
-  app.get('/home/', require('./views/index').init); // falta redireccionar a home compartio
 
   // START List of Compartios filter by different values -- MAGDA --
   app.get('/:city_slug/',require('./views/list/index').init);
-  app.get('/:city_slug/gives/',require('./views/list/index').init);
-  app.get('/:city_slug/gives/:category',require('./views/list/index').init);
-  app.get('/:city_slug/gives/search/:word',require('./views/list/index').init);
-  app.get('/:city_slug/gives/:category/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/give/',require('./views/list/index').init);
+  app.get('/:city_slug/give/:category_slug',require('./views/list/index').init);
+  app.get('/:city_slug/give/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/give/:category_slug/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/need/',require('./views/list/index').init);
+  app.get('/:city_slug/need/:category_slug',require('./views/list/index').init);
+  app.get('/:city_slug/need/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/need/:category_slug/search/:word',require('./views/list/index').init);
+
   // END List -- MAGDA --
 
   // static
@@ -212,6 +216,4 @@ exports = module.exports = function(app, passport) {
 
   //route not found
   app.all('*', require('./views/http/index').http404);
-
-  
 };
