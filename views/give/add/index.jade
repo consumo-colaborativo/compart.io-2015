@@ -1,1 +1,22 @@
 extends ../../../layouts/default
+
+block head
+  title Guardar Compartio
+
+block body
+  h1 prueba para guardar compartio
+  br
+  div
+    form(action='/give/add/',method='post')
+      div
+        span
+          <input type="hidden" name="_csrf" value={{ token }} />
+          label title: 
+          input(id='title',type='text',value='',placeholder='título del compartio',name='title')
+          br
+          label descripcion: 
+          input(id='description',type='text',value='',placeholder='descripcion del compartio',name='description')
+          br
+          br
+          input(type='submit',value='Guardar')
+
