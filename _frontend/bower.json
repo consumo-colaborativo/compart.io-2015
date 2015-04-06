@@ -1,0 +1,24 @@
+{
+  "name": "_frontend",
+  "version": "0.0.0",
+  "homepage": "https://github.com/consumo-colaborativo/compart.io",
+  "authors": [
+    "Toni Castillo <tonicastillo@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "latest",
+    "nested": "latest",
+    "bourbon": "latest",
+    "snap.svg": "latest",
+    "magnific-popup": "latest",
+    "tooltipster": "latest"
+  }
+}

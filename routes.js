@@ -1,5 +1,5 @@
 'use strict';
-
+ 
 // Routes.js is where we define all the app routes.
 
 function ensureAuthenticated(req, res, next) {
@@ -42,10 +42,21 @@ exports = module.exports = function(app, passport) {
   // Front end
 
   // Home
-  app.get('/', require('./views/home/index').init);  
+  app.get('/', require('./views/home/index').init);   
 
-  app.get('/home/', require('./views/index').init);
-  
+  // START List of Compartios filter by different values -- MAGDA --
+  app.get('/:city_slug/',require('./views/list/index').init);
+  app.get('/:city_slug/give/',require('./views/list/index').init);
+  app.get('/:city_slug/give/:category_slug',require('./views/list/index').init);
+  app.get('/:city_slug/give/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/give/:category_slug/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/need/',require('./views/list/index').init);
+  app.get('/:city_slug/need/:category_slug',require('./views/list/index').init);
+  app.get('/:city_slug/need/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/need/:category_slug/search/:word',require('./views/list/index').init);
+
+  // END List -- MAGDA --
+
   // static
   app.get('/about/', require('./views/about/index').init);
   app.get('/contribute/', require('./views/contribute/index').init);
@@ -57,12 +68,15 @@ exports = module.exports = function(app, passport) {
   // Give > View  -- Falta enviar compartio_id como parámetro de entrada -
   app.get('/give/view/', require('./views/give/view/index').init);
   // Give > Add 
-  app.get('/give/add/', require('./views/give/add/index').init);
+  app.post('/give/add/', require('./views/give/add/index').create);
   // Need > View
   app.get('/need/view/', require('./views/need/view/index').init);
   // Need > Add 
   app.get('/need/add/', require('./views/need/add/index').init);
   // END Compartio Routes --------------------------------------------
+
+
+  
 
   //sign up
   app.get('/signup/', require('./views/signup/index').init);
@@ -202,6 +216,4 @@ exports = module.exports = function(app, passport) {
 
   //route not found
   app.all('*', require('./views/http/index').http404);
-
-  
 };

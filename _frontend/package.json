@@ -1,0 +1,14 @@
+{
+  "name": "compartio",
+  "version": "0.0.1",
+  "dependencies": {
+    "grunt-cli": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-express": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-jade": "latest",
+    "grunt-contrib-copy": "latest"
+  }
+}

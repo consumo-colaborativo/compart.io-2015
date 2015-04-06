@@ -1,0 +1,50 @@
+
+// Form elements
+select
+	padding: 6px 24px 6px 6px
+	background: #f4ebe1 url(../_img/select-background-2.png) no-repeat right center
+	background-size: 500px 26px
+	color: $color-principal-1
+	font-size: 10px
+	@include border-left-radius(4px)
+	@include border-right-radius(4px)
+	&.home
+		width: 242px
+		padding: 10px
+		background: transparent url(../_img/select-background-1.png) no-repeat right center
+		background-size: 500px 42px
+		color: $color-principal-1
+		font-size: 16px
+		@include border-left-radius(6px)
+		@include border-right-radius(6px)
+	-webkit-appearance: none
+	-moz-appearance: none
+	appearance: none
+	border: none
+	outline: none
+	&.not-selected
+		font-style: italic
+		color: #f4ebe1
+		background: $color-principal-1 url(../_img/select-background-2-invertido.png) no-repeat right center
+		background-size: 500px 26px
+
+.input_search
+	display: inline-block
+	input
+		vertical-align: middle
+		padding: 5px 5px 5px 5px
+		border: 1px solid #F0E8DE
+		@include border-left-radius(6px)
+		font-size: 10px
+	button
+		vertical-align: middle
+		padding: 5px 5px 4px 5px
+		margin-left: -6px
+		@include background-image(linear-gradient(to bottom, #AF7E4E, #703917))
+		border: 0
+		@include border-right-radius(6px)
+		span
+			@include icon('before', 'busqueda', true)
+			font-size: 15px
+			line-height: 15px
+			color: #fff

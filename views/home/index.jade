@@ -1,1 +1,151 @@
-h1 Test
+doctype html
+html(lang='en')
+	//    ___  __   _  _  ____   __   ____  ____    __  __  
+	//   / __)/  \ ( \/ )(  _ \ / _\ (  _ \(_  _)  (  )/  \ 
+	//  ( (__(  O )/ \/ \ ) __//    \ )   /  )(  _  )((  O )
+	//   \___)\__/ \_)(_/(__)  \_/\_/(__\_) (__)(_)(__)\__/ 
+	//
+		
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title Compart.io
+		link(href='css/main.css', rel='stylesheet' type='text/css')
+		link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700', rel='stylesheet' type='text/css')
+		| <!--[if lt IE 9]><script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script><![endif]-->
+		link(rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png")
+		link(rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png")
+		link(rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png")
+		link(rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png")
+		link(rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png")
+		link(rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png")
+		link(rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png")
+		link(rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png")
+		link(rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png")
+		link(rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32")
+		link(rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192")
+		link(rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96")
+		link(rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16")
+		link(rel="manifest" href="/favicons/manifest.json")
+		link(rel="shortcut icon" href="/favicons/favicon.ico")
+		meta(name="msapplication-TileColor" content="#da532c")
+		meta(name="msapplication-TileImage" content="/favicons/mstile-144x144.png")
+		meta(name="msapplication-config" content="/favicons/browserconfig.xml")
+		meta(name="theme-color" content="#ffffff")
+	body#home
+		header#header-home
+			div.background1
+				div.background2
+					.col1
+						h1
+							span Compartio
+						p
+							strong ¡Bienvenido!
+							br
+							| Este es un espacio donde buscar lo que necesitas y dar lo que te sobra.
+
+						select.not-selected
+							option Elije tu ciudad
+							each ciudad in ciudades
+								option #{ciudad}
+							optgroup(label="---")
+							option No encuentras tu ciudad?
+					.col2
+						#userpanel
+							.not-logged
+								a(href="/login") Entrar
+								a(href="/signup") Crear cuenta
+
+
+		section#contenido-home1
+			div
+				.col1
+					img(src="_img/home_muneco1.gif" width="226" height="135" style="margin-top: 14px")
+					h3 Da lo que te sobra...
+					p Porque todos tenemos en casa cosas que nos sobran, que guardamos por si acaso o que nos da pena tirar. Aquí te damos la posibilidad de sacarles provecho de forma solidaria y de paso, liberar tu trastero. Qué bien ¿no?
+				.col2
+					img(src="_img/home_muneco2.gif" width="113" height="149")
+					h3 ...y busca lo que necesitas.
+					p Tus niños crecen y sus necesidades con ellas, te acabas de emancipar,  tienes que mudarte, o tienes oficina nueva... Aquí puedes encontrar lo que te haga falta sin nada en cambio. Así es de maja la gente y así es el consumo colaborativo.
+				.col3
+					img(src="_img/home_muneco3.gif" width="238" height="149")
+					h3 un proyecto colaborativo
+					p Compart.io colabora a transformar el mundo hacia una forma de vida y consumo más responsable, sostenible y solidario. Es un proyecto social abierto, libre y sin ánimo de lucro, desarrollado por voluntarios. ¿Quieres participar? <a href="#">Saber más</a>.
+
+		section#contenido-home2
+			div
+				.col1
+					h5 Últimos compartios entregados:
+					.svgmask
+						svg(height="0" width="0")
+								defs
+									mask#bocadillo
+										path(fill="#FFFFFF", width='116', height='116', d="M11.9,0C11.9,0,0,0,0,11.9v68.8c0,0,0,11.9,11.9,11.9h44.7c0,0,11.9,0,19.2,9.4l9.4,12.2c0,0,1.1,1.5,2,1.5 h0c0.5,0,0.9-0.6,0.8-2.5l-0.5-8.7c0,0-0.7-11.9,11.3-11.9h5c0,0,11.9,0,11.9-11.9V11.9c0,0,0-11.9-11.9-11.9H11.9z")
+					div.svgs
+						div
+							a(href="#")
+								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+						div
+							a(href="#")
+								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+						div
+							a(href="#")
+								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+						div
+							a(href="#")
+								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+						div
+							a(href="#")
+								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+						div
+							a(href="#")
+								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+
+				.col2
+					h5 Vídeo de presentación:
+					a.popupvideo(href="https://vimeo.com/29226795")
+						img(src="_img/video_thumb.jpg")
+						span
+							span
+								span
+		footer
+			div
+				.col1
+					ul.social
+						li.facebook
+							a(href="#")
+								span
+								span Facebook
+						li.twitter
+							a(href="#")
+								span
+								span Twitter
+					ul.corp
+						li
+							a(href="#")
+								| El proyecto
+						li
+							a(href="#")
+								| Contacto
+				.col2
+					ul
+						li
+							a(href="#").facebook
+								| Política de confidencialidad
+						li
+							a(href="#").facebook
+								| Aviso legal
+						li
+							a(href="#").facebook
+								| Política de cookies
+
+
+		script(src='js/vendors.min.js')
+		script(src='js/main.min.js')

@@ -1,0 +1,101 @@
+#contenido-home1
+	>div
+		margin: $margen-general $margen-general $margen-general $margen-general
+		@media #{$tablet}
+			margin: $margen-general ($margen-general - 20) $margen-general $margen-general
+		>div
+			@media #{$tablet}
+				float: left
+				width: 33.3%
+				padding-right: 20px
+				margin-bottom: 20px
+			text-align: center
+			h3
+				font-size: 21px
+				line-height: 28px
+				text-transform: uppercase
+				font-weight: 600
+			p
+				font-size: 12px
+				line-height: 19px
+			&:nth-child(1)
+				color: #B07F4E
+			&:nth-child(2)
+				color: #0D6D6B
+			&:nth-child(3)
+				color: #575756
+#contenido-home2
+	clear: both
+	background-color: #F1F1F1
+	@include clearfix
+	>div
+		.svgmask
+			height: 0
+			overflow-y: hidden
+		h5
+			font-size: 11px
+			font-weight: 300	
+			text-transform: uppercase
+			margin: 20px 0 10px 0
+		@include clearfix
+		margin: $margen-general $margen-general $margen-general $margen-general
+		@media #{$tablet}
+			margin: $margen-general ($margen-general - 20) $margen-general $margen-general
+		>div
+			@media #{$tablet}
+				float: left
+				width: 50%
+				padding-right: 20px
+		.svgs
+			>div
+				float: left
+				width: 30%
+				margin-right: 3.3%
+		a.popupvideo
+			display: block
+			position: relative
+			@include border-left-radius(7px)
+			@include border-right-radius(7px)
+			img
+				width: 100%
+				height: auto
+				@include border-left-radius(7px)
+				@include border-right-radius(7px)
+			>span
+				position: absolute
+				display: block
+				left: 0
+				top: 0
+				bottom: 0
+				right: 0
+				height: 100%
+				z-index: 100
+				text-align: center
+				>span
+					position: absolute
+					display: block
+					top: 50%
+					left: 50%
+					margin-top: -52px
+					margin-left: -52px
+					width: 104px
+					height: 104px
+					background-color: rgba(0,0,0,0.80)
+					@include border-left-radius(50%)
+					@include border-right-radius(50%)
+					>span
+						display: block
+						// @extend .icon-flecha1-right
+						@include icon('before', 'flecha1-right', true)
+						color: #fff
+						margin: 24px 0 0 6px
+						font-size: 38px
+			&:hover
+				>span
+					>span
+						background-color: rgba(255,255,255,0.80)
+						>span
+							color: #000
+			
+
+			

@@ -1,0 +1,57 @@
+@import "../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss"
+
+// Define your breakpoints
+$desktop: "only screen and (min-width : 840px)"
+$tablet: "only screen and (min-width : 760px)"
+$mobile: "only screen and (min-width : 450px)"
+
+// $visual-grid: false
+
+// @import "../bower_components/neat/app/assets/stylesheets/neat"
+
+@import "../fontcustom/scss/_icons.scss"
+
+@import "../bower_components/magnific-popup/src/css/main.scss"
+
+// *
+	// background-color: rgba(0,0,0,0.05)
+
+
+//  _  _   __   ____  __   __   ____  __    ____  ____ 
+// / )( \ / _\ (  _ \(  ) / _\ (  _ \(  )  (  __)/ ___)
+// \ \/ //    \ )   / )( /    \ ) _ (/ (_/\ ) _) \___ \
+//  \__/ \_/\_/(__\_)(__)\_/\_/(____/\____/(____)(____/
+//
+
+$color-principal-1: #703917 //Color desplegables
+// $color-principal-don-2: #B07F4E
+// $color-principal-don-3: #D9BB96
+
+$margen-general: 40px
+
+//  _  _  __  _  _  __  __ _  ____ 
+// ( \/ )(  )( \/ )(  )(  ( \/ ___)
+// / \/ \ )(  )  (  )( /    /\___ \
+// \_)(_/(__)(_/\_)(__)\_)__)(____/
+//
+
+body
+	padding: 0
+	margin: 0
+	font-family: 'Open Sans', sans-serif
+	color: #575756
+*
+	box-sizing: border-box
+
+$altura-header-desktop: 356px
+$margin-lados: 35px
+
+@import mixins
+@import form
+@import header
+@import header_list
+@import footer
+@import grid
+@import user
+@import p_home
+@import p_lists

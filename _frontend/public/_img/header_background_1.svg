@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0.2 149.8 1190.3 541.1" enable-background="new 0.2 149.8 1190.3 541.1" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="1278.7932" y1="-236.478" x2="1279.5947" y2="-236.478" gradientTransform="matrix(0 -674.9747 674.9747 0 160211.9844 863843.875)">
+	<stop  offset="0" style="stop-color:#3F2305"/>
+	<stop  offset="1" style="stop-color:#713911"/>
+</linearGradient>
+<rect y="149.8" fill="url(#SVGID_1_)" width="1190.6" height="541"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="595.3" y1="150.38" x2="595.3" y2="369.0686" gradientTransform="matrix(1 0 0 -1 0 841.28)">
+	<stop  offset="0" style="stop-color:#B07E4A"/>
+	<stop  offset="9.230770e-03" style="stop-color:#B27F4A"/>
+	<stop  offset="0.4762" style="stop-color:#BF905A"/>
+	<stop  offset="0.9927" style="stop-color:#CA9E66"/>
+	<stop  offset="1" style="stop-color:#CA9E66"/>
+</linearGradient>
+<path opacity="0.3" fill="url(#SVGID_2_)" enable-background="new    " d="M0,490c0,0,147.2,38.7,406.4,9.5s326.9-37.1,466-13.2
+	c138.9,23.9,210.1-19.7,318.2,3.7v200.9H0V490z"/>
+<path opacity="0.3" fill="#006D6C" enable-background="new    " d="M1190.6,589c-17.6,0.7-33.2,4.7-49.7,11.5
+	c-35.3,14.6-134.1,90.3-134.1,90.3h183.9V589H1190.6z"/>
+<path opacity="0.1" fill="#9ACFB0" enable-background="new    " d="M0,570.8c0,0,129-86.1,243.2-26.1
+	c114.2,60.1,212.4,117.7,313.9,60.1c101.6-57.6,141.3-50.2,197.4-22.5c56.1,27.7,159.8,53.2,246.8,0
+	c87.1-53.2,189.3-11.5,189.3-11.5s-99.8,83.7-226-5.1s-140.2,38.8-224.3,67.6c-84.1,28.9-177.5,2.7-237-70.2s-176.4,60.1-237,70.2
+	C79.5,664.8,0,570.8,0,570.8"/>
+<g>
+	<path opacity="0.3" fill="#006D6C" enable-background="new    " d="M0,690.9h788.1c0,0-257.1-71.6-310.7-57.6
+		s-202.8,43.2-318.6-2.3C80.8,600.3,36.2,587.6,0,589V690.9z"/>
+</g>
+<path opacity="0.3" fill="#006C6C" enable-background="new    " d="M326.7,690.9c0,0,200-91.2,368-61.2s191.9,38.9,273.6,23.5
+	c69.4-13.1,196.1,37.7,196.1,37.7h-0.3H326.7z"/>
+</svg>

@@ -1,0 +1,70 @@
+{
+  "checksum": {
+    "previous": "3079ca981e8727e20bea9f4463685b2b915cf5da911cc5b70b0144cdc54a34aa",
+    "current": "3079ca981e8727e20bea9f4463685b2b915cf5da911cc5b70b0144cdc54a34aa"
+  },
+  "fonts": [
+    "fontcustom/fontcustom_3079ca981e8727e20bea9f4463685b2b.ttf",
+    "fontcustom/fontcustom_3079ca981e8727e20bea9f4463685b2b.svg",
+    "fontcustom/fontcustom_3079ca981e8727e20bea9f4463685b2b.woff",
+    "fontcustom/fontcustom_3079ca981e8727e20bea9f4463685b2b.eot"
+  ],
+  "glyphs": {
+    "facebook": {
+      "codepoint": 61700,
+      "source": "./facebook.svg"
+    },
+    "flecha1-down": {
+      "codepoint": 61696,
+      "source": "./flecha1-down.svg"
+    },
+    "flecha1-left": {
+      "codepoint": 61697,
+      "source": "./flecha1-left.svg"
+    },
+    "flecha1-right": {
+      "codepoint": 61698,
+      "source": "./flecha1-right.svg"
+    },
+    "flecha1-up": {
+      "codepoint": 61699,
+      "source": "./flecha1-up.svg"
+    },
+    "twitter": {
+      "codepoint": 61701,
+      "source": "./twitter.svg"
+    }
+  },
+  "options": {
+    "autowidth": false,
+    "config": false,
+    "css_selector": ".icon-{{glyph}}",
+    "debug": false,
+    "font_ascent": 448,
+    "font_descent": 64,
+    "font_design_size": 16,
+    "font_em": 512,
+    "font_name": "fontcustom",
+    "force": false,
+    "input": {
+      "templates": ".",
+      "vectors": "."
+    },
+    "no_hash": false,
+    "output": {
+      "css": "fontcustom",
+      "fonts": "fontcustom",
+      "preview": "fontcustom"
+    },
+    "preprocessor_path": null,
+    "quiet": false,
+    "templates": [
+      "css",
+      "preview"
+    ]
+  },
+  "templates": [
+    "fontcustom/fontcustom.css",
+    "fontcustom/fontcustom-preview.html"
+  ]
+}
