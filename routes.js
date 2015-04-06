@@ -52,21 +52,15 @@ exports = module.exports = function(app, passport) {
   app.get('/contact/', require('./views/contact/index').init);
   app.post('/contact/', require('./views/contact/index').sendMessage);
 
-
-  // START List of Compartios filter by different values -- MAGDA --
-  app.get('/:city_slug/',require('./views/list/index').init);
-  app.get('/:city_slug/gives/',require('./views/list/index').init);
-  app.get('/:city_slug/gives/:category',require('./views/list/index').init);
-  app.get('/:city_slug/gives/search/:word',require('./views/list/index').init);
-  app.get('/:city_slug/gives/:category/search/:word',require('./views/list/index').init);
-  // END List -- MAGDA --
-
   
   // START Compartio Routes ------------------------------------------
   // Give > View  -- Falta enviar compartio_id como parámetro de entrada -
   app.get('/give/view/', require('./views/give/view/index').init);
   // Give > Add 
   app.get('/give/add/', require('./views/give/add/index').init);
+  app.post('/give/add/', require('./views/give/add/index').prueba);
+  app.post('/give/add/', require('./views/give/add/index').prueba);
+  app.post('/give/add/', require('./views/give/add/index').prueba);
   // Need > View
   app.get('/need/view/', require('./views/need/view/index').init);
   // Need > Add 
@@ -208,6 +202,14 @@ exports = module.exports = function(app, passport) {
   app.get('/account/settings/tumblr/', passport.authenticate('tumblr', { callbackURL: '/account/settings/tumblr/callback/' }));
   app.get('/account/settings/tumblr/callback/', require('./views/account/settings/index').connectTumblr);
   app.get('/account/settings/tumblr/disconnect/', require('./views/account/settings/index').disconnectTumblr);
+
+// START List of Compartios filter by different values -- MAGDA --
+  app.get('/:city_slug/',require('./views/list/index').init);
+  app.get('/:city_slug/gives/',require('./views/list/index').init);
+  app.get('/:city_slug/gives/:category',require('./views/list/index').init);
+  app.get('/:city_slug/gives/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/gives/:category/search/:word',require('./views/list/index').init);
+  // END List -- MAGDA --
 
   //route not found
   app.all('*', require('./views/http/index').http404);

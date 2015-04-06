@@ -44,11 +44,12 @@ html(lang='en')
 							strong ¡Bienvenido!
 							br
 							| Este es un espacio donde buscar lo que necesitas y dar lo que te sobra.
+							br
 
-						select.not-selected
-							option Elije tu ciudad
 							each ciudad in ciudades
-								option #{ciudad}
+								a(href="/"+ciudad.slug) #{ciudad.name}
+								br
+								br
 							optgroup(label="---")
 							option No encuentras tu ciudad?
 					.col2
