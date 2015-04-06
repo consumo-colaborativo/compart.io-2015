@@ -13,8 +13,8 @@ exports.init = function(req, res, next){
       if (err) return console.log('caca');
 
       for (compartio in compartios) {
-        cities[cities.length] = compartios[compartio].city_id.name;
+        cities[cities.length] = {name: compartios[compartio].city_id.name, slug: compartios[compartio].city_id.slug};
       }
-      res.render('home/index', {ciudades: _.uniq(cities, true)});
+      res.render('home/index', {ciudades: _.uniq(cities, 'name')});
       })
 };
