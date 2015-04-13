@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 // Home View
 // List of Compartios filter by different values -- MAGDA --
 // - /:city_slug/
