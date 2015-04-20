@@ -1,1 +1,29 @@
-extends ../../../layouts/default
+extends ../../../layouts/default  
+
+block body
+	p #{result.compartio.title}
+	p disponible en #{result.city.name}
+	p #{result.user.username}
+	p --- Compartio
+	p Descripción 
+	p #{result.compartio.description}
+	p Estado
+	p #{result.compartio.status}
+	p --- Usuarios interesados
+	if result.interested_users != null
+		p Usuarios Interesados
+		for obj in result.interested_users
+			p Nombre: #{obj.username}
+	p --- Mensajes
+	if result.message != null
+			for obj in result.message
+				p Mensaje: #{obj.content}
+				for userobj in result.user
+					if userobj._id.toString() == obj.user_id.toString()
+						p User Name: #{userobj.username}
+	p --- Categoría
+	p Categoría: #{result.category.title}
+	p #{result.category.description}
+	
+	
+	

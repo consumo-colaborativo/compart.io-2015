@@ -53,17 +53,19 @@ exports = module.exports = function(app, passport) {
   app.post('/contact/', require('./views/contact/index').sendMessage);
 
   
-  // START Compartio Routes ------------------------------------------
+  // MAGDA START Compartio Routes View ------------------------------------------
   // Give > View  -- Falta enviar compartio_id como parámetro de entrada -
-  app.get('/give/view/', require('./views/give/view/index').init);
-  // Give > Add 
-  app.get('/give/add/', require('./views/give/add/index').init);
-  app.post('/give/add/', require('./views/give/add/index').prueba);
-  app.post('/give/add/', require('./views/give/add/index').prueba);
-  app.post('/give/add/', require('./views/give/add/index').prueba);
+  app.get('/give/view/:id', require('./views/give/view/index').init);
   // Need > View
-  app.get('/need/view/', require('./views/need/view/index').init);
-  // Need > Add 
+  app.get('/need/view/:id', require('./views/need/view/index').init);
+  // MAGDA END Compartio Routes View
+  // Give > Add
+  app.get('/give/add/', require('./views/give/add/index').init);
+  //
+  app.post('/give/add/', require('./views/give/add/index').prueba);
+  app.post('/give/add/', require('./views/give/add/index').prueba);
+  app.post('/give/add/', require('./views/give/add/index').prueba);
+   // Need > Add 
   app.get('/need/add/', require('./views/need/add/index').init);
   // END Compartio Routes --------------------------------------------
 

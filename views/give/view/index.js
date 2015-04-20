@@ -1,18 +1,24 @@
-'use strict';
+'use strict'; 
 /* ********************************************************************** */ 
 // Author: Magda Sánchez
 // Date: 26-01-2015
 // URL: GIVE/VIEW
 // Description: GIVE/VIEW shows a compartio that someone wants to "GIVE". 
-// The compartio is searched by its ID.
+// The compartio is searched by its ID. Routes:
+// '/give/view/:id'
+// '/need/view/:id'
+// Test Examples: "/give/view/54d5001e5b12230c694c5033"
 // References:
 // - https://github.com/caolan/async
 //  - http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/
 /* ********************************************************************** */ 
 var renderSettings = function(req, res) {
+// Input Parameters
+if (req.params.id != null){
 	var outcome = {};
 	var async = require('async');
-	var compartio_id = "54d5001e5b12230c694c5035";			/* SUSTITUIR */
+	var compartio_id = req.params.id;			
+	/* SUSTITUIR */
 	/*  
 		title, description, slug, is_donation,url_image, created,updated,
 	    city_id,category_id, giver_user_id, receiver_user_id ,
@@ -20,8 +26,9 @@ var renderSettings = function(req, res) {
   	*/
 	// Find a compartio by ID
 	async.series([
-	// Compartio DOC
+	// 1- Compartio DOC
 	function(callback) {
+		if(compartio_id != null){
 		req.app.db.models.Compartio.findById(compartio_id).exec(function(err, doc) {
 		    if (err) { // On a successful response, the ‘err’ argument is null
 		        callback(err, null); // Call the callback with an actual error object
@@ -29,75 +36,122 @@ var renderSettings = function(req, res) {
 		        // generally the error is passed alone
 		    }
 		    outcome.compartio = doc;
+		    if (doc == null){
+		    	callback(err, null);		    	
+		    }else{
+		    	if(doc.is_donation == false){
+		    		callback(err, null);
+		    	}
+		    }
 		    callback();
 	    });
+		}
 	},
-	// User DOC
+	// 3- Category DOC
+	function(callback) {
+		//  Outcome.compartio.category_id
+		if(outcome.compartio != null){
+		if( outcome.compartio.category_id != null){
+			req.app.db.models.CompartioCategory.findById(outcome.compartio.category_id).exec(function(err, cat) {
+			    if (err) {
+			        callback(err, null);
+			    }
+		    	outcome.category = cat;
+				callback();
+			});
+		}
+		}else{
+			callback(err,null);
+		}
+	},
+	// 4- City DOC
+	function(callback) {
+		//  Outcome.compartio.category_id
+		if( outcome.compartio.city_id != null){
+			req.app.db.models.City.findById(outcome.compartio.city_id).exec(function(err, cat) {
+			    if (err) {
+			        callback(err, null);
+			    }
+		    	outcome.city = cat;
+				callback();
+			});
+		}
+	},
+	// 5- Message DOC
+	function(callback) {
+		//  outcome.compartio.category_id
+		if( compartio_id != null){
+			req.app.db.models.Message.find({compartio_id: compartio_id} ).exec(function(err, cat) {
+			    if (err) {
+			        callback(err, null);
+			    }
+		    	outcome.message = cat;
+				callback();
+			});
+		}
+	},
+	// 2- User DOC
 	function(callback) {
 		//  outcome.compartio.giver_user_id
-		req.app.db.models.User.findById(outcome.compartio.giver_user_id).exec(function(err, user) {
+		var search = "[";
+		if ( outcome.message != null){
+			var count = outcome.message.length;
+		    	// array of interested users in the compartio
+		    	for (var index = 0; index < count; index++) {
+		    		if( index == 0){
+			    		search = search + "{ _id: '"+outcome.message[index].user_id+"'}";
+					}else{
+						search = search + ",{ _id: '"+outcome.message[index].user_id+"'}";
+					}
+		    	} // end each interested user
+		    search = search + ",{ _id: '"+outcome.compartio.giver_user_id+"'}";
+		}else{
+			search = search + "{ _id: '"+outcome.compartio.giver_user_id+"'}";
+		}
+		search = search + "]";
+		req.app.db.models.User.find( { $or: eval(search)})
+			.exec(function(err, user) {
 		    if (err) {
 		        callback(err, null);
 		    }
 	    	outcome.user = user;
-	    	var count = outcome.compartio.interested_users_id.length;
-	    	outcome.interested_users = [];
-	    	// array of interested users in the compartio
-	    	for (var index = 0; index < count; index++) {
-	    		//console.log("userid " + outcome.compartio.interested_users_id[index]);
-    			req.app.db.models.User.findById(outcome.compartio.interested_users_id[index]).exec(function(err, doc) {
+			callback();
+		});
+	}, // Interested users
+	function(callback) {
+		var search = "[";
+		if (outcome.compartio.interested_users_id != null){
+		    	var count = outcome.compartio.interested_users_id.length;
+		    	outcome.interested_users = [];
+		    	// array of interested users in the compartio
+		    	for (var index = 0; index < count; index++) {
+		    		if( index == 0){
+			    		search = search + "{ _id: '"+outcome.compartio.interested_users_id[index]+"'}";
+					}else{
+						search = search + ",{ _id: '"+outcome.compartio.interested_users_id[index]+"'}";
+					}
+		    	} // end each interested user
+				search = search + "]";
+		    	// Array of interested users in the compartio
+	    		req.app.db.models.User.find({ $or: eval(search)})
+    				.exec(function(err, doc) {
     				if (err) {
 				        callback(err, null);
 				    }
-			    	outcome.interested_users.push(doc);
+			    	outcome.interested_users = doc;
+			    	callback();
     			});
-	    	} // end each interested user
-			callback();
-		});
-	},
-	// Category DOC
-	function(callback) {
-		//  Outcome.compartio.category_id
-		req.app.db.models.CompartioCategory.findById(outcome.compartio.category_id).exec(function(err, cat) {
-		    if (err) {
-		        callback(err, null);
-		    }
-	    	outcome.category = cat;
-			callback();
-		});
-	},
-	// City DOC
-	function(callback) {
-		//  Outcome.compartio.category_id
-		req.app.db.models.City.findById(outcome.compartio.city_id).exec(function(err, cat) {
-		    if (err) {
-		        callback(err, null);
-		    }
-	    	outcome.city = cat;
-			callback();
-		});
-	},
-	// Message DOC
-	function(callback) {
-		//  outcome.compartio.category_id
-		req.app.db.models.Message.findById( compartio_id ).exec(function(err, cat) {
-		    if (err) {
-		        callback(err, null);
-		    }
-	    	outcome.message = cat;
-			callback();
-		});
-	},
+			}
+	}
 	], 
 	function(err) {
 	    if (err) {
 	    	return err;
 	    }
 	    //console.log(" TEST: give/view/index " + JSON.stringify(outcome));
-		res.render('give/view/index', {
-			data: {compartio: escape(JSON.stringify(outcome))	}
-		});	
+		res.render('give/view/index', {result: outcome});
   	});
+} // end if :id exist
 };	
 // 
 exports.init = function(req, res, next){
