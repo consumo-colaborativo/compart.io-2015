@@ -48,7 +48,7 @@ if (req.params.city_slug != null){
 	    });
 	},
 	// Compartio DOC
-	function(callback) {
+	function(callback) { 
 		var cat,city;
 		cat = "[{status: 'published'}"; //,
 	    if (outcome.category != null){

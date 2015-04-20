@@ -1,4 +1,4 @@
-extends ../../../layouts/default 
+extends ../../../layouts/default  
 
 block body
 	p #{result.compartio.title}
@@ -14,12 +14,13 @@ block body
 		p Usuarios Interesados
 		for obj in result.interested_users
 			p Nombre: #{obj.username}
-	p --- Comentarios
+	p --- Mensajes
 	if result.message != null
-		p Mensajes
 			for obj in result.message
-				p Nombre: #{obj.username}
 				p Mensaje: #{obj.content}
+				for userobj in result.user
+					if userobj._id.toString() == obj.user_id.toString()
+						p User Name: #{userobj.username}
 	p --- Categoría
 	p Categoría: #{result.category.title}
 	p #{result.category.description}
