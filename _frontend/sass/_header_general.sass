@@ -1,0 +1,74 @@
+// *
+// 	background-color: rgba(0,0,0,0.1)
+header#header-list
+
+	padding: 20px 25px 20px 25px
+	@media (min-width: $media-tablet)
+		padding: 40px 50px 40px 50px
+	.row1
+		@include clearfix
+		.logo
+			@media (min-width: $media-tablet)
+				float: left
+				width: 50%
+			h1
+				display: inline-block
+				margin: 0 0 20px 0
+				@media (min-width: $media-tablet)
+					margin: 0 0 40px 0
+				width: 288px
+				height: 34px
+				@include retina-image('../_img/logo_cab_list', 288px 34px)
+				background-size: 288px 34px
+				text-indent: -100%
+				a
+					display: block
+					width: 288px
+					height: 34px
+		.user-box-container
+			@media (min-width: $media-tablet)
+				float: left
+				width: 50%
+				margin-top: 0
+				text-align: right
+			.user-box
+				display: inline-block
+				&.not-logged
+					@media (min-width: $media-tablet)
+						padding-top: 5px
+					a
+						display: inline-block
+						margin: 0 24px 0 0
+						@media (min-width: $media-tablet)
+							margin: 0 0 0 24px
+						font-size: em(13px)
+						line-height: 1em
+						text-transform: uppercase
+						text-decoration: none
+						&.login
+							color: $color-marron-oscuro-1
+						&.register
+							color: $color-marron-claro-2
+				
+
+
+			
+	.phrase
+		display: inline-block
+		vertical-align: top
+		padding-left: 14px
+		-webkit-font-smoothing: antialiased
+		.select
+			vertical-align: middle
+			margin: 0 3px
+			&.city
+				width: 202px
+				>.dropdown
+					width: 202px
+			&.action
+				width: 150px
+				>.dropdown
+					width: 150px
+		.input_search
+			vertical-align: middle
+			

@@ -19,6 +19,7 @@
     "bourbon": "latest",
     "snap.svg": "latest",
     "magnific-popup": "latest",
-    "tooltipster": "latest"
+    "tooltipster": "latest",
+    "nanoscroller": "latest"
   }
 }

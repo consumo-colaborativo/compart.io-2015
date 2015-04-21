@@ -5,16 +5,13 @@ $desktop: "only screen and (min-width : 840px)"
 $tablet: "only screen and (min-width : 760px)"
 $mobile: "only screen and (min-width : 450px)"
 
-// $visual-grid: false
-
-// @import "../bower_components/neat/app/assets/stylesheets/neat"
 
 @import "../fontcustom/scss/_icons.scss"
 
 @import "../bower_components/magnific-popup/src/css/main.scss"
-
+@import "../bower_components/nanoscroller/bin/css/nanoscroller.scss"
 // *
-	// background-color: rgba(0,0,0,0.05)
+// 	background-color: rgba(0,0,0,0.05)
 
 
 //  _  _   __   ____  __   __   ____  __    ____  ____ 
@@ -24,10 +21,18 @@ $mobile: "only screen and (min-width : 450px)"
 //
 
 $color-principal-1: #703917 //Color desplegables
-// $color-principal-don-2: #B07F4E
+$color-marron-claro-1: #F4ECE1
+$color-marron-claro-2: #E1D4C3
+$color-marron-oscuro-1: #58331E
+// $color-marron-oscuro-2: #E1D4C3
+
 // $color-principal-don-3: #D9BB96
 
 $margen-general: 40px
+
+//Tamaños
+// Mobile hasta->
+$media-tablet: 768px
 
 //  _  _  __  _  _  __  __ _  ____ 
 // ( \/ )(  )( \/ )(  )(  ( \/ ___)
@@ -48,8 +53,8 @@ $margin-lados: 35px
 
 @import mixins
 @import form
-@import header
-@import header_list
+@import header_home
+@import header_general
 @import footer
 @import grid
 @import user
