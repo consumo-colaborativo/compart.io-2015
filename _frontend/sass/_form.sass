@@ -1,32 +1,105 @@
 
 // Form elements
-select
-	padding: 6px 24px 6px 6px
-	background: #f4ebe1 url(../_img/select-background-2.png) no-repeat right center
-	background-size: 500px 26px
-	color: $color-principal-1
-	font-size: 10px
-	@include border-left-radius(4px)
-	@include border-right-radius(4px)
-	&.home
-		width: 242px
-		padding: 10px
-		background: transparent url(../_img/select-background-1.png) no-repeat right center
-		background-size: 500px 42px
-		color: $color-principal-1
-		font-size: 16px
-		@include border-left-radius(6px)
-		@include border-right-radius(6px)
-	-webkit-appearance: none
-	-moz-appearance: none
-	appearance: none
-	border: none
-	outline: none
-	&.not-selected
-		font-style: italic
-		color: #f4ebe1
-		background: $color-principal-1 url(../_img/select-background-2-invertido.png) no-repeat right center
-		background-size: 500px 26px
+// select
+// 	padding: 6px 24px 6px 6px
+// 	background: #f4ebe1 url(../_img/select-background-2.png) no-repeat right center
+// 	background-size: 500px 26px
+// 	color: $color-principal-1
+// 	font-size: 10px
+// 	@include border-left-radius(4px)
+// 	@include border-right-radius(4px)
+// 	&.home
+// 		width: 242px
+// 		padding: 10px
+// 		background: transparent url(../_img/select-background-1.png) no-repeat right center
+// 		background-size: 500px 42px
+// 		color: $color-principal-1
+// 		font-size: 16px
+// 		@include border-left-radius(6px)
+// 		@include border-right-radius(6px)
+// 	-webkit-appearance: none
+// 	-moz-appearance: none
+// 	appearance: none
+// 	border: none
+// 	outline: none
+// 	&.not-selected
+// 		font-style: italic
+// 		color: #f4ebe1
+// 		background: $color-principal-1 url(../_img/select-background-2-invertido.png) no-repeat right center
+// 		background-size: 500px 26px
+.select
+	position: relative
+	display: inline-block
+	font-size: em(13px)
+	&.disabled
+		opacity: 0.2
+		a
+			cursor: default
+	>.button
+		a
+			display: block
+			padding: 8px 10px 8px 10px
+			text-decoration: none
+			color: $color-marron-claro-1
+			background-color: $color-marron-oscuro-1
+			@include border-top-radius(4px)
+			@include border-bottom-radius(4px)
+			span
+				@include icon(before, 'flecha1-down', true)
+				float: right
+				margin-top: 2px
+				font-size: 0.7em
+				margin-left: 10px
+	&.selected
+		>.button
+			a
+				color: $color-marron-oscuro-1
+				background-color: $color-marron-claro-1
+			
+	>.dropdown
+		display: none
+		position: absolute
+		height: 300px
+		>.nano-pane
+			background: #C0A99D
+			@include border-top-radius(5px)
+			@include border-bottom-radius(5px)
+			width: 9px
+			.nano-slider
+				background: #7B543E
+				margin: 0px 0px
+				@include border-top-radius(5px)
+				@include border-bottom-radius(5px)
+		ul
+			list-style: none
+			margin: 0
+			padding: 0
+			background-color: $color-marron-claro-1
+			// @include border-top-radius(4px)
+			@include border-bottom-radius(4px)
+			li
+				a
+					display: block
+					padding: 8px 10px 8px 10px
+					text-decoration: none
+					white-space: nowrap
+					color: $color-marron-oscuro-1
+					&.selected,
+					&:hover
+						background-color: $color-marron-claro-2
+				&.link
+					a
+						font-weight: 700
+			
+					
+	&.open
+		>.button
+			a
+				@include border-bottom-radius(0px)
+				color: $color-marron-oscuro-1
+				background-color: $color-marron-claro-1
+		>.dropdown
+			display: block
 
 .input_search
 	display: inline-block

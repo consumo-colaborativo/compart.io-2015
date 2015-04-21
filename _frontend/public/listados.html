@@ -35,69 +35,87 @@
   </head>
   <body id="lists">
     <header id="header-list">
-      <h1> <a href="/">Compartio</a></h1>
+      <div class="row1">
+        <div class="logo">
+          <h1> <a href="/">Compartio</a></h1>
+        </div>
+        <div class="user-box-container">
+          <div class="user-box not-logged"><a href="#" class="login">Entra</a><a href="#" class="register">Crea tu cuenta</a></div>
+        </div>
+      </div>
       <div class="phrase">
         <form><span>En </span>
-          <select>
-            <option selected>Córdoba</option>
-            <option>Álava</option>
-            <option>Albacete</option>
-            <option>Alicante</option>
-            <option>Almería</option>
-            <option>Asturias</option>
-            <option>Ávila</option>
-            <option>Badajoz</option>
-            <option>Barcelona</option>
-            <option>Burgos</option>
-            <option>Cáceres</option>
-            <option>Cádiz</option>
-            <option>Cantabria</option>
-            <option>Castellón</option>
-            <option>Ceuta</option>
-            <option>Ciudad Real</option>
-            <option>Córdoba</option>
-            <option>Cuenca</option>
-            <option>Girona</option>
-            <option>Las Palmas</option>
-            <option>Granada</option>
-            <option>Guadalajara</option>
-            <option>Guipúzcoa</option>
-            <option>Huelva</option>
-            <option>Huesca</option>
-            <option>Illes Balears</option>
-            <option>Jaén</option>
-            <option>A Coruña</option>
-            <option>La Rioja</option>
-            <option>León</option>
-            <option>Lleida</option>
-            <option>Lugo</option>
-            <option>Madrid</option>
-            <option>Málaga</option>
-            <option>Melilla</option>
-            <option>Murcia</option>
-            <option>Navarra</option>
-            <option>Ourense</option>
-            <option>Palencia</option>
-            <option>Pontevedra</option>
-            <option>Salamanca</option>
-            <option>Segovia</option>
-            <option>Sevilla</option>
-            <option>Soria</option>
-            <option>Tarragona</option>
-            <option>Santa Cruz de Tenerife</option>
-            <option>Teruel</option>
-            <option>Toledo</option>
-            <option>Valencia</option>
-            <option>Valladolid</option>
-            <option>Vizcaya</option>
-            <option>Zamora</option>
-            <option>Zaragoza</option>
-          </select>
-          <select class="not-selected">
-            <option selected>¿Das o necesitas?</option>
-            <option>doy</option>
-            <option>necesito</option>
-          </select><span> un/una </span>
+          <div class="select city selected">
+            <input type="hidden" name="city" value="cordoba">
+            <div class="button"><a href="#">Córdoba<span></span></a></div>
+            <div class="dropdown nano">
+              <ul class="nano-content">
+                <li><a href="alava">Álava</a></li>
+                <li><a href="albacete">Albacete</a></li>
+                <li><a href="#">Alicante</a></li>
+                <li><a href="#">Almería</a></li>
+                <li><a href="#">Asturias</a></li>
+                <li><a href="#">Ávila</a></li>
+                <li><a href="#">Badajoz</a></li>
+                <li><a href="#">Barcelona</a></li>
+                <li><a href="#">Burgos</a></li>
+                <li><a href="#">Cáceres</a></li>
+                <li><a href="#">Cádiz</a></li>
+                <li><a href="#">Cantabria</a></li>
+                <li><a href="#">Castellón</a></li>
+                <li><a href="#">Ceuta</a></li>
+                <li><a href="#">Ciudad Real</a></li>
+                <li><a href="#" class="selected">Córdoba</a></li>
+                <li><a href="#">Cuenca</a></li>
+                <li><a href="#">Girona</a></li>
+                <li><a href="#">Las Palmas</a></li>
+                <li><a href="#">Granada</a></li>
+                <li><a href="#">Guadalajara</a></li>
+                <li><a href="#">Guipúzcoa</a></li>
+                <li><a href="#">Huelva</a></li>
+                <li><a href="#">Huesca</a></li>
+                <li><a href="#">Illes Balears</a></li>
+                <li><a href="#">Jaén</a></li>
+                <li><a href="#">A Coruña</a></li>
+                <li><a href="#">La Rioja</a></li>
+                <li><a href="#">León</a></li>
+                <li><a href="#">Lleida</a></li>
+                <li><a href="#">Lugo</a></li>
+                <li><a href="#">Madrid</a></li>
+                <li><a href="#">Málaga</a></li>
+                <li><a href="#">Melilla</a></li>
+                <li><a href="#">Murcia</a></li>
+                <li><a href="#">Navarra</a></li>
+                <li><a href="#">Ourense</a></li>
+                <li><a href="#">Palencia</a></li>
+                <li><a href="#">Pontevedra</a></li>
+                <li><a href="#">Salamanca</a></li>
+                <li><a href="#">Segovia</a></li>
+                <li><a href="#">Sevilla</a></li>
+                <li><a href="#">Soria</a></li>
+                <li><a href="#">Tarragona</a></li>
+                <li><a href="#">Santa Cruz de Tenerife</a></li>
+                <li><a href="#">Teruel</a></li>
+                <li><a href="#">Toledo</a></li>
+                <li><a href="#">Valencia</a></li>
+                <li><a href="#">Valladolid</a></li>
+                <li><a href="#">Vizcaya</a></li>
+                <li><a href="#">Zamora</a></li>
+                <li><a href="#">Zaragoza</a></li>
+                <li class="link"><a href="#">¿No ves tu ciudad?</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="select action">
+            <input type="hidden" name="action" value="">
+            <div class="button"><a href="#">¿Das o necesitas?<span></span></a></div>
+            <div class="dropdown">
+              <ul>
+                <li><a href="give">doy</a></li>
+                <li><a href="need">necesito</a></li>
+              </ul>
+            </div>
+          </div><span> un/una </span>
           <div class="input_search">
             <input type="text" placeholder="Escribe aquí...">
             <button><span></span></button>

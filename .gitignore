@@ -47,3 +47,7 @@ app/public/bower_components/jquery/src/var/min/hasOwn-ck.js
 
 config.js
 @eaDir
+
+
+_frontend/.sass-cache
+_frontend/bower_components
