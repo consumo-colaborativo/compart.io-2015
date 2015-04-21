@@ -1,18 +1,41 @@
 extends ../../layouts/default
 
+block opengraph
+
 block head
   title Acerca
 
 block neck
   link(rel='stylesheet', href='/views/about/index.min.css?#{cacheBreaker}')
+  link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:300,400,700', type='text/css')
 
 block body
-  div.row
-    div.col-sm-12
-      div.page-header
-        h1 Compart.io
-        p.lead Busca lo que necesitas y regala lo que te sobra.
+  div
+    h1
+      a(href="/") Compartio
+    
+    h2 El proyecto
 
-      p Compart.io es un proyecto social de consumo colaborativo, abierto, libre y sin ánimo de lucro, desarrollado por voluntarios y voluntarias. Se trata de un espacio donde buscar lo que necesitas y regalar lo que te sobra.
-      p El equipo inicial de mantenedores de compart.io está formado por Álvaro Saco, Toni Castillo, Delphine Gimbert, Javier Jiménez y Magda Sánchez.
-      p Nuestra idea es, una vez lancemos la primera versión de compart.io, liberar el código incluyendo toda la documentación necesaria y las formas posibles de contribuir. ¿Tienes alguna idea o sugerencia? Escríbenos!
+    img(src="/_img/perfil.png", alt="imagen de perfil de compart.io")
+
+    div(class="columnas")
+      h6
+        <strong>Compart.io</strong> es una plataforma online de consumo colaborativo, abierta, libre y sin fines comerciales, desarrollada por personas voluntarias. Lanzaremos la primera versión en la primavera de 2015.</h6>
+
+      div(class="col1")
+        h3 ¿Qué es?
+        p <strong>Compart.io</strong> es una plataforma online para donar lo que te sobra o ya no usas y buscar o pedir lo que necesitas.</strong> Compart.io colabora a transformar el mundo hacia un consumo más responsable, sostenible y solidario, basado en los principios de consumo colaborativo, el aprovechamiento de recursos y el valor de colaborar y compartir.
+        p La idea se inició en Junio de 2012 con epicentro en Córdoba (España) mediante la creación de un <a href="https://www.facebook.com/groups/310342205721740/">grupo de Consumo Colaborativo</a> en Facebook bajo el lema "No compres; pide. No tires; regala". Este proyecto piloto cuenta, hasta la fecha, con más de 10.000 miembros.
+
+      div(class="col2")
+        h3 Libre y abierto
+        p Compart.io es un proyecto de código <strong>libre</strong>, disponible en <a href="https://github.com/consumo-colaborativo/compart.io-2015">GitHub</a> y distribuido bajo <a href="http://www.gnu.org/copyleft/gpl.html">licencia GPL</a>, que garantiza la libertad de usar, compartir y modificar el software. De esta manera compart.io puede replicarse y reinvertarse a sí mismo en otros lugares y comunidades.
+        p Compart.io es un proyecto <strong>abierto</strong> donde cualquier persona puede unirse y colaborar. ¡Cuantas más, mejor! Para ello, estamos trabajando en documentar el código y definir la forma de <a href="https://github.com/consumo-colaborativo/compart.io-2015/issues">contribuir</a>. El <a href="https://github.com/consumo-colaborativo?tab=members">equipo inicial de mantenedores</a> está formado por Álvaro, Toni, Delphine, Javier y Magda.
+          
+    div(class="pie")
+      div
+        hr
+       
+        p Si tienes alguna pregunta, no dudes en escribirnos a: 
+          script.
+            document.write('<a href="mailto:hola@com'+'part.io">hola@co'+'mpart.io</a>');

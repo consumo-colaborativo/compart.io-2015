@@ -45,29 +45,27 @@ exports = module.exports = function(app, passport) {
   app.get('/', require('./views/home/index').init);   
   app.get('/home/', require('./views/index').init); // falta redireccionar a home compartio
 
-  // START List of Compartios filter by different values -- MAGDA --
-  app.get('/:city_slug/',require('./views/list/index').init);
-  app.get('/:city_slug/gives/',require('./views/list/index').init);
-  app.get('/:city_slug/gives/:category',require('./views/list/index').init);
-  app.get('/:city_slug/gives/search/:word',require('./views/list/index').init);
-  app.get('/:city_slug/gives/:category/search/:word',require('./views/list/index').init);
-  // END List -- MAGDA --
-
-  // static
+// static
   app.get('/about/', require('./views/about/index').init);
   app.get('/contribute/', require('./views/contribute/index').init);
 
   app.get('/contact/', require('./views/contact/index').init);
   app.post('/contact/', require('./views/contact/index').sendMessage);
 
-  // START Compartio Routes ------------------------------------------
+  
+  // MAGDA START Compartio Routes View ------------------------------------------
   // Give > View  -- Falta enviar compartio_id como parámetro de entrada -
-  app.get('/give/view/', require('./views/give/view/index').init);
-  // Give > Add 
-  app.get('/give/add/', require('./views/give/add/index').init);
+  app.get('/give/view/:id', require('./views/give/view/index').init);
   // Need > View
-  app.get('/need/view/', require('./views/need/view/index').init);
-  // Need > Add 
+  app.get('/need/view/:id', require('./views/need/view/index').init);
+  // MAGDA END Compartio Routes View
+  // Give > Add
+  app.get('/give/add/', require('./views/give/add/index').init);
+  //
+  app.post('/give/add/', require('./views/give/add/index').prueba);
+  app.post('/give/add/', require('./views/give/add/index').prueba);
+  app.post('/give/add/', require('./views/give/add/index').prueba);
+   // Need > Add 
   app.get('/need/add/', require('./views/need/add/index').init);
   // END Compartio Routes --------------------------------------------
 
@@ -206,6 +204,14 @@ exports = module.exports = function(app, passport) {
   app.get('/account/settings/tumblr/', passport.authenticate('tumblr', { callbackURL: '/account/settings/tumblr/callback/' }));
   app.get('/account/settings/tumblr/callback/', require('./views/account/settings/index').connectTumblr);
   app.get('/account/settings/tumblr/disconnect/', require('./views/account/settings/index').disconnectTumblr);
+
+// START List of Compartios filter by different values -- MAGDA --
+  app.get('/:city_slug/',require('./views/list/index').init);
+  app.get('/:city_slug/gives/',require('./views/list/index').init);
+  app.get('/:city_slug/gives/:category',require('./views/list/index').init);
+  app.get('/:city_slug/gives/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/gives/:category/search/:word',require('./views/list/index').init);
+  // END List -- MAGDA --
 
   //route not found
   app.all('*', require('./views/http/index').http404);
