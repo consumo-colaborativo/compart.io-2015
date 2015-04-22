@@ -27,7 +27,7 @@ function dropdownInicia(){
 		}
 	});
 	$('.select .dropdown li:not(.link) a').click(function(e){
-		e.preventDefault();
+		//e.preventDefault();
 		var slug = $(e.target).attr('href');
 		var text = $(e.target).text();
 		$(e.target).parents('.select').addClass('selected');

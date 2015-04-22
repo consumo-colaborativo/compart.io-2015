@@ -75,7 +75,6 @@
 			margin: 0
 			padding: 0
 			background-color: $color-marron-claro-1
-			// @include border-top-radius(4px)
 			@include border-bottom-radius(4px)
 			li
 				a
@@ -90,6 +89,9 @@
 				&.link
 					a
 						font-weight: 700
+				&:last-child
+					a
+						@include border-bottom-radius(5px)
 			
 					
 	&.open
@@ -102,22 +104,35 @@
 			display: block
 
 .input_search
+	position: relative
 	display: inline-block
 	input
 		vertical-align: middle
-		padding: 5px 5px 5px 5px
-		border: 1px solid #F0E8DE
+		padding: 7px 10px 7px 9px
+		border: 1px solid $color-marron-claro-1
 		@include border-left-radius(6px)
-		font-size: 10px
+		font-size: em(13px)
+		color: $color-marron-oscuro-1
+		line-height: 18px
+		&:focus, &:active
+			border-color: $color-marron-oscuro-1
+		@include placeholder
+			color: $color-marron-oscuro-1
+			font-style: italic
 	button
 		vertical-align: middle
-		padding: 5px 5px 4px 5px
+		padding: 5px 5px 5px 5px
 		margin-left: -6px
-		@include background-image(linear-gradient(to bottom, #AF7E4E, #703917))
 		border: 0
+		background-color: $color-marron-oscuro-1
+		&:focus, &:active
+			background-color: $color-marron-claro-1
+			span:before
+				color: $color-marron-oscuro-1
 		@include border-right-radius(6px)
 		span
 			@include icon('before', 'busqueda', true)
-			font-size: 15px
-			line-height: 15px
-			color: #fff
+			&:before
+				font-size: rem(26px)
+				line-height: 24px
+				color: #fff

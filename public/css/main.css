@@ -447,6 +447,9 @@ body {
 * {
   box-sizing: border-box; }
 
+*:focus, *:active {
+  outline: 0; }
+
 .select {
   position: relative;
   display: inline-block;
@@ -514,6 +517,9 @@ body {
           background-color: #E1D4C3; }
       .select > .dropdown ul li.link a {
         font-weight: 700; }
+      .select > .dropdown ul li:last-child a {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px; }
   .select.open > .button a {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -523,33 +529,53 @@ body {
     display: block; }
 
 .input_search {
+  position: relative;
   display: inline-block; }
   .input_search input {
     vertical-align: middle;
-    padding: 5px 5px 5px 5px;
-    border: 1px solid #F0E8DE;
+    padding: 7px 10px 7px 9px;
+    border: 1px solid #F4ECE1;
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
-    font-size: 10px; }
+    font-size: 0.8125em;
+    color: #58331E;
+    line-height: 18px; }
+    .input_search input:focus, .input_search input:active {
+      border-color: #58331E; }
+    .input_search input::-webkit-input-placeholder {
+      color: #58331E;
+      font-style: italic; }
+    .input_search input::-moz-placeholder {
+      color: #58331E;
+      font-style: italic; }
+    .input_search input:-moz-placeholder {
+      color: #58331E;
+      font-style: italic; }
+    .input_search input:-ms-input-placeholder {
+      color: #58331E;
+      font-style: italic; }
   .input_search button {
     vertical-align: middle;
-    padding: 5px 5px 4px 5px;
+    padding: 5px 5px 5px 5px;
     margin-left: -6px;
-    background-image: -webkit-linear-gradient( top , #AF7E4E, #703917);
-    background-image: linear-gradient(to bottom, #AF7E4E, #703917);
     border: 0;
+    background-color: #58331E;
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px; }
-    .input_search button span {
-      font-size: 15px;
-      line-height: 15px;
+    .input_search button:focus, .input_search button:active {
+      background-color: #F4ECE1; }
+      .input_search button:focus span:before, .input_search button:active span:before {
+        color: #58331E; }
+    .input_search button span:before {
+      content: "";
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-family: 'icons'; }
+    .input_search button span:before {
+      font-size: 1.625rem;
+      line-height: 24px;
       color: #fff; }
-      .input_search button span:before {
-        content: "";
-        speak: none;
-        font-style: normal;
-        font-weight: normal;
-        font-family: 'icons'; }
 
 header#header-home {
   height: 460px; }
@@ -591,8 +617,14 @@ header#header-home {
         color: #fff; }
         header#header-home .background2 .col1 p strong {
           font-weight: 700; }
-      header#header-home .background2 .col1 select {
-        margin-bottom: 12px; }
+      header#header-home .background2 .col1 .select {
+        margin-bottom: 12px;
+        width: 202px; }
+        header#header-home .background2 .col1 .select .button a {
+          background-color: #E1D4C3;
+          color: #58331E; }
+        header#header-home .background2 .col1 .select > .dropdown {
+          width: 202px; }
     header#header-home .background2 .col2 {
       text-align: center; }
       @media only screen and (min-width: 760px) {
@@ -666,8 +698,11 @@ header#header-list {
   header#header-list .phrase {
     display: inline-block;
     vertical-align: top;
-    padding-left: 14px;
     -webkit-font-smoothing: antialiased; }
+    header#header-list .phrase form > span {
+      font-size: 0.8125em;
+      color: #58331E;
+      line-height: 18px; }
     header#header-list .phrase .select {
       vertical-align: middle;
       margin: 0 3px; }
