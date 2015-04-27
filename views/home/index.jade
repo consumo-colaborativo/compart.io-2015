@@ -32,7 +32,6 @@ html(lang='en')
 		meta(name="msapplication-TileColor" content="#da532c")
 		meta(name="msapplication-TileImage" content="/favicons/mstile-144x144.png")
 		meta(name="msapplication-config" content="/favicons/browserconfig.xml")
-		meta(name="theme-color" content="#ffffff")
 	body#home
 		header#header-home
 			div.background1
@@ -45,13 +44,20 @@ html(lang='en')
 							br
 							| Este es un espacio donde buscar lo que necesitas y dar lo que te sobra.
 							br
-
-							each ciudad in ciudades
-								a(href="/"+ciudad.slug) #{ciudad.name}
-								br
-								br
-							optgroup(label="---")
-							option No encuentras tu ciudad?
+							.select.action
+								.button
+									a(href="#")
+										| Selecciona ciudad
+										span
+								.dropdown
+									ul
+										each ciudad in ciudades
+											li
+												a(href="/"+ciudad.slug)
+													| #{ciudad.name}
+										li.link
+											a(href="#")
+												| ¿No ves tu ciudad?
 					.col2
 						#userpanel
 							.not-logged

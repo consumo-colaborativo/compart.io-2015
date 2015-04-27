@@ -9,70 +9,201 @@ html(lang='en')
 	include _head
 	body#lists
 		header#header-list
-			h1 
-				a(href="/")
-					| Compartio
+			.row1
+				.logo
+					h1 
+						a(href="/")
+							| Compartio
+				.user-box-container
+					.user-box.not-logged
+						a.login(href="#")
+							| Entra
+						a.register(href="#")
+							| Crea tu cuenta
 			.phrase
 				form
 					span En 
-					select
-						option(selected) Córdoba
-						option Álava
-						option Albacete
-						option Alicante
-						option Almería
-						option Asturias
-						option Ávila
-						option Badajoz
-						option Barcelona
-						option Burgos
-						option Cáceres
-						option Cádiz
-						option Cantabria
-						option Castellón
-						option Ceuta
-						option Ciudad Real
-						option Córdoba
-						option Cuenca
-						option Girona
-						option Las Palmas
-						option Granada
-						option Guadalajara
-						option Guipúzcoa
-						option Huelva
-						option Huesca
-						option Illes Balears
-						option Jaén
-						option A Coruña
-						option La Rioja
-						option León
-						option Lleida
-						option Lugo
-						option Madrid
-						option Málaga
-						option Melilla
-						option Murcia
-						option Navarra
-						option Ourense
-						option Palencia
-						option Pontevedra
-						option Salamanca
-						option Segovia
-						option Sevilla
-						option Soria
-						option Tarragona
-						option Santa Cruz de Tenerife
-						option Teruel
-						option Toledo
-						option Valencia
-						option Valladolid
-						option Vizcaya
-						option Zamora
-						option Zaragoza
-					select.not-selected
-						option(selected) ¿Das o necesitas?
-						option doy
-						option necesito
+					.select.city.selected
+						input(type="hidden" name="city" value="cordoba")
+						.button
+							a(href="#")
+								| Córdoba
+								span
+						.dropdown.nano
+							ul.nano-content
+								li
+									a(href="alava")
+										| Álava
+								li
+									a(href="albacete")
+										| Albacete
+								li
+									a(href="#")
+										| Alicante
+								li
+									a(href="#")
+										| Almería
+								li
+									a(href="#")
+										| Asturias
+								li
+									a(href="#")
+										| Ávila
+								li
+									a(href="#")
+										| Badajoz
+								li
+									a(href="#")
+										| Barcelona
+								li
+									a(href="#")
+										| Burgos
+								li
+									a(href="#")
+										| Cáceres
+								li
+									a(href="#")
+										| Cádiz
+								li
+									a(href="#")
+										| Cantabria
+								li
+									a(href="#")
+										| Castellón
+								li
+									a(href="#")
+										| Ceuta
+								li
+									a(href="#")
+										| Ciudad Real
+								li
+									a.selected(href="#")
+										| Córdoba
+								li
+									a(href="#")
+										| Cuenca
+								li
+									a(href="#")
+										| Girona
+								li
+									a(href="#")
+										| Las Palmas
+								li
+									a(href="#")
+										| Granada
+								li
+									a(href="#")
+										| Guadalajara
+								li
+									a(href="#")
+										| Guipúzcoa
+								li
+									a(href="#")
+										| Huelva
+								li
+									a(href="#")
+										| Huesca
+								li
+									a(href="#")
+										| Illes Balears
+								li
+									a(href="#")
+										| Jaén
+								li
+									a(href="#")
+										| A Coruña
+								li
+									a(href="#")
+										| La Rioja
+								li
+									a(href="#")
+										| León
+								li
+									a(href="#")
+										| Lleida
+								li
+									a(href="#")
+										| Lugo
+								li
+									a(href="#")
+										| Madrid
+								li
+									a(href="#")
+										| Málaga
+								li
+									a(href="#")
+										| Melilla
+								li
+									a(href="#")
+										| Murcia
+								li
+									a(href="#")
+										| Navarra
+								li
+									a(href="#")
+										| Ourense
+								li
+									a(href="#")
+										| Palencia
+								li
+									a(href="#")
+										| Pontevedra
+								li
+									a(href="#")
+										| Salamanca
+								li
+									a(href="#")
+										| Segovia
+								li
+									a(href="#")
+										| Sevilla
+								li
+									a(href="#")
+										| Soria
+								li
+									a(href="#")
+										| Tarragona
+								li
+									a(href="#")
+										| Santa Cruz de Tenerife
+								li
+									a(href="#")
+										| Teruel
+								li
+									a(href="#")
+										| Toledo
+								li
+									a(href="#")
+										| Valencia
+								li
+									a(href="#")
+										| Valladolid
+								li
+									a(href="#")
+										| Vizcaya
+								li
+									a(href="#")
+										| Zamora
+								li
+									a(href="#")
+										| Zaragoza
+								li.link
+									a(href="#")
+										| ¿No ves tu ciudad?
+					.select.action
+						input(type="hidden" name="action" value="")
+						.button
+							a(href="#")
+								| ¿Das o necesitas?
+								span
+						.dropdown
+							ul
+								li
+									a(href="give")
+										| doy
+								li
+									a(href="need")
+										| necesito
 					span  un/una 
 					.input_search
 						input(type="text" placeholder="Escribe aquí...")
