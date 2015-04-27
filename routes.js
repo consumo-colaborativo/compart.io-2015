@@ -49,8 +49,8 @@ exports = module.exports = function(app, passport) {
   app.get('/about/', require('./views/about/index').init);
   app.get('/contribute/', require('./views/contribute/index').init);
 
-  app.get('/contact/', require('./views/contact/index').init);
-  app.post('/contact/', require('./views/contact/index').sendMessage);
+  app.get('/feedback/', require('./views/feedback/index').init);
+  app.post('/feedback/', require('./views/feedback/index').addFeedback);
 
   
   // START Compartio Routes ------------------------------------------
