@@ -11,7 +11,7 @@
 // - /:city_slug/need/search/:word
 // - /:city_slug/need/:category/search/:word
 //  http://mongoosejs.com/docs/2.7.x/docs/query.html
-var renderSettings = function(req, res) {
+var renderSettings = function(req, res, next) {
 // Input Parameters
 if (req.params.city_slug != null){
 	var city_slug = req.params.city_slug;
@@ -83,7 +83,6 @@ if (req.params.city_slug != null){
 	    if (err) {
 	    	return next(err); // Qué significa NEXT?
 	    }
-	    //console.log(" city: " + JSON.stringify(outcome.city));
 	    console.log(" compartio: " + JSON.stringify(outcome.compartio[0]));
 	    res.render('list/index', {result: outcome});
   	});
@@ -91,5 +90,5 @@ if (req.params.city_slug != null){
 };
 // 
 exports.init = function(req, res, next){
-	renderSettings(req, res);
+	renderSettings(req, res, next);
 };

@@ -12,7 +12,7 @@
 // - https://github.com/caolan/async
 //  - http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/
 /* ********************************************************************** */ 
-var renderSettings = function(req, res) {
+var renderSettings = function(req, res, next) {
 // Input Parameters
 if (req.params.id != null){
 	var outcome = {};
@@ -61,13 +61,13 @@ if (req.params.id != null){
 			});
 		}
 		}else{
-			callback(err,null);
+			callback(0,null); // PENDIENTE: define error number
 		}
 	},
 	// 4- City DOC
 	function(callback) {
 		//  Outcome.compartio.category_id
-		if( outcome.compartio.city_id != null){
+		if( outcome.compartio != null){
 			req.app.db.models.City.findById(outcome.compartio.city_id).exec(function(err, cat) {
 			    if (err) {
 			        callback(err, null);
@@ -146,14 +146,19 @@ if (req.params.id != null){
 	], 
 	function(err) {
 	    if (err) {
-	    	return err;
-	    }
-	    //console.log(" TEST: give/view/index " + JSON.stringify(outcome));
-		res.render('give/view/index', {result: outcome});
+	    	// The reason next is exposed and must be explicitly 
+	    	// called is for middleware, which performs I/O or 
+	    	// async operations. Express.js has no way of knowing 
+	    	// when your operation is complete before it can 
+	    	// continue to the next middleware or route.
+	    	return next(err); // pass control to the next handler
+	    }else{
+			res.render('give/view/index', {result: outcome});
+	  	}
   	});
 } // end if :id exist
 };	
 // 
 exports.init = function(req, res, next){
-	renderSettings(req, res);
+	renderSettings(req, res, next);
 };

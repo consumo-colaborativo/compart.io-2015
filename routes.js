@@ -40,9 +40,12 @@ function ensureAccount(req, res, next) {
 */
 exports = module.exports = function(app, passport) {
   // Front end
+  // Remember that Express will execute middleware functions 
+  // in the order they are registered until something sends a 
+  // response.
 
   // Home
-  app.get('/', require('./views/home/index').init);   
+  //app.get('/', require('./views/home/index').init);   
   app.get('/home/', require('./views/index').init); // falta redireccionar a home compartio
 
 // static
@@ -213,8 +216,13 @@ exports = module.exports = function(app, passport) {
   app.get('/:city_slug/gives/:category/search/:word',require('./views/list/index').init);
   // END List -- MAGDA --
 
-  //route not found
+  //route not found (also app.use can be used)
   app.all('*', require('./views/http/index').http404);
-
-  
+  // https://blog.safaribooksonline.com/2014/03/10/express-js-middleware-demystified/
+  // Middleware is a function, just like route handlers, 
+  // and it is invoked in much the same way.
+  //
+  // There is a special routing method, app.all(), 
+  // which is not derived from any HTTP method. 
+  // It is used for loading middleware at a path for all request methods.
 };
