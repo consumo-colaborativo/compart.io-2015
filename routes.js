@@ -45,7 +45,7 @@ exports = module.exports = function(app, passport) {
   // response.
 
   // Home
-  //app.get('/', require('./views/home/index').init);   
+  app.get('/', require('./views/home/index').init);   
   app.get('/home/', require('./views/index').init); // falta redireccionar a home compartio
 
 // static
@@ -208,12 +208,18 @@ exports = module.exports = function(app, passport) {
   app.get('/account/settings/tumblr/callback/', require('./views/account/settings/index').connectTumblr);
   app.get('/account/settings/tumblr/disconnect/', require('./views/account/settings/index').disconnectTumblr);
 
-// START List of Compartios filter by different values -- MAGDA --
+  // START List of Compartios filter by different values -- MAGDA --
   app.get('/:city_slug/',require('./views/list/index').init);
   app.get('/:city_slug/gives/',require('./views/list/index').init);
   app.get('/:city_slug/gives/:category',require('./views/list/index').init);
   app.get('/:city_slug/gives/search/:word',require('./views/list/index').init);
   app.get('/:city_slug/gives/:category/search/:word',require('./views/list/index').init);
+  //
+  app.get('/:city_slug/needs/',require('./views/list/index').init);
+  app.get('/:city_slug/needs/:category',require('./views/list/index').init);
+  app.get('/:city_slug/needs/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/needs/:category/search/:word',require('./views/list/index').init);
+ 
   // END List -- MAGDA --
 
   //route not found (also app.use can be used)
