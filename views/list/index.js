@@ -2,20 +2,21 @@
 // Home View
 // List of Compartios filter by different values -- MAGDA --
 // - /:city_slug/
-// - /:city_slug/give/
-// - /:city_slug/give/:category  f.e. /cordoba/gives/bicicletas-y-patinetes
-// - /:city_slug/give/search/:word
-// - /:city_slug/give/:category/search/:word
-// - /:city_slug/need/
-// - /:city_slug/need/:category
-// - /:city_slug/need/search/:word
-// - /:city_slug/need/:category/search/:word
+// - /:city_slug/gives/
+// - /:city_slug/gives/:category  f.e. /cordoba/gives/bicicletas-y-patinetes
+// - /:city_slug/gives/search/:word
+// - /:city_slug/gives/:category/search/:word
+// - /:city_slug/needs/ 				cordoba/needs/ropa-y-calzados
+// - /:city_slug/needs/:category
+// - /:city_slug/needs/search/:word
+// - /:city_slug/needs/:category/search/:word
 //  http://mongoosejs.com/docs/2.7.x/docs/query.html
-var renderSettings = function(req, res) {
+// ----------------------------------------------------
+var renderSettings = function(req, res, next) {
 // Input Parameters
 if (req.params.city_slug != null){
 	var city_slug = req.params.city_slug;
-	var category_slug = req.params.category_slug;
+	var category_slug = req.params.category;
 	var word = req.params.word; // title and description
 	var search = req.params.search;	
 	var urls = req.url.split('/');
@@ -30,8 +31,13 @@ if (req.params.city_slug != null){
 	// City DOC
 	function(callback) {
 		req.app.db.models.City.findOne({ slug: city_slug }).exec(function(err, doc) {
-		    if (err) {
+		    if (err){
 		        callback(err, null);
+		    }
+		    if (doc == null){ // city not found
+			    var error = new Error('NotFound');
+				error.status = 404;
+				callback(error, null);
 		    }
 		    outcome.city = doc;
 		    callback();
@@ -39,16 +45,31 @@ if (req.params.city_slug != null){
 	},
 	// Category DOC
 	function(callback) {
-		req.app.db.models.CompartioCategory.findOne({ slug: category_slug }).exec(function(err, doc) {
-		    if (err) {
-		        callback(err, null);
-		    }
-		    outcome.category = doc;
-		    callback();
-	    });
+		if (category_slug != null){ 
+			req.app.db.models.CompartioCategory.findOne({slug:category_slug}).exec(function(err, doc) {
+			    if (err) {
+			        callback(err, null);
+			    }
+			    if (doc == null){ // category not found
+				    var error = new Error('NotFound');
+					error.status = 404;
+					callback(error, null);
+			    }
+			    outcome.category = doc;
+			    callback();
+		    });
+		}
+		else{
+			callback();
+		}
 	},
 	// Compartio DOC
 	function(callback) { 
+		if( outcome.city == null){
+			var error = new Error('NotFound');
+			error.status = 404;
+			callback(error, null);
+		}
 		var cat,city;
 		cat = "[{status: 'published'}"; //,
 	    if (outcome.category != null){
@@ -58,10 +79,10 @@ if (req.params.city_slug != null){
 	    	cat = cat + ",{city_id: '"+ outcome.city._id+"'}";
 	    }
 	    if (listType != null){
-	    	if(listType == 'give'){
+	    	if(listType == 'gives'){
 	    		cat = cat + ",{receiver_user_id: null}";
 	    	}else{
-	    		if(listType == 'need'){ 
+	    		if(listType == 'needs'){ 
 	    			cat = cat + ",{giver_user_id: null}";
 	    		}
 	    	}
@@ -81,15 +102,14 @@ if (req.params.city_slug != null){
 	], 
 	function(err) {
 	    if (err) {
-	    	return next(err); // Qué significa NEXT?
+	    	return next(err); // pass control to the next handler
 	    }
-	    //console.log(" city: " + JSON.stringify(outcome.city));
-	    console.log(" compartio: " + JSON.stringify(outcome.compartio[0]));
+	    console.log(" compartio: " + JSON.stringify(outcome));
 	    res.render('list/index', {result: outcome});
   	});
 } // end if :city_slug exist
 };
 // 
 exports.init = function(req, res, next){
-	renderSettings(req, res);
+	renderSettings(req, res, next);
 };

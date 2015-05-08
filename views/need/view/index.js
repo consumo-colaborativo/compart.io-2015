@@ -8,7 +8,7 @@
 // References:
 //	- https://github.com/caolan/async
 /* ********************************************************************** */ 
-var renderSettings = function(req, res) {
+var renderSettings = function(req, res, next) {
 	var outcome = {};
 	var async = require('async');
 	var compartio_id = "54d5001e5b12230c694c5035";	/* SUSTITUIR */
@@ -90,7 +90,7 @@ var renderSettings = function(req, res) {
 	], 
 	function(err) {
 	    if (err) {
-	    	return next(err);
+	    	return next(err); // pass control to the next handler
 	    }
 	    console.log(" TEST: " + JSON.stringify(outcome));
 		res.render('need/view/index', {
@@ -100,5 +100,5 @@ var renderSettings = function(req, res) {
 };	
 // 
 exports.init = function(req, res, next){
-	renderSettings(req, res);
+	renderSettings(req, res, next);
 }; 
