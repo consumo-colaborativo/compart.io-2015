@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
  
   grunt.registerTask('watch', [ 'watch' ]);
-  grunt.registerTask('vendor', ['concat:jsvendor', 'uglify:jsvendor', 'copy:jsvendor']);
+  grunt.registerTask('jsvendor', ['concat:jsvendor', 'uglify:jsvendor', 'copy:jsvendor']);
  
   grunt.initConfig({
     concat: {
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
           'bower_components/nested/jquery.nested.js',
           'bower_components/snap.svg/dist/snap.svg.js',
           'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
-          'bower_components/select2-ng/select2.min.js'] 
+          'bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.js'] 
         ],
         dest: 'public/js/vendors.min.js'
       },
