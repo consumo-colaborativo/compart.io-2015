@@ -2,6 +2,7 @@
 
 // feedback.js
 exports = module.exports = function(app, mongoose) {
+	
 	var feedback_subjects = [
 		"Algo no funciona",
 		"Uso inadecuado de compart.io",
@@ -18,6 +19,7 @@ exports = module.exports = function(app, mongoose) {
 	    message:   { type: String, default: '' },
 	    subject  : { type: String, enum: feedback_subjects}
 	}); // end categorySchema
+	
 	feedbackSchema.plugin(require('./plugins/pagedFind'));
 	feedbackSchema.set('autoIndex', (app.get('env') === 'development'));	
 	app.db.model('Feedback', feedbackSchema);

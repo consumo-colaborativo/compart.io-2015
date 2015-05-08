@@ -2,19 +2,14 @@
 
 
 exports.init = function(req, res){
-
-  //console.log(req.app.db.models.Feedback.schema.path('feedback_subjects').enumValues);
-  //console.log(test.schema.path('feedback_subjects').enumValues);  
   
   res.render('feedback/index');
-
-  //console.log(app.enumFeedback);
 
 };
 
 // POST - Insert a new feedback in the DB
 exports.addFeedback = function(req, res){
-  //console.log('POST');
+  console.log('POST');
   //console.log(req.body);
 
   var workflow = req.app.utility.workflow(req, res);
@@ -41,7 +36,6 @@ exports.addFeedback = function(req, res){
     if (workflow.hasErrors()) {
       return workflow.emit('response');
     }
-
 
   workflow.emit('validate');
     

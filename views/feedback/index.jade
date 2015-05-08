@@ -1,7 +1,7 @@
 extends ../../layouts/default
 
 block head
-  title Envía tu feedback a Compart.io
+  title Envíanos tu feedback // compart.io
 
 block neck
   link(rel='stylesheet', href='/views/feedback/index.min.css?#{cacheBreaker}')
@@ -17,13 +17,12 @@ block body
 
       div#feedback
         script(type='text/template', id='tmpl-feedback')
-        form
+        form(method="post", action="/feedback/")
           div.form-group
             label Elige una categoría:
             br
             - var feedback_subjects = [ "Algo no funciona", "Uso inadecuado de compart.io", "Tengo una sugerencia/idea", "Sobre la plataforma", "¡Quiero ayudar!", "Comentarios generales"]
-            select
-              
+            select(name='subject') 
               each subject, i in feedback_subjects
                 option(value=i) #{subject}            
 
