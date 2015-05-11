@@ -6,7 +6,7 @@
 // - /:city_slug/gives/:category  f.e. /cordoba/gives/bicicletas-y-patinetes
 // - /:city_slug/gives/search/:word
 // - /:city_slug/gives/:category/search/:word
-// - /:city_slug/needs/ 				cordoba/needs/ropa-y-calzados
+// - /:city_slug/needs/ 		  f.e. /cordoba/needs/ropa-y-calzados
 // - /:city_slug/needs/:category
 // - /:city_slug/needs/search/:word
 // - /:city_slug/needs/:category/search/:word

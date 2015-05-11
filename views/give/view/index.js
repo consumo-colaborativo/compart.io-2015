@@ -6,7 +6,6 @@
 // Description: GIVE/VIEW shows a compartio that someone wants to "GIVE". 
 // The compartio is searched by its ID. Routes:
 // '/give/view/:id'
-// '/need/view/:id'
 // Test Examples: "/give/view/54d5001e5b12230c694c5033"
 // References:
 // - https://github.com/caolan/async
