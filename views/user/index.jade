@@ -18,11 +18,21 @@ block body
 		
 			p 
 				| Mi ciudad: 
-				a(href="/#{result.city.slug}") #{result.city.name}
+				a(href="/#{result.city.slug}") #{result.city.name} 
+				| city_id: #{result.city._id} 
 
 	div.row
 		div.col-sm-6
 			p.text-uppercase Lo que #{result.user.name} está ofreciendo ahora mismo
+			p id usuario: #{result.user._id}
+
+			if result.donations != null				
+				for obj in result.donations
+					p Nombre: #{obj.title}
+					p id: #{obj._id}
+					p status: #{obj.status}
+					p giver_user_id: #{obj.giver_user_id}
+	
 
 		div.col-sm-6 
 			p.text-uppercase Lo que #{result.user.name} está pidiendo ahora mismo
