@@ -16,7 +16,9 @@ block body
 			
 			p #{result.user.about}		
 		
-			p Mi ciudad: #{result.user.city}
+			p 
+				| Mi ciudad: 
+				a(href="/#{result.city.slug}") #{result.city.name}
 
 	div.row
 		div.col-sm-6

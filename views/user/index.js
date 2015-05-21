@@ -39,6 +39,19 @@ if (req.params.id != null){
 		    callback();
 	    	});
 		}
+	},
+
+	// 4- City DOC
+	function(callback) {		
+		if( outcome.user.city != null){
+			req.app.db.models.City.findById(outcome.user.city).exec(function(err, cat) {
+			    if (err) {
+			        callback(err, null);
+			    }
+		    	outcome.city = cat;
+				callback();
+			});
+		}
 	}
 	
 
