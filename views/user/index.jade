@@ -1,5 +1,8 @@
 extends ../../layouts/default  
 
+block head
+	title #{result.user.name} #{result.user.lastname} - compart.io
+
 block body
 	div.row
 		div.col-sm-4 
@@ -13,7 +16,15 @@ block body
 			
 			p #{result.user.about}		
 		
-			p Mi ciudad: #{result.user.zip_code}
+			p Mi ciudad: #{result.user.city}
 
+	div.row
+		div.col-sm-6
+			p Lo que #{result.user.name} está ofreciendo
 
-	
+		div.col-sm-6 
+			p Lo que #{result.user.name} está pidiendo ahora mismo
+
+	div.row
+		div.col-sm-12
+			p El histórico de #{result.user.name}
