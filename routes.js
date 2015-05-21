@@ -67,6 +67,10 @@ exports = module.exports = function(app, passport) {
   app.post('/give/add/', require('./views/give/add/index').prueba);
    // Need > Add 
   app.get('/need/add/', require('./views/need/add/index').init);
+
+  // User views
+  app.get('/user/:id', require('./views/user/index').init);
+
   // END Compartio Routes --------------------------------------------
 
   //sign up
