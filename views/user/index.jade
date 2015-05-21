@@ -12,7 +12,7 @@ block body
 				img.user-image.img-rounded.img-responsive(src="http://dummyimage.com/250x250/DDD/fff.jpg")
 
 		div.col-sm-7.col-sm-offset-1
-			h2 ¡Hola! Soy #{result.user.name} #{result.user.lastname}			
+			h2.text-uppercase ¡Hola! Soy #{result.user.name} #{result.user.lastname}			
 			
 			p #{result.user.about}		
 		
@@ -22,11 +22,15 @@ block body
 
 	div.row
 		div.col-sm-6
-			p Lo que #{result.user.name} está ofreciendo
+			p.text-uppercase Lo que #{result.user.name} está ofreciendo ahora mismo
 
 		div.col-sm-6 
-			p Lo que #{result.user.name} está pidiendo ahora mismo
+			p.text-uppercase Lo que #{result.user.name} está pidiendo ahora mismo
 
 	div.row
-		div.col-sm-12
-			p El histórico de #{result.user.name}
+		h3.text-uppercase El histórico de #{result.user.name}
+		div.col-sm-6
+			p Donaciones
+
+		div.col-sm-6
+			p Recepciones
