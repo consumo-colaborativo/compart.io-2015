@@ -2,11 +2,18 @@ extends ../../layouts/default
 
 block body
 	div.row
-		p #{result.user.name} #{result.user.lastname}
-		p #{result.user.username}
-		p #{result.user.email}
-		p #{result.user.about}
-		p Mi ciudad: #{result.user.zip_code}
+		div.col-sm-4 
+			if result.user.image 
+				img.user-image.img-rounded.img-responsive(src="#{result.user.image}")
+			else
+				img.user-image.img-rounded.img-responsive(src="http://dummyimage.com/250x250/DDD/fff.jpg")
+
+		div.col-sm-7.col-sm-offset-1
+			h2 ¡Hola! Soy #{result.user.name} #{result.user.lastname}			
+			
+			p #{result.user.about}		
+		
+			p Mi ciudad: #{result.user.zip_code}
 
 
 	

@@ -11,6 +11,7 @@ exports = module.exports = function(app, mongoose) {
     name: { type: String},
     lastname: { type: String},
     about: String,
+    image: String,
     roles: {
       admin: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' },
       account: { type: mongoose.Schema.Types.ObjectId, ref: 'Account' }
@@ -30,7 +31,7 @@ exports = module.exports = function(app, mongoose) {
     karma        : { type: Number, default: '0'},
     //
     street       : { type: String, default: 'sin definir' },
-    zip_code     : { type: Number, default: '14001' },
+    zip_code     : { type: Number },
     city         : { type: mongoose.Schema.Types.ObjectId,
                      ref: 'City'}
   });

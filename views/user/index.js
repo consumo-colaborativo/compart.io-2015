@@ -6,7 +6,9 @@
 // Description: USER shows an user profile. 
 // The user is searched by ID. Routes:
 // '/user/:id'
-// Test Examples: "/user/54f9e6fc0b0156d5b29468a7"
+// Test Examples:
+// 		"/user/54f9e6fc0b0156d5b29468a7"
+// 		"/user/54d503445b12230c694c503a"
 /* ********************************************************************** */ 
 
 var renderSettings = function(req, res) {
