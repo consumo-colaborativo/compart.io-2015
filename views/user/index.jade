@@ -1,9 +1,12 @@
 extends ../../layouts/default  
 
 block body
-	p #{result.user.username}
-	p #{result.user.email}
-	p #{result.user.about}
+	div.row
+		p #{result.user.name} #{result.user.lastname}
+		p #{result.user.username}
+		p #{result.user.email}
+		p #{result.user.about}
+		p Mi ciudad: #{result.user.zip_code}
 
 
 	
