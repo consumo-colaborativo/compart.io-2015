@@ -8,6 +8,8 @@ exports = module.exports = function(app, mongoose) {
     username: { type: String, unique: true },
     password: String,
     email: { type: String, unique: true },
+    name: { type: String},
+    lastname: { type: String},
     about: String,
     roles: {
       admin: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' },
