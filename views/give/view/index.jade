@@ -1,7 +1,11 @@
 extends ../../../layouts/default  
 
+block head
+	title #{result.compartio.title} disponible en #{result.city.name} - compart.io
+
+
 block body
-	p #{result.compartio.title}
+	h1 #{result.compartio.title} 
 	p disponible en #{result.city.name}
 	p #{result.user.username}
 	p --- Compartio

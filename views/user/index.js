@@ -41,19 +41,42 @@ if (req.params.id != null){
 		}
 	},
 
-	// 4- City DOC
+	// 2- City DOC
 	function(callback) {		
 		if( outcome.user.city != null){
-			req.app.db.models.City.findById(outcome.user.city).exec(function(err, cat) {
+			req.app.db.models.City.findById(outcome.user.city).exec(function(err, city) {
 			    if (err) {
 			        callback(err, null);
 			    }
-		    	outcome.city = cat;
+		    	outcome.city = city;
 				callback();
 			});
 		}
+	},
+
+	// 3- Compartio DOC
+	function(callback) {		
+		// Lo que ofrece ahora:
+		// Buscar compartios cuyo giver_user_id == user_id && status == published
+		//var search = "[";
+		var search = "";
+		outcome.compartios = [];
+
+		search = '{_giver_user_id: "' + outcome.user_id + '"}, { status: "published" }';
+		
+		req.app.db.models.Compartio.find( { $and: [search] } )
+			.exec(function(err, compartios) {
+			if (err) {
+				callback(err, null);
+			}
+		    outcome.donations = compartios;
+			callback();
+		});
+		
 	}
 	
+	// Lo que pide o busca ahora mismo:
+	// Buscar compartios cuyo giver_user_id == "" && status == published && receiver_user_id == user_id && is_donation == false
 
 	],
 	function(err) {
