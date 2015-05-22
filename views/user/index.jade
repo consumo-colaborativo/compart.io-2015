@@ -35,6 +35,7 @@ block body
 				for obj in result.donations
 					p 
 						a(href="/give/view/#{obj._id}") #{obj.title}
+					p #{obj.description}
 					p id: #{obj._id}
 					p status: #{obj.status}
 					p giver_user_id: #{obj.giver_user_id}
@@ -46,7 +47,7 @@ block body
 			p.text-uppercase Lo que #{result.user.name} está pidiendo ahora mismo
 			if result.needs != null				
 				for obj in result.needs
-					p Nombre: #{obj.title}
+					p Nombre: #{obj.title}					
 					p #{obj.description}
 					p id: #{obj._id}
 					p status: #{obj.status}
@@ -55,7 +56,22 @@ block body
 	div.row
 		h3.text-uppercase El histórico de #{result.user.name}
 		div.col-sm-6
-			p Donaciones
+			h4 Donaciones
+			if result.donations_done != null				
+				for obj in result.donations_done
+					p Nombre: #{obj.title}
+					p 
+						img.compartio-image(src="#{obj.url_image}", alt="#{obj.title}")
+					p id: #{obj._id}
+					p status: #{obj.status}
+					p giver_user_id: #{obj.giver_user_id}
+						img.user-image(src="#{obj.giver_user_id.url_image}", alt="#{obj.giver_user_id.name}")
+						img.user-image(src="#{result.user.url_image}", alt="#{result.user.name}")
+					p receiver_user_id: #{obj.receiver_user_id._id}
+						img.user-image(src="#{obj.receiver_user_id.url_image}", alt="#{obj.receiver_user_id.name}")
+
+
+
 
 		div.col-sm-6
-			p Recepciones
+			h4 Recepciones
