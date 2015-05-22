@@ -9,6 +9,7 @@
 // Test Examples:
 // 		"/user/54f9e6fc0b0156d5b29468a7"
 // 		"/user/54d503445b12230c694c503a"
+// 		"/user/54d503445b12230c694c503b"
 /* ********************************************************************** */ 
 
 var renderSettings = function(req, res) {
@@ -43,7 +44,7 @@ if (req.params.id != null){
 
 	// 2- City DOC
 	function(callback) {		
-		if( outcome.user.city != null){
+		//if( outcome.user.city != null){
 			req.app.db.models.City.findById(outcome.user.city).exec(function(err, city) {
 			    if (err) {
 			        callback(err, null);
@@ -51,16 +52,16 @@ if (req.params.id != null){
 		    	outcome.city = city;
 				callback();
 			});
-		}
+		//}
 	},
 
-	// 3- Compartio DOC
+	// 3- Compartio DOC (donations)
 	function(callback) {		
 		// Lo que ofrece ahora:
 		// Buscar compartios cuyo giver_user_id == user_id && status == published
 		//var search = "[";
 		
-		outcome.compartios = [];
+		outcome.donations = [];
 
 		//var query = '{giver_user_id: "' + user_id + '"}, { status: "published" }';
 		var query = '{ giver_user_id: ObjectId("' + user_id + '")}, { status: "published" }';
@@ -73,23 +74,48 @@ if (req.params.id != null){
 				giver_user_id: user_id,
 				status: "published"
       		})
-			.exec(function(err, compartios) {
+			.exec(function(err, donations) {
 			if (err) {
 				callback(err, null);
 			}
-			else if (compartios.length) {
-			    //console.log('Found:', compartios);
+			else if (donations.length) {
+			    console.log('Found:', donations);
 			} else {
-			    console.log('No document(s) found with defined "find" criteria!');
+			    console.log('No donations found with defined "find" criteria!');
 			}
-		    outcome.donations = compartios;
+		    outcome.donations = donations;
+			callback();
+		});		
+
+	},
+	
+	// 4- Compartio DOC (needs)
+	function(callback) {		
+	// Lo que pide o busca ahora mismo:
+	// Buscar compartios cuyo giver_user_id == "" && status == published && receiver_user_id == user_id && is_donation == false
+		
+		outcome.needs = [];
+
+		req.app.db.models.Compartio.find( 
+			{ 
+				receiver_user_id: user_id,
+				status: "published"
+      		})
+			.exec(function(err, needs) {
+			if (err) {
+				callback(err, null);
+			}
+			else if (needs.length) {
+			    console.log('Found:', needs);
+			} else {
+			    console.log('No needs found with defined "find" criteria!');
+			}
+		    outcome.needs = needs;
 			callback();
 		});		
 
 	}
-	
-	// Lo que pide o busca ahora mismo:
-	// Buscar compartios cuyo giver_user_id == "" && status == published && receiver_user_id == user_id && is_donation == false
+
 
 	],
 	function(err) {

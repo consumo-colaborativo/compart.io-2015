@@ -1,18 +1,23 @@
 extends ../../layouts/default  
 
-block head
-	title #{result.user.name} #{result.user.lastname} - compart.io
-
+block head	
+	if result.user.name
+		title #{result.user.name} #{result.user.lastname} - compart.io		
+		- var name = result.user.username + " " + result.user.lastname
+	else
+		title #{result.user.username} - compart.io
+		- var name = result.user.username
+	
 block body
 	div.row
 		div.col-sm-4 
-			if result.user.image 
-				img.user-image.img-rounded.img-responsive(src="#{result.user.image}")
+			if result.user.url_image 
+				img.user-image.img-rounded.img-responsive(src="#{result.user.url_image}", alt="#{name} - compart.io")
 			else
 				img.user-image.img-rounded.img-responsive(src="http://dummyimage.com/250x250/DDD/fff.jpg")
 
 		div.col-sm-7.col-sm-offset-1
-			h2.text-uppercase ¡Hola! Soy #{result.user.name} #{result.user.lastname}			
+			h2.text-uppercase ¡Hola! Soy #{name}
 			
 			p #{result.user.about}		
 		
@@ -28,14 +33,24 @@ block body
 
 			if result.donations != null				
 				for obj in result.donations
-					p Nombre: #{obj.title}
+					p 
+						a(href="/give/view/#{obj._id}") #{obj.title}
 					p id: #{obj._id}
 					p status: #{obj.status}
 					p giver_user_id: #{obj.giver_user_id}
+					p 
+						img.compartio-image(src="#{obj.url_image}", alt="#{obj.title}")
 	
 
 		div.col-sm-6 
 			p.text-uppercase Lo que #{result.user.name} está pidiendo ahora mismo
+			if result.needs != null				
+				for obj in result.needs
+					p Nombre: #{obj.title}
+					p #{obj.description}
+					p id: #{obj._id}
+					p status: #{obj.status}
+					p receiver_user_id: #{obj.receiver_user_id}
 
 	div.row
 		h3.text-uppercase El histórico de #{result.user.name}
