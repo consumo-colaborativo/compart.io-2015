@@ -59,20 +59,33 @@ if (req.params.id != null){
 		// Lo que ofrece ahora:
 		// Buscar compartios cuyo giver_user_id == user_id && status == published
 		//var search = "[";
-		var search = "";
+		
 		outcome.compartios = [];
 
-		search = '{_giver_user_id: "' + outcome.user_id + '"}, { status: "published" }';
-		
-		req.app.db.models.Compartio.find( { $and: [search] } )
+		//var query = '{giver_user_id: "' + user_id + '"}, { status: "published" }';
+		var query = '{ giver_user_id: ObjectId("' + user_id + '")}, { status: "published" }';
+		console.log(query);
+
+		//req.app.db.models.Compartio.find({_giver_user_id: user_id} )		
+		//req.app.db.models.Compartio.find( { $and: [query] } )
+		req.app.db.models.Compartio.find( 
+			{ 
+				giver_user_id: user_id,
+				status: "published"
+      		})
 			.exec(function(err, compartios) {
 			if (err) {
 				callback(err, null);
 			}
+			else if (compartios.length) {
+			    //console.log('Found:', compartios);
+			} else {
+			    console.log('No document(s) found with defined "find" criteria!');
+			}
 		    outcome.donations = compartios;
 			callback();
-		});
-		
+		});		
+
 	}
 	
 	// Lo que pide o busca ahora mismo:
@@ -83,7 +96,7 @@ if (req.params.id != null){
 	    if (err) {
 	    	return err;
 	    }
-	    console.log(" TEST: user/index " + JSON.stringify(outcome));
+	    //console.log(" TEST: user/index " + JSON.stringify(outcome));
 		res.render('user/index', {result: outcome});
   	});
 	} // end if :id exist
