@@ -31,8 +31,10 @@ if (req.params.id != null){
 		        // Data can still be returned in the other arguments as well, 
 		        // generally the error is passed alone
 		    }
+		    console.log(user_id);
 
 		    outcome.user = doc;
+		    console.log("doc: " + doc);
 		    
 		    if (doc == null)
 		    	callback(err, null);		    	
@@ -44,6 +46,7 @@ if (req.params.id != null){
 
 	// 2- City DOC
 	function(callback) {		
+		console.log("outcome.user: " + outcome.user);
 		//if( outcome.user.city != null){
 			req.app.db.models.City.findById(outcome.user.city).exec(function(err, city) {
 			    if (err) {
@@ -59,16 +62,9 @@ if (req.params.id != null){
 	function(callback) {		
 		// Lo que ofrece ahora:
 		// Buscar compartios cuyo giver_user_id == user_id && status == published
-		//var search = "[";
 		
 		outcome.donations = [];
 
-		//var query = '{giver_user_id: "' + user_id + '"}, { status: "published" }';
-		var query = '{ giver_user_id: ObjectId("' + user_id + '")}, { status: "published" }';
-		console.log(query);
-
-		//req.app.db.models.Compartio.find({_giver_user_id: user_id} )		
-		//req.app.db.models.Compartio.find( { $and: [query] } )
 		req.app.db.models.Compartio.find( 
 			{ 
 				giver_user_id: user_id,
@@ -111,6 +107,33 @@ if (req.params.id != null){
 			    console.log('No needs found with defined "find" criteria!');
 			}
 		    outcome.needs = needs;
+			callback();
+		});		
+
+	},
+
+	// 5- Compartio DOC (donations done)
+	function(callback) {				
+		// Buscar compartios cuyo giver_user_id == user_id && status == delivered
+		
+		outcome.donations_done = [];
+
+		req.app.db.models.Compartio.find( 
+			{ 
+				giver_user_id: user_id,
+				status: "delivered"
+      		})
+			.populate('receiver_user_id')			
+			.exec(function(err, donations_done) {
+			if (err) {
+				callback(err, null);
+			}
+			else if (donations_done.length) {
+			    console.log('Found:', donations_done);
+			} else {
+			    console.log('No donations found with defined "find" criteria!');
+			}
+		    outcome.donations_done = donations_done;
 			callback();
 		});		
 
