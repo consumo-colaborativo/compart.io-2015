@@ -3,7 +3,7 @@ extends ../../layouts/default
 block head	
 	if result.user.name
 		title #{result.user.name} #{result.user.lastname} - compart.io		
-		- var name = result.user.username + " " + result.user.lastname
+		- var name = result.user.name + " " + result.user.lastname		
 	else
 		title #{result.user.username} - compart.io
 		- var name = result.user.username
@@ -19,16 +19,15 @@ block body
 		div.col-sm-7.col-sm-offset-1
 			h2.text-uppercase ¡Hola! Soy #{name}
 			
-			p #{result.user.about}		
+			p.about #{result.user.about}		
 		
 			p 
 				| Mi ciudad: 
-				a(href="/#{result.city.slug}") #{result.city.name} 
-				| city_id: #{result.city._id} 
+				a(href="/#{result.city.slug}") #{result.city.name} 			
 
 	div.row
 		div.col-sm-6
-			p.text-uppercase Lo que #{result.user.name} está ofreciendo ahora mismo
+			h4 Lo que #{name} está ofreciendo ahora mismo
 			p id usuario: #{result.user._id}
 
 			if result.donations != null				
@@ -44,7 +43,7 @@ block body
 	
 
 		div.col-sm-6 
-			p.text-uppercase Lo que #{result.user.name} está pidiendo ahora mismo
+			h4 Lo que #{name} está pidiendo ahora mismo
 			if result.needs != null				
 				for obj in result.needs
 					p Nombre: #{obj.title}					
@@ -57,21 +56,43 @@ block body
 		h3.text-uppercase El histórico de #{result.user.name}
 		div.col-sm-6
 			h4 Donaciones
-			if result.donations_done != null				
-				for obj in result.donations_done
+			if result.donations_delivered != null				
+				for obj in result.donations_delivered
 					p Nombre: #{obj.title}
 					p 
 						img.compartio-image(src="#{obj.url_image}", alt="#{obj.title}")
 					p id: #{obj._id}
 					p status: #{obj.status}
-					p giver_user_id: #{obj.giver_user_id}
-						img.user-image(src="#{obj.giver_user_id.url_image}", alt="#{obj.giver_user_id.name}")
+					p giver_user_id: #{obj.giver_user_id}						
 						img.user-image(src="#{result.user.url_image}", alt="#{result.user.name}")
 					p receiver_user_id: #{obj.receiver_user_id._id}
-						img.user-image(src="#{obj.receiver_user_id.url_image}", alt="#{obj.receiver_user_id.name}")
+						a(href="/user/#{obj.receiver_user_id._id}")
+							img.user-image(src="#{obj.receiver_user_id.url_image}", alt="#{obj.receiver_user_id.name}")
 
 
 
 
 		div.col-sm-6
 			h4 Recepciones
+			if result.needs_delivered != null				
+				for obj in result.needs_delivered
+					if obj.giver_user_id.name
+						- var giver_user_name = obj.giver_user_id.name + obj.giver_user_id.lastname
+					else
+						- var giver_user_name = obj.giver_user_id.username 
+					p 
+						| Hace x días recibió una donación de 
+						a(href="/user/#{obj.giver_user_id._id}", title="Ir al perfil de #{giver_user_name} en compart.io") #{giver_user_name}
+
+					p Nombre: #{obj.title}
+					p 
+						img.compartio-image(src="#{obj.url_image}", alt="#{obj.title}")
+					p id: #{obj._id}
+					p status: #{obj.status}
+					p giver_user_id: #{obj.giver_user_id._id}
+					p 
+						a(href="/user/#{obj.giver_user_id._id}")
+							img.user-image(src="#{obj.giver_user_id.url_image}", alt="#{obj.giver_user_id.name}")
+					p receiver_user_id: #{result.user._id}
+						img.user-image(src="#{result.user.url_image}", alt="#{result.user.name}")
+

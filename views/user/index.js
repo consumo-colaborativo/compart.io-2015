@@ -112,28 +112,57 @@ if (req.params.id != null){
 
 	},
 
-	// 5- Compartio DOC (donations done)
+	// 5- Compartio DOC (donations_delivered)
 	function(callback) {				
 		// Buscar compartios cuyo giver_user_id == user_id && status == delivered
 		
-		outcome.donations_done = [];
+		outcome.donations_delivered = [];
 
 		req.app.db.models.Compartio.find( 
 			{ 
 				giver_user_id: user_id,
 				status: "delivered"
-      		})
-			.populate('receiver_user_id')			
-			.exec(function(err, donations_done) {
+      		})			
+			.populate('receiver_user_id')
+			.exec(function(err, donations_delivered) {
 			if (err) {
 				callback(err, null);
 			}
-			else if (donations_done.length) {
-			    console.log('Found:', donations_done);
+			else if (donations_delivered.length) {
+			    console.log('Found:', donations_delivered);
 			} else {
 			    console.log('No donations found with defined "find" criteria!');
 			}
-		    outcome.donations_done = donations_done;
+		    outcome.donations_delivered = donations_delivered;
+			callback();
+		});		
+
+	},
+
+	// 6- Compartio DOC (needs_delivered)
+	function(callback) {		
+	// Buscar compartios cuyo status == delivered && receiver_user_id == user_id && is_donation == false
+		
+		outcome.needs_delivered = [];
+
+		req.app.db.models.Compartio.find( 
+			{ 
+				receiver_user_id: user_id,
+				status: "delivered",
+				//is_donation: false
+      		})
+			.populate('giver_user_id')
+			.exec(function(err, needs_delivered) {
+			if (err) {
+				callback(err, null);
+			}
+			else if (needs_delivered.length) {
+			    console.log('Found:', needs_delivered);
+			} else {
+			    console.log('No needs_delivered found with defined "find" criteria!');
+			}
+		    outcome.needs_delivered = needs_delivered;
+			console.log("needs_delivered: " + needs_delivered);
 			callback();
 		});		
 
