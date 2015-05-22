@@ -11,7 +11,7 @@ exports = module.exports = function(app, mongoose) {
     name: { type: String},
     lastname: { type: String},
     about: String,
-    image: String,
+    url_image: String,
     roles: {
       admin: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' },
       account: { type: mongoose.Schema.Types.ObjectId, ref: 'Account' }
@@ -33,7 +33,8 @@ exports = module.exports = function(app, mongoose) {
     street       : { type: String, default: 'sin definir' },
     zip_code     : { type: Number },
     city         : { type: mongoose.Schema.Types.ObjectId,
-                     ref: 'City'}
+                     ref: 'City',
+                      required: true}
   });
   userSchema.methods.canPlayRoleOf = function(role) {
     if (role === "admin" && this.roles.admin) {
