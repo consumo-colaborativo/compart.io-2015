@@ -33,17 +33,21 @@ html
                 i.fa.fa-user
                 |  Sign In
 
-    div.page
-      div.container
-        block body
+    
+    block body
 
     div.footer
       div.container
         span.copyright.pull-right
-          |&#169; #{copyrightYear} #{copyrightName}
+          ul.links
+            li: a(href='/about/') LOPD
+            li: a(href='/feedback/') Aviso legal
+            li: a(href='/feedback/') Cookies
+
+          // |&#169; #{copyrightYear} #{copyrightName}
         ul.links
-          li: a(href='/about/') Acerca de
-          li: a(href='/contribute/') Colabora
+          li: a(href='/about/') El proyecto
+          li: a(href='/feedback/') Contacto
         div.clearfix
 
     div.ajax-spinner
