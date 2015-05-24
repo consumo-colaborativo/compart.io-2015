@@ -3,23 +3,25 @@ extends ../../layouts/default
 block head	
 	if result.user.name
 		title #{result.user.name} #{result.user.lastname} - compart.io		
-		- var name = result.user.name + " " + result.user.lastname		
+		- var name = result.user.name 
+		- var fullname = result.user.name + " " + result.user.lastname		
 	else
 		title #{result.user.username} - compart.io
 		- var name = result.user.username
+		- var fullname = name
 	
 block body
 	div.page.user-profile
 		div.container
 			div.row
-				div.col-sm-4 
+				div.col-sm-4(id="user-image")
 					if result.user.url_image 
 						img.user-image.img-rounded.img-responsive(src="#{result.user.url_image}", alt="#{name} - compart.io")
 					else
 						img.user-image.img-rounded.img-responsive(src="http://dummyimage.com/250x250/DDD/fff.jpg")
 
 				div.col-sm-7.col-sm-offset-1
-					h2.text-uppercase ¡Hola! Soy #{name}
+					h2 ¡Hola! Soy #{fullname}
 					
 					p.about #{result.user.about}		
 				
@@ -30,34 +32,35 @@ block body
 			div.row
 				div.col-sm-6
 					h4 Lo que #{name} está ofreciendo ahora mismo
-					p id usuario: #{result.user._id}
+					hr
+					// p id usuario: #{result.user._id}
 
 					if result.donations != null				
 						for obj in result.donations
 							p 
 								a(href="/give/view/#{obj._id}") #{obj.title}
-							p #{obj.description}
-							p id: #{obj._id}
-							p status: #{obj.status}
-							p giver_user_id: #{obj.giver_user_id}
+								| --- id: #{obj._id} --- status: #{obj.status}
+							// giver_user_id: #{obj.giver_user_id}
 							p 
-								img.compartio-image(src="#{obj.url_image}", alt="#{obj.title}")
+								a(href="/give/view/#{obj._id}")
+									img.compartio-image(src="#{obj.url_image}", alt="#{obj.title}")
 			
 
 				div.col-sm-6 
 					h4 Lo que #{name} está pidiendo ahora mismo
+					hr
 					if result.needs != null				
 						for obj in result.needs
-							p Nombre: #{obj.title}					
-							p #{obj.description}
-							p id: #{obj._id}
-							p status: #{obj.status}
-							p receiver_user_id: #{obj.receiver_user_id}
+							p Se necesita:					
+							p #{obj.title} / #{obj.description}
+							p id: #{obj._id} -- status: #{obj.status}
+							// p receiver_user_id: #{obj.receiver_user_id}
 
 			div.row
 				h3 El histórico de #{name}
 				div.col-sm-6
 					h4 Donaciones
+					hr
 					if result.donations_delivered != null				
 						for obj in result.donations_delivered
 							p Nombre: #{obj.title}
@@ -76,6 +79,7 @@ block body
 
 				div.col-sm-6
 					h4 Recepciones
+					hr
 					if result.needs_delivered != null				
 						for obj in result.needs_delivered
 							if obj.giver_user_id.name
