@@ -30,11 +30,11 @@ exports.login = function(req, res){
 
   workflow.on('validate', function() {
     if (!req.body.username) {
-      workflow.outcome.errfor.username = 'required';
+      workflow.outcome.errfor.username = '¡Uy! No escribiste tu email.';
     }
 
     if (!req.body.password) {
-      workflow.outcome.errfor.password = 'required';
+      workflow.outcome.errfor.password = '¡Ups! Dejaste en blanco tu contraseña.';
     }
 
     if (workflow.hasErrors()) {
@@ -97,7 +97,7 @@ exports.login = function(req, res){
             return workflow.emit('exception', err);
           }
 
-          workflow.outcome.errors.push('Username and password combination not found or your account is inactive.');
+          workflow.outcome.errors.push('No hay ningún usuario con el email y/o la contraseña que has indicado.');
           return workflow.emit('response');
         });
       }

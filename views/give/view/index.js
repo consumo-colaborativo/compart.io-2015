@@ -29,7 +29,10 @@ if (req.params.id != null){
 	// 1- Compartio DOC
 	function(callback) {
 		if(compartio_id != null){
-		req.app.db.models.Compartio.findById(compartio_id).exec(function(err, doc) {
+		req.app.db.models.Compartio.findById(compartio_id)
+		.populate('city_id')
+		.populate('category_id')
+		.exec(function(err, doc) {
 		    if (err) { // On a successful response, the ‘err’ argument is null
 		        callback(err, null); // Call the callback with an actual error object
 		        // Data can still be returned in the other arguments as well, 
@@ -45,7 +48,7 @@ if (req.params.id != null){
 		    }
 		    callback();
 	    });
-		}
+		}		
 	},
 	// 3- Category DOC
 	function(callback) {

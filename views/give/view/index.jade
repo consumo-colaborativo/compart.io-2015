@@ -17,6 +17,7 @@ block body
 			p #{result.compartio.description}
 			p Estado
 			p #{result.compartio.status}
+			p Ciudad: #{result.compartio.city_id.name}
 			p --- Usuarios interesados
 			if result.interested_users != null
 				p Usuarios Interesados
@@ -31,6 +32,7 @@ block body
 								p User Name: #{userobj.username}
 			p --- Categoría
 			p Categoría: #{result.category.title}
+			p Categoría: #{result.compartio.category_id.title}
 			p #{result.category.description}
 
 	

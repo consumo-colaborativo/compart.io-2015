@@ -10,7 +10,7 @@ exports = module.exports = function(app, mongoose) {
     slug          : { type: String, lowercase: true},
     is_donation	  : { type: Boolean, required: true},
     url_image     : { type: String },
-    created       : { type: Date, default: Date.now },
+    created       : { type: Date },
     updated       : { type: Date },
     city_id     	: { type: mongoose.Schema.Types.ObjectId, ref: 'City'},
     category_id	  : { type: mongoose.Schema.Types.ObjectId, ref: 'CompartioCategory'},
