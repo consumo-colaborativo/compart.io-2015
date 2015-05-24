@@ -13,8 +13,7 @@ block body
   div.page.login
     div.container
       div.row
-        div.col-sm-12
-          div.page-header
+        div.col-sm-12.page-header
             p.info ¡Hola! ¡Nos alegramos de verte por aquí de nuevo! 
           div#login
           if oauthTwitter || oauthGitHub || oauthFacebook || oauthGoogle || oauthTumblr            
@@ -58,12 +57,12 @@ block body
               button.close(type='button', data-dismiss='alert') &times;
               |<%- err %>
             |<% }); %>
-          div.div.col-sm-5.form-group(class!='<%- errfor.username ? "has-error" : "" %>')
+          div.col-sm-5.form-group(class!='<%- errfor.username ? "has-error" : "" %>')
             label Tu email:
             input.form-control(type='text', name='username', value!='<%= username %>')
             span.help-block <%- errfor.username %>
           div.col-sm-5.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
-            label Contraseña: 
+            label Tu contraseña: 
               |(
               a(href='/login/forgot/') ¿la olvidaste?            
               |)
@@ -74,4 +73,5 @@ block body
       hr
       
       div.row
-        img.img-responsive.center-block(src="/_img/login_compartio.png" alt="compart.io")
+        div.col-sm-12
+          img.img-responsive.center-block(src="/_img/login_compartio.png" alt="compart.io")
