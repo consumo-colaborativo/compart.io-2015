@@ -24,7 +24,9 @@ if (req.params.id != null){
 	// 1- User DOC
 	function(callback) {
 		if(user_id != null){
-			req.app.db.models.User.findById(user_id).exec(function(err, doc) {
+			req.app.db.models.User.findById(user_id)
+			.populate('city')
+			.exec(function(err, doc) {
 		    if (err) 
 		    { // On a successful response, the ‘err’ argument is null
 		        callback(err, null); // Call the callback with an actual error object
@@ -42,21 +44,7 @@ if (req.params.id != null){
 		    callback();
 	    	});
 		}
-	},
-
-	// 2- City DOC
-	function(callback) {		
-		console.log("outcome.user: " + outcome.user);
-		//if( outcome.user.city != null){
-			req.app.db.models.City.findById(outcome.user.city).exec(function(err, city) {
-			    if (err) {
-			        callback(err, null);
-			    }
-		    	outcome.city = city;
-				callback();
-			});
-		//}
-	},
+	},	
 
 	// 3- Compartio DOC (donations)
 	function(callback) {		
