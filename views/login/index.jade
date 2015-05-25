@@ -49,29 +49,29 @@ block body
                     |  Tumblr
 
 
-      script(type='text/template', id='tmpl-login')
-        form
-          div.alerts
-            |<% _.each(errors, function(err) { %>
-            div.alert.alert-danger.alert-dismissable
-              button.close(type='button', data-dismiss='alert') &times;
-              |<%- err %>
-            |<% }); %>
-          div.col-sm-5.form-group(class!='<%- errfor.username ? "has-error" : "" %>')
-            label Tu email:
-            input.form-control(type='text', name='username', value!='<%= username %>')
-            span.help-block <%- errfor.username %>
-          div.col-sm-5.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
-            label Tu contraseña: 
-              |(
-              a(href='/login/forgot/') ¿la olvidaste?            
-              |)
-            input.form-control(type='password', name='password', value!='<%= password %>')
-            span.help-block <%- errfor.password %>
-          div.col-sm-2.form-actions
-            button.btn.btn-primary.btn-login(type='button') Entrar                      
-      hr
-      
-      div.row
-        div.col-sm-12
-          img.img-responsive.center-block(src="/_img/login_compartio.png" alt="compart.io")
+        script(type='text/template', id='tmpl-login')
+          form
+            div.alerts
+              |<% _.each(errors, function(err) { %>
+              div.alert.alert-danger.alert-dismissable
+                button.close(type='button', data-dismiss='alert') &times;
+                |<%- err %>
+              |<% }); %>
+            div.col-sm-5.form-group(class!='<%- errfor.username ? "has-error" : "" %>')
+              label Tu email:
+              input.form-control(type='text', name='username', value!='<%= username %>')
+              span.help-block <%- errfor.username %>
+            div.col-sm-5.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
+              label Tu contraseña: 
+                |(
+                a(href='/login/forgot/') ¿la olvidaste?            
+                |)
+              input.form-control(type='password', name='password', value!='<%= password %>')
+              span.help-block <%- errfor.password %>
+            div.col-sm-2.form-actions
+              button.btn.btn-primary.btn-login(type='button') Entrar                      
+        hr
+        
+        div.row
+          div.col-sm-12
+            img.img-responsive.center-block(src="/_img/login_compartio.png" alt="compart.io")

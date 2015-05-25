@@ -21,21 +21,21 @@ exports.signup = function(req, res){
 
   workflow.on('validate', function() {
     if (!req.body.username) {
-      workflow.outcome.errfor.username = 'required';
+      workflow.outcome.errfor.username = 'Escribe tu nombre';
     }
     else if (!/^[a-zA-Z0-9\-\_]+$/.test(req.body.username)) {
-      workflow.outcome.errfor.username = 'only use letters, numbers, \'-\', \'_\'';
+      workflow.outcome.errfor.username = 'Usa sólo letras';
     }
 
     if (!req.body.email) {
-      workflow.outcome.errfor.email = 'required';
+      workflow.outcome.errfor.email = 'Completa tu dirección de email';
     }
     else if (!/^[a-zA-Z0-9\-\_\.\+]+@[a-zA-Z0-9\-\_\.]+\.[a-zA-Z0-9\-\_]+$/.test(req.body.email)) {
-      workflow.outcome.errfor.email = 'invalid email format';
+      workflow.outcome.errfor.email = 'La direción email que has escrito parece estar mal escrita';
     }
 
     if (!req.body.password) {
-      workflow.outcome.errfor.password = 'required';
+      workflow.outcome.errfor.password = 'Escribe una contraseña';
     }
 
     if (workflow.hasErrors()) {
