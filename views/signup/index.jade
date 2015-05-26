@@ -13,9 +13,9 @@ block body
   div.page.signup
     div.container
       div.row
-        div.col-sm-12
+        div.col-sm-12.page-header
           p.info ¡Bienvenido! Cuanto más somos, mejor ; )
-          div#signup
+        div#signup
           if oauthTwitter || oauthGitHub || oauthFacebook || oauthGoogle || oauthTumblr
             hr
             p Or sign up using...
@@ -47,40 +47,40 @@ block body
                 a.btn.btn-info(href='/signup/tumblr/')
                   i.fa.fa-tumblr-square.fa-lg
                   |  Tumblr
-      div.row
-        script(type='text/template', id='tmpl-signup')
-          form
-            div.alerts
-              |<% _.each(errors, function(err) { %>
-              div.alert.alert-danger.alert-dismissable
-                button.close(type='button', data-dismiss='alert') &times;
-                |<%- err %>
-              |<% }); %>
-            div.col-sm-5.form-group(class!='<%- errfor.username ? "has-error" : "" %>')
-              label Tu nombre:
-              input.form-control(type='text', name='username', value!='<%= username %>')
-              span.help-block <%- errfor.username %>
-            div.col-sm-5.form-group(class!='<%- errfor.email ? "has-error" : "" %>')
-              label Tu Email:
-              input.form-control(type='text', name='email', value!='<%= email %>')
-              span.help-block <%- errfor.email %>
-            div.col-sm-5.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
-              label Tu contraseña:
-              input.form-control(type='password', name='password', value!='<%= password %>')
-              span.help-block <%- errfor.password %>
-            div.col-sm-5.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
-              label Repite tu contraseña, por si acaso...
-              input.form-control(type='password', name='password_repeated', value!='<%= password %>')
-              span.help-block <%- errfor.password %>
-            div.col-sm-9.form-group
-              label.checkbox-inline
-                input(type = 'checkbox', value = '')
-                | Acepto las condiciones de privacidad de este sitio web.
+     
+      script(type='text/template', id='tmpl-signup')
+        form
+          div.alerts
+            |<% _.each(errors, function(err) { %>
+            div.alert.alert-danger.alert-dismissable
+              button.close(type='button', data-dismiss='alert') &times;
+              |<%- err %>
+            |<% }); %>
+          div.col-sm-5.form-group(class!='<%- errfor.username ? "has-error" : "" %>')
+            label Tu nombre:
+            input.form-control(type='text', name='username', value!='<%= username %>')
+            span.help-block <%- errfor.username %>
+          div.col-sm-5.form-group(class!='<%- errfor.email ? "has-error" : "" %>')
+            label Tu Email:
+            input.form-control(type='text', name='email', value!='<%= email %>')
+            span.help-block <%- errfor.email %>
+          div.col-sm-5.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
+            label Tu contraseña:
+            input.form-control(type='password', name='password', value!='<%= password %>')
+            span.help-block <%- errfor.password %>
+          div.col-sm-5.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
+            label Repite tu contraseña, por si acaso...
+            input.form-control(type='password', name='password_repeated', value!='<%= password %>')
+            span.help-block <%- errfor.password %>
+          div.col-sm-9.form-group
+            label.checkbox-inline
+              input(type = 'checkbox', value = '')
+              | Acepto las condiciones de privacidad de este sitio web.
 
-            div.col-sm-2.col-sm-offset-1.form-actions
-              button.btn.btn-primary.btn-signup(type='button') Darme de alta
+          div.col-sm-2.col-sm-offset-1.form-actions
+            button.btn.btn-primary.btn-signup(type='button') Darme de alta
 
-
+  
       hr
   
       div.row
