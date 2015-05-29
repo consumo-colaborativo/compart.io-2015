@@ -61,6 +61,8 @@ Podemos aprender mucho de proyectos que ya existen en otros países y que promue
 - [Favorece](http://favorece.net/) Es un proyecto que parece ya abandonado. Para pedir y ofrecer cosas y servicios o favores.
 - [Gitflow](https://github.com/GiftFlow/giftflow) La web del proyecto no va, pero está el código publicado en github. "*GiftFlow is an open-source web platform that makes it easy for communities to give and share their extra resources*".
 - [Relendo](https://www.relendo.com/) Relendo es una plataforma de Consumo Colaborativo que permite el alquiler de productos entre personas con dinero.
+- [Listia](https://www.listia.com/) Listia es una comunidad donde la gente dona objetos que no usa, gana "créditos" y obtiene con ellos cosas que necesitan, "for free".
+- [Tdoee] (http://www.tdoee.com/) Tdoee es una red social que permitirá unirte con personas en tu país, ciudad, comuna, edificio, universidad y empresa, para regalar y pedir lo que quieras. Sin ventas ni intercambios, sólo dar y pedir.
 
 # Evaluación de ShareTribe
 
