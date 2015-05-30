@@ -1,0 +1,30 @@
+doctype html
+html(lang='en')
+	//    ___  __   _  _  ____   __   ____  ____    __  __  
+	//   / __)/  \ ( \/ )(  _ \ / _\ (  _ \(_  _)  (  )/  \ 
+	//  ( (__(  O )/ \/ \ ) __//    \ )   /  )(  _  )((  O )
+	//   \___)\__/ \_)(_/(__)  \_/\_/(__\_) (__)(_)(__)\__/ 
+	//
+		
+	include _head
+	body(style="padding: 40px; background-color: #ccc;")
+		h1 Elementos Compart.io
+		
+		h2 Cabecera
+		
+		h3 Sin búsqueda ni categorías ni usuario
+		div(style="margin: 0 -40px;")
+			-busqueda = false
+			-categorias = false
+			include partials/_cabecera
+		h3 Con búsquedas, categorías y usuario activo
+		div(style="margin: 0 -40px;")
+			-busqueda = true
+			-categorias = true
+			-usuario = true
+			include partials/_cabecera
+
+
+
+		script(src='js/vendors.min.js')
+		script(src='js/main.min.js')

@@ -15,6 +15,7 @@ function dropdownInicia(){
 
 	$('.select:not(.disabled)').click(function(e){
 		e.stopPropagation();
+		e.preventDefault();
 		var select = $(e.target).parents('.select');
 		// var drop = $(e.target).parent().find('.dropdown');
 		if(select.hasClass("open")){
@@ -26,6 +27,7 @@ function dropdownInicia(){
 			$(".nano").nanoScroller();
 		}
 	});
+	//Coloca el seleccionado en el desplegable y rellena el input
 	$('.select .dropdown li:not(.link) a').click(function(e){
 		//e.preventDefault();
 		var slug = $(e.target).attr('href');
