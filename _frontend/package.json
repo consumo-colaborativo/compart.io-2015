@@ -9,6 +9,7 @@
     "grunt-express": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-contrib-jade": "latest",
-    "grunt-contrib-copy": "latest"
+    "grunt-contrib-copy": "latest",
+		"grunt-autoprefixer": "latest"
   }
 }

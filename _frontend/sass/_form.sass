@@ -119,6 +119,10 @@
 		@include placeholder
 			color: $color-marron-oscuro-1
 			font-style: italic
+		&[disabled]
+			opacity: $opacity-disabled
+			&:focus, &:active
+				border-color: $color-marron-claro-1
 	button
 		vertical-align: middle
 		padding: 5px 5px 5px 5px
@@ -129,6 +133,12 @@
 			background-color: $color-marron-claro-1
 			span:before
 				color: $color-marron-oscuro-1
+		&[disabled]
+			opacity: 0.4
+			&:focus, &:active
+				border-color: $color-marron-claro-1
+				span:before
+					color: $color-marron-claro-1
 		@include border-right-radius(6px)
 		span
 			@include icon('before', 'busqueda', true)
