@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "0a1030fe0c57535285de5dd8d6618a65da304f588b8c6df392fd13219e6d4209",
-    "current": "0a1030fe0c57535285de5dd8d6618a65da304f588b8c6df392fd13219e6d4209"
+    "previous": "30cfab62cc1d458f9e6edb0873fabe5ee37cdd9e8f551a178c36ef3dfa958614",
+    "current": "30cfab62cc1d458f9e6edb0873fabe5ee37cdd9e8f551a178c36ef3dfa958614"
   },
   "fonts": [
     "../public/fonts/icons.ttf",
@@ -13,6 +13,14 @@
     "busqueda": {
       "codepoint": 61702,
       "source": "vectors/busqueda.svg"
+    },
+    "categories": {
+      "codepoint": 61703,
+      "source": "vectors/categories.svg"
+    },
+    "categories_close": {
+      "codepoint": 61704,
+      "source": "vectors/categories_close.svg"
     },
     "facebook": {
       "codepoint": 61696,
@@ -33,6 +41,14 @@
     "flecha1-up": {
       "codepoint": 61700,
       "source": "vectors/flecha1-up.svg"
+    },
+    "notifications": {
+      "codepoint": 61705,
+      "source": "vectors/notifications.svg"
+    },
+    "notifications_on": {
+      "codepoint": 61706,
+      "source": "vectors/notifications_on.svg"
     },
     "twitter": {
       "codepoint": 61701,
