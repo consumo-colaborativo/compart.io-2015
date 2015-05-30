@@ -122,5 +122,11 @@
     ],
     "status": "delivered",
     "condition": "broken"
-  }
+  },
+  {"_id":{"$oid":"555e659bba6d0213e23f0721"},"title":"Bici de paseo","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus dolor, tempor ac finibus in, consequat quis enim.","is_donation":true,"url_image":"http://www.bicicleta.es/photos/bicicletas/large/bicicleta.jpg","city_id":{"$oid":"54d4fe465b12230c694c500c"},"category_id":{"$oid":"54d918485b12230c694c534c"},"giver_user_id":{"$oid":"54d503445b12230c694c503a"},"receiver_user_id":null,"interested_users_id":{"$oid":"54d503445b12230c694c503b"},"status":"published","condition":"used"},
+  {"_id":{"$oid":"555e65ceba6d0213e23f0722"},"title":"Monociclo","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.","is_donation":true,"url_image":"http://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Eenwieler.jpg/220px-Eenwieler.jpg","city_id":{"$oid":"54d4fe465b12230c694c500c"},"category_id":{"$oid":"54d918485b12230c694c534c"},"giver_user_id":{"$oid":"54d503445b12230c694c503a"},"receiver_user_id":null,"status":"published","condition":"used"},
+  {"_id":{"$oid":"555f65feba6d02014f7a7ca1"},"title":"Proyector HD","description":"Estoy buscando un proyector para una videoproyeccion. Lo devuelvo luego :)","is_donation":false,"url_image":"","city_id":{"$oid":"54d4fe465b12230c694c500c"},"category_id":{"$oid":"54d918485b12230c694c533f"},"giver_user_id":null,"receiver_user_id":{"$oid":"54d503875b12230c694c503c"},"interested_users_id":"","status":"published","condition":""},
+  {"_id":{"$oid":"555f6fe5ba6d02014f7a7ca2"},"title":"Silla acapulco","description":"Silla acapulco del DF","is_donation":false,"url_image":"http://mlm-s1-p.mlstatic.com/silla-acapulco-condesa-3661-MLM4600987482_072013-F.jpg","city_id":{"$oid":"54d4fe465b12230c694c500c"},"category_id":{"$oid":"54d918485b12230c694c533f"},"giver_user_id":{"$oid":"54d503875b12230c694c503c"},"receiver_user_id":null,"interested_users_id":"","status":"published","condition":""},
+  {"_id":{"$oid":"555fcf2bba6d02014f7a7ca3"},"title":"Sarten","description":"Tengo esta sarten de sobra; ¿alguien la quiere?","is_donation":true,"url_image":"http://www.sacoloco.es/imagenes/sacoloco1087.jpg","city_id":{"$oid":"54d4fe465b12230c694c500c"},"category_id":{"$oid":"54d918485b12230c694c5340"},"giver_user_id":{"$oid":"54d503875b12230c694c503c"},"receiver_user_id":null,"interested_users_id":"","status":"published","condition":""}
+
 ]

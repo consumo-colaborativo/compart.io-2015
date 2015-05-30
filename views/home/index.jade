@@ -10,7 +10,7 @@ html(lang='en')
 		meta(charset='utf-8')
 		meta(http-equiv='X-UA-Compatible', content='IE=edge')
 		meta(name='viewport', content='width=device-width, initial-scale=1')
-		title Compart.io
+		title Compart.io - Da lo que te sobra y busca lo que necesitas
 		link(href='css/main.css', rel='stylesheet' type='text/css')
 		link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700', rel='stylesheet' type='text/css')
 		| <!--[if lt IE 9]><script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script><![endif]-->
@@ -57,7 +57,7 @@ html(lang='en')
 													| #{ciudad.name}
 										li.link
 											a(href="#")
-												| ¿No ves tu ciudad?
+												| ¿No ves tu ciudad?										
 					.col2
 						#userpanel
 							.not-logged
@@ -90,30 +90,13 @@ html(lang='en')
 									mask#bocadillo
 										path(fill="#FFFFFF", width='116', height='116', d="M11.9,0C11.9,0,0,0,0,11.9v68.8c0,0,0,11.9,11.9,11.9h44.7c0,0,11.9,0,19.2,9.4l9.4,12.2c0,0,1.1,1.5,2,1.5 h0c0.5,0,0.9-0.6,0.8-2.5l-0.5-8.7c0,0-0.7-11.9,11.3-11.9h5c0,0,11.9,0,11.9-11.9V11.9c0,0,0-11.9-11.9-11.9H11.9z")
 					div.svgs
-						div
-							a(href="#")
-								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
-									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
-						div
-							a(href="#")
-								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
-									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
-						div
-							a(href="#")
-								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
-									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
-						div
-							a(href="#")
-								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
-									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
-						div
-							a(href="#")
-								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
-									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
-						div
-							a(href="#")
-								svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
-									image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+						for compartio in compartios
+							if compartio.url_image
+								div
+									a(href="#")
+										svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+											image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='#{compartio.url_image}')
+						
 
 				.col2
 					h5 Vídeo de presentación:
@@ -131,12 +114,12 @@ html(lang='en')
 								span
 								span Facebook
 						li.twitter
-							a(href="#")
+							a(href="https://twitter.com/compartio")
 								span
 								span Twitter
 					ul.corp
 						li
-							a(href="#")
+							a(href="/about")
 								| El proyecto
 						li
 							a(href="#")

@@ -1,7 +1,12 @@
 @import "../vendor/bootstrap/less/mixins.less";
 
 body {
-  padding-top: 50px;
+  font-family: "Open Sans", sans-serif;
+  padding-top: 50px;  
+}
+
+.page{
+  margin-top: 20px;  
 }
 
 h1, h2 {
@@ -52,12 +57,95 @@ select, textarea, input, .form-control {
   }
 }
 
+hr {
+  border-color: #B89267;
+  border-style: dotted none none;
+  border-width: 1px 0 0;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+p {
+  color: #5F605F;
+  font-family: "Open Sans",sans-serif;    
+}
+
+p.info{
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 23px;
+}
+
+.user-profile p{
+  color: #707070;
+  font-family: "Open Sans",sans-serif;
+  font-size: 12px; 
+  line-height: 17px;
+}
+
+.user-profile p a{
+  color: #B89267;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.user-profile p a:hover{
+  color: #B89267;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.user-profile p.about{
+  color: #454545;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.user-profile h2{
+  color: #5C5C5C;
+  text-transform: uppercase;
+}
+
+.user-profile h3{
+  font-size: 14px;
+  font-weight: bold;  
+  text-transform: uppercase;
+}
+
+.user-profile h4{
+  color: #9E9F9E;
+  font-size: 12px;
+  font-weight: 300;
+  margin: 20px 0 10px;
+  text-transform: uppercase;
+}
+
+#user-image{
+  border-right: 1px dotted #b89267;  
+}
+
+.user-image, .compartio-image{
+  max-width:250px;
+}
+
+.img-rounded{
+  border-radius: 2em;
+}
+
+.text-uppercase{
+  text-transform: uppercase;
+}
+
+.row{
+  padding: 0 10px;
+}
+
 .footer {
   margin-top: 50px;
-  color: #999;
+  color: #58331E;
+  font-size: 11.5px;
 
-  .container {
-    border-top: 1px solid #ccc;
+  .container {    
     padding: 20px 5px 20px 5px;
     border-radius: 4px;
   }

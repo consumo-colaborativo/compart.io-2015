@@ -52,9 +52,9 @@ exports = module.exports = function(app, passport) {
   app.get('/about/', require('./views/about/index').init);
   app.get('/contribute/', require('./views/contribute/index').init);
 
-  app.get('/contact/', require('./views/contact/index').init);
-  app.post('/contact/', require('./views/contact/index').sendMessage);
-
+  app.get('/feedback/', require('./views/feedback/index').init);
+  app.post('/feedback/', require('./views/feedback/index').addFeedback);
+  
   
   // MAGDA START Compartio Routes View ------------------------------------------
   // Give > View  -- Falta enviar compartio_id como parámetro de entrada -
@@ -70,6 +70,10 @@ exports = module.exports = function(app, passport) {
   app.post('/give/add/', require('./views/give/add/index').prueba);
    // Need > Add 
   app.get('/need/add/', require('./views/need/add/index').init);
+
+  // User views
+  app.get('/user/:id', require('./views/user/index').init);
+
   // END Compartio Routes --------------------------------------------
 
   //sign up

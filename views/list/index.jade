@@ -1,28 +1,37 @@
 extends ../../layouts/default 
 
 block body
-	p donaciones en #{result.city.name}
-	- count=0;
-	for obj in result.compartio
-		if obj.giver_user_id && obj.status == "published"
-			p Título: #{obj.title}
-			p Estado: #{obj.condition}			
-			p cat: #{obj.category_id}			
-			p Descripción: #{obj.description}
-			p -
-			- count++;
-	if count > 0
-		p Hay #{count} DONACIONES
-	- count=0;
-	p -
-	p Peticiones en #{result.city.name}
-	for obj in result.compartio
-		if obj.receiver_user_id && obj.status == "published"
-			p Título: #{obj.title}
-			p Estado: #{obj.condition}
-			p cat: #{obj.category_id}
-			p Descripción: #{obj.description}
-			p -
-			- count++;
-	if count > 0
-		p Hay #{count} PETICIONES  
+	div.page.city
+		div.container
+			p.info
+				| Estás visualizando todos los compartios que se dan en #{result.city.name}. Si no encuentras lo que necesitas, puedes 
+				a(href="") pedir un compartio. 			
+			- count=0;
+			for obj in result.compartio
+				if obj.giver_user_id && obj.status == "published"
+					p Título: #{obj.title}
+					p Estado: #{obj.condition}			
+					p cat: #{obj.category_id}			
+					p Descripción: #{obj.description}
+					p 
+						a(href="/give/view/#{obj._id}")
+							img.compartio-image(src="#{obj.url_image}", alt="#{obj.title}")
+					p -
+					- count++;
+			if count > 0
+				p Hay #{count} DONACIONES
+			- count=0;
+			
+			hr 
+
+			p Peticiones en #{result.city.name}
+			for obj in result.compartio
+				if obj.receiver_user_id && obj.status == "published"
+					p Título: #{obj.title}
+					p Estado: #{obj.condition}
+					p cat: #{obj.category_id}
+					p Descripción: #{obj.description}
+					p -
+					- count++;
+			if count > 0
+				p Hay #{count} PETICIONES  

@@ -5,6 +5,7 @@ exports.init = function(req, res, next){
   var _ = require('lodash');
   var cities=[];
   var compartio;
+  var temp;
 
   // El objetivo de esta consulta es sacar las ciudades donde hay compartios para pasarsela a la plantilla
   req.app.db.models.Compartio.find({ status:'published' })
@@ -15,6 +16,10 @@ exports.init = function(req, res, next){
       for (compartio in compartios) {
         cities[cities.length] = {name: compartios[compartio].city_id.name, slug: compartios[compartio].city_id.slug};
       }
-      res.render('home/index', {ciudades: _.uniq(cities, 'name')});
+
+      console.log(compartios);
+      
+      res.render('home/index', {ciudades: _.uniq(cities, 'name'), compartios: compartios});
+
       })
 };

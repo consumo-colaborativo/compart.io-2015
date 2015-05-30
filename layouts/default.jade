@@ -1,11 +1,44 @@
 doctype html
 html
   head
+    //    ___  __   _  _  ____   __   ____  ____    __  __  
+    //   / __)/  \ ( \/ )(  _ \ / _\ (  _ \(_  _)  (  )/  \ 
+    //  ( (__(  O )/ \/ \ ) __//    \ )   /  )(  _  )((  O )
+    //   \___)\__/ \_)(_/(__)  \_/\_/(__\_) (__)(_)(__)\__/ 
+    //
     block head
       title #{title}
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+     
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')    
+    
+    link(href='css/main.css', rel='stylesheet' type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700', rel='stylesheet' type='text/css')
     link(rel='stylesheet', href='/layouts/core.min.css?#{cacheBreaker}')
+    
+
+    | <!--[if lt IE 9]><script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script><![endif]-->
+    link(rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png")
+    link(rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png")
+    link(rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png")
+    link(rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png")
+    link(rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png")
+    link(rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png")
+    link(rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png")
+    link(rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png")
+    link(rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png")
+    link(rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32")
+    link(rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192")
+    link(rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96")
+    link(rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16")
+    link(rel="manifest" href="/favicons/manifest.json")
+    link(rel="shortcut icon" href="/favicons/favicon.ico")
+    meta(name="msapplication-TileColor" content="#da532c")
+    meta(name="msapplication-TileImage" content="/favicons/mstile-144x144.png")
+    meta(name="msapplication-config" content="/favicons/browserconfig.xml")
     block neck
+
   body
     div.navbar.navbar-default.navbar-fixed-top
       div.container
@@ -22,7 +55,7 @@ html
             li: a(href='/home/') Home
             li: a(href='/about/') Acerca
             li: a(href='/signup/') Sign Up
-            li: a(href='/contact/') Contacto
+            li: a(href='/feedback/') Contacto
           ul.nav.navbar-nav.navbar-right
             if user && user.username
               li: a(href='#{user.defaultReturnUrl}')
@@ -33,17 +66,21 @@ html
                 i.fa.fa-user
                 |  Sign In
 
-    div.page
-      div.container
-        block body
+    
+    block body
 
     div.footer
       div.container
         span.copyright.pull-right
-          |&#169; #{copyrightYear} #{copyrightName}
+          ul.links
+            li: a(href='/about/') LOPD
+            li: a(href='/feedback/') Aviso legal
+            li: a(href='/feedback/') Cookies
+
+          // |&#169; #{copyrightYear} #{copyrightName}
         ul.links
-          li: a(href='/about/') Acerca de
-          li: a(href='/contribute/') Colabora
+          li: a(href='/about/') El proyecto
+          li: a(href='/feedback/') Contacto
         div.clearfix
 
     div.ajax-spinner

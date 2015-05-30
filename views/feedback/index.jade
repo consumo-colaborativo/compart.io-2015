@@ -1,0 +1,40 @@
+extends ../../layouts/default
+
+block head
+  title Envíanos tu feedback // compart.io
+
+block neck
+  link(rel='stylesheet', href='/views/feedback/index.min.css?#{cacheBreaker}')
+
+block feet
+  script(src='/views/feedback/index.min.js?#{cacheBreaker}')
+
+block body
+  div.page
+    div.container
+      div.row
+        div.col-sm-6
+          div.page-header
+            h1 Envíanos un mensaje
+
+          div#feedback
+            script(type='text/template', id='tmpl-feedback')
+            form(method="post", action="/feedback/")
+              div.form-group
+                label Elige una categoría:
+                br
+                - var feedback_subjects = [ "Algo no funciona", "Uso inadecuado de compart.io", "Tengo una sugerencia/idea", "Sobre la plataforma", "¡Quiero ayudar!", "Comentarios generales"]
+                select(name='subject') 
+                  each subject, i in feedback_subjects
+                    option(value=i) #{subject}            
+
+              div.form-group()
+                label Mensaje:
+                textarea.form-control(name='message', rows='5') 
+                span.help-block    
+              div.form-group()
+                label Tu email:
+                input.form-control(type='text', name='email')
+                span.help-block      
+              div.form-group
+                button.btn.btn-primary.btn-feedback(type='button') Enviar mensaje
