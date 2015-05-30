@@ -40,6 +40,9 @@ function ensureAccount(req, res, next) {
 */
 exports = module.exports = function(app, passport) {
   // Front end
+  // Remember that Express will execute middleware functions 
+  // in the order they are registered until something sends a 
+  // response.
 
   // Home
   app.get('/', require('./views/home/index').init);   
@@ -209,16 +212,27 @@ exports = module.exports = function(app, passport) {
   app.get('/account/settings/tumblr/callback/', require('./views/account/settings/index').connectTumblr);
   app.get('/account/settings/tumblr/disconnect/', require('./views/account/settings/index').disconnectTumblr);
 
-// START List of Compartios filter by different values -- MAGDA --
+  // START List of Compartios filter by different values -- MAGDA --
   app.get('/:city_slug/',require('./views/list/index').init);
   app.get('/:city_slug/gives/',require('./views/list/index').init);
   app.get('/:city_slug/gives/:category',require('./views/list/index').init);
   app.get('/:city_slug/gives/search/:word',require('./views/list/index').init);
   app.get('/:city_slug/gives/:category/search/:word',require('./views/list/index').init);
+  //
+  app.get('/:city_slug/needs/',require('./views/list/index').init);
+  app.get('/:city_slug/needs/:category',require('./views/list/index').init);
+  app.get('/:city_slug/needs/search/:word',require('./views/list/index').init);
+  app.get('/:city_slug/needs/:category/search/:word',require('./views/list/index').init);
+ 
   // END List -- MAGDA --
 
-  //route not found
+  //route not found (also app.use can be used)
   app.all('*', require('./views/http/index').http404);
-
-  
+  // https://blog.safaribooksonline.com/2014/03/10/express-js-middleware-demystified/
+  // Middleware is a function, just like route handlers, 
+  // and it is invoked in much the same way.
+  //
+  // There is a special routing method, app.all(), 
+  // which is not derived from any HTTP method. 
+  // It is used for loading middleware at a path for all request methods.
 };

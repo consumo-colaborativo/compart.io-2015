@@ -96,6 +96,15 @@ module.exports = function(grunt) {
         } ]
       }
     },
+		autoprefixer: {
+			options: {
+				// Task-specific options go here.
+			},
+			single_file: {
+					src: 'public/css/main.css',
+					dest: 'public/css/main.css'
+			},
+		},
     watch: {
       js: {
         files: ['javascript/*.js'],
@@ -106,13 +115,13 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['sass/*.sass'],
-        tasks: ['sass:style'],
+        tasks: ['sass:style','autoprefixer:single_file'],
         options: {
           livereload: true,
         }
       },
       jade: {
-        files: ['jade/*.jade'],
+        files: ['jade/**/*.jade'],
         tasks: ['jade:compile'],
         options: {
           livereload: true
@@ -134,4 +143,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-autoprefixer');
 };
