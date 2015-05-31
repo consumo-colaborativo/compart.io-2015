@@ -6,7 +6,7 @@ exports = module.exports = function(app, mongoose) {
 	var categorySchema = new mongoose.Schema({
 	    title:        { type: String, default: '' },
 	    description:  { type: String, default: '' },
-	    url_imagen:   { type: String, default: '' }
+	    url_image:   { type: String, default: '' }
 	}); // end categorySchema
 	categorySchema.plugin(require('./plugins/pagedFind'));
 	categorySchema.set('autoIndex', (app.get('env') === 'development'));

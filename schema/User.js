@@ -33,8 +33,7 @@ exports = module.exports = function(app, mongoose) {
     street       : { type: String, default: 'sin definir' },
     zip_code     : { type: Number },
     city         : { type: mongoose.Schema.Types.ObjectId,
-                     ref: 'City',
-                      required: true}
+                     ref: 'City'}
   });
   userSchema.methods.canPlayRoleOf = function(role) {
     if (role === "admin" && this.roles.admin) {
