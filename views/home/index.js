@@ -17,7 +17,7 @@ exports.init = function(req, res, next){
         cities[cities.length] = {name: compartios[compartio].city_id.name, slug: compartios[compartio].city_id.slug};
       }
 
-      console.log(compartios);
+      //console.log(compartios);
       
       res.render('home/index', {ciudades: _.uniq(cities, 'name'), compartios: compartios});
 

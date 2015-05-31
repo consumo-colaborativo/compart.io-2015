@@ -1,4 +1,4 @@
-extends ../../../layouts/default  
+extends ../../../layouts/header-footer  
 
 block head
 	title #{result.compartio.title} disponible en #{result.city.name} - compart.io
@@ -23,14 +23,10 @@ block body
 				p Usuarios Interesados
 				for obj in result.interested_users
 					p Nombre: #{obj.username}
-			p --- Mensajes
-			if result.message != null
-					for obj in result.message
-						p Mensaje: #{obj.content}
-						for userobj in result.user
-							if userobj._id.toString() == obj.user_id.toString()
-								p User Name: #{userobj.username}
-			p --- Categoría
+			if result.message != null		
+				include ../../../includes/compartio-comentarios
+					
+			h2 CATEGORÍAS
 			p Categoría: #{result.category.title}
 			p Categoría: #{result.compartio.category_id.title}
 			p #{result.category.description}
