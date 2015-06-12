@@ -15,6 +15,15 @@ block body
 					div de #{result.user.username}
 					div Disponible en #{result.city.name}
 					div #{result.compartio.description}
+			
+			div(id="categoria")
+				h2 CATEGORÍAS
+				div
+					div 
+						img.compartio-image(src="#{result.category.url_image}", alt="sin imagen")
+					div
+						div #{result.category.title}
+						div #{result.category.description}
 
 			div(id="usuarios-interesados")
 				button LO NECESITO
@@ -27,13 +36,3 @@ block body
 
 			if result.message != null		
 				include ../../../includes/compartio-comentarios
-
-			div(id="categoria")
-				h2 CATEGORÍAS
-				div
-					div 
-						img.compartio-image(src="#{result.category.url_image}", alt="sin imagen")
-					div
-						div #{result.category.title}
-						div #{result.category.description}
-
