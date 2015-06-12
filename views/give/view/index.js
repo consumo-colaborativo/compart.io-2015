@@ -29,8 +29,6 @@ if (req.params.id != null){
 	function(callback) {
 		if(compartio_id != null){
 		req.app.db.models.Compartio.findById(compartio_id)
-		.populate('city_id')
-		.populate('category_id')
 		.exec(function(err, doc) {
 		    if (err) { // On a successful response, the ‘err’ argument is null
 		        callback(err, null); // Call the callback with an actual error object
@@ -47,14 +45,15 @@ if (req.params.id != null){
 		    }
 		    callback();
 	    });
-		}		
+		}
 	},
 	// 3- Category DOC
 	function(callback) {
 		//  Outcome.compartio.category_id
 		if(outcome.compartio != null){
 		if( outcome.compartio.category_id != null){
-			req.app.db.models.CompartioCategory.findById(outcome.compartio.category_id).exec(function(err, cat) {
+			req.app.db.models.CompartioCategory.findById(outcome.compartio.category_id)
+				.exec(function(err, cat) {
 			    if (err) {
 			        callback(err, null);
 			    }
@@ -70,7 +69,8 @@ if (req.params.id != null){
 	function(callback) {
 		//  Outcome.compartio.category_id
 		if( outcome.compartio != null){
-			req.app.db.models.City.findById(outcome.compartio.city_id).exec(function(err, cat) {
+			req.app.db.models.City.findById(outcome.compartio.city_id)
+				.exec(function(err, cat) {
 			    if (err) {
 			        callback(err, null);
 			    }
@@ -83,7 +83,8 @@ if (req.params.id != null){
 	function(callback) {
 		//  outcome.compartio.category_id
 		if( compartio_id != null){
-			req.app.db.models.Message.find({compartio_id: compartio_id} ).exec(function(err, cat) {
+			req.app.db.models.Message.find({compartio_id: compartio_id} )
+				.exec(function(err, cat) {
 			    if (err) {
 			        callback(err, null);
 			    }
@@ -155,6 +156,7 @@ if (req.params.id != null){
 	    	// continue to the next middleware or route.
 	    	return next(err); // pass control to the next handler
 	    }else{
+	    	console.log(outcome);
 			res.render('give/view/index', {result: outcome});
 	  	}
   	});
