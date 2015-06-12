@@ -150,6 +150,7 @@ if (req.params.id != null){
 	    	// continue to the next middleware or route.
 	    	return next(err); // pass control to the next handler
 	    }else{
+	    	console.log(outcome);
 			res.render('need/view/index', {result: outcome});
 	  	}
   	});

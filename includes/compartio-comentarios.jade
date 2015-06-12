@@ -1,0 +1,11 @@
+div(id="comentarios")
+	h2 COMENTARIOS
+	for obj in result.message
+		div
+			div 
+				img.compartio-image(src="#{obj.url_image}", alt="sin imagen")
+			div
+				for userobj in result.user
+					if userobj._id.toString() == obj.user_id.toString()
+						div Hace 6 días | #{userobj.username} | LO NECESITA
+				div #{obj.content}	

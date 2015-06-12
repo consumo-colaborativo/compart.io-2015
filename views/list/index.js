@@ -104,7 +104,7 @@ if (req.params.city_slug != null){
 	    if (err) {
 	    	return next(err); // pass control to the next handler
 	    }
-	    console.log(" compartio: " + JSON.stringify(outcome));
+	    console.log(" LIST compartio: " + JSON.stringify(outcome));
 	    res.render('list/index', {result: outcome});
   	});
 } // end if :city_slug exist
