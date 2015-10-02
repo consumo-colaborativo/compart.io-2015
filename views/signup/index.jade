@@ -1,7 +1,8 @@
 extends ../../layouts/default
 
 block head
-  title Darme de alta en compart.io
+  title Alta de usuario en compart.io
+  meta(name='description', content='Una plataforma online de consumo colaborativo, abierta, libre y sin fines comerciales, desarrollada por personas voluntarias.')
 
 block neck
   link(rel='stylesheet', href='/views/signup/index.min.css?#{cacheBreaker}')
@@ -14,7 +15,10 @@ block body
     div.container
       div.row
         div.col-sm-12.page-header
-          p.info ¡Bienvenido! Cuanto más somos, mejor ; )
+          p.info ¿No estás dado de alta aún? ¡Te esperamos! Cuanto más somos, mejor ;)
+          p.info Si ya estás registrado 
+            a(href='/login') inicia tu sesión.
+
         div#signup
           if oauthTwitter || oauthGitHub || oauthFacebook || oauthGoogle || oauthTumblr
             hr
