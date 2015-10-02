@@ -16,6 +16,7 @@ block neck
 block body
 	div.page.user-profile
 		div.container
+			hr
 			div.row
 				div.col-sm-4(id="user-image")
 					if result.user.url_image 
@@ -92,6 +93,8 @@ block body
 							p 
 								| Hace x días recibió una donación de 
 								a(href="/user/#{obj.giver_user_id._id}", title="Ir al perfil de #{giver_user_name} en compart.io") #{giver_user_name}
+							- var fecha = obj.delivered
+							p Fecha: #{fecha}
 
 							p Nombre: #{obj.title}
 							p 
@@ -100,9 +103,10 @@ block body
 							p status: #{obj.status}
 							p giver_user_id: #{obj.giver_user_id._id}
 							p 
-								a(href="/user/#{obj.giver_user_id._id}")
-									img.user-image(src="#{obj.giver_user_id.url_image}", alt="#{obj.giver_user_id.name}")
+								a(href="/user/#{obj.giver_user_id._id}") #{giver_user_name}
+									//img.user-image.img-rounded.user-image-small(src="#{obj.giver_user_id.url_image}", alt="#{obj.giver_user_id.name}")									
+
 							p receiver_user_id: #{result.user._id}
-								img.user-image(src="#{result.user.url_image}", alt="#{result.user.name}")
+								img.user-image.img-rounded.user-image-small(src="#{result.user.url_image}", alt="#{result.user.name}")
 
 
