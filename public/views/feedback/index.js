@@ -34,10 +34,10 @@
       this.listenTo(this.model, 'sync', this.render);
       this.render();
     },
-    //render: function() {
+    render: function() {
     //  this.$el.html(this.template( this.model.attributes ));
-    //  this.$el.find('[name="name"]').focus();
-    //},
+      this.$el.find('[name="name"]').focus();
+    },
     preventSubmit: function(event) {
       event.preventDefault();
     },

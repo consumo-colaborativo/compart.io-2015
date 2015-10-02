@@ -11,6 +11,7 @@ html(lang='en')
 		meta(http-equiv='X-UA-Compatible', content='IE=edge')
 		meta(name='viewport', content='width=device-width, initial-scale=1')
 		title Compart.io - Da lo que te sobra y busca lo que necesitas
+		meta(name='description', content='Una plataforma online de consumo colaborativo, abierta, libre y sin fines comerciales, desarrollada por personas voluntarias.')
 		link(href='css/main.css', rel='stylesheet' type='text/css')
 		link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700', rel='stylesheet' type='text/css')
 		| <!--[if lt IE 9]><script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script><![endif]-->
@@ -93,9 +94,9 @@ html(lang='en')
 						for compartio in compartios
 							if compartio.url_image
 								div
-									a(href="#")
+									a(href="/give/view/#{compartio._id}")
 										svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
-											image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='#{compartio.url_image}')
+											image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='#{compartio.url_image}')									
 						
 
 				.col2

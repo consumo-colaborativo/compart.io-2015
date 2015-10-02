@@ -12,42 +12,39 @@ block feet
 block body
   div.page.login
     div.container
+      div.page-header
+        h1.hide Entra en compart.io
+        p.lead.info ¡Hola! ¡Nos alegramos de verte por aquí de nuevo! 
+            
       div.row
-        div.col-sm-12.page-header
-            p.info ¡Hola! ¡Nos alegramos de verte por aquí de nuevo! 
-          div#login
-          if oauthTwitter || oauthGitHub || oauthFacebook || oauthGoogle || oauthTumblr            
-            p Or sign in using...
-            if oauthMessage
-              div.alerts
-                div.alert.alert-info.alert-dismissable
-                  button.close(type='button', data-dismiss='alert') &times;
-                  |#{oauthMessage}&nbsp;
-                  b
-                    a(href='/signup/') Sign Up Here
-            div.form-actions
-              div.btn-group.btn-group-justified
-                if oauthTwitter
-                  a.btn.btn-info(href='/login/twitter/')
-                    i.fa.fa-twitter.fa-lg
-                    |  Twitter
-                if oauthGitHub
-                  a.btn.btn-info(href='/login/github/')
-                    i.fa.fa-github.fa-lg
-                    |  GitHub
-                if oauthFacebook
-                  a.btn.btn-info(href='/login/facebook/')
-                    i.fa.fa-facebook-square.fa-lg
-                    |  Facebook
-                if oauthGoogle
-                  a.btn.btn-info(href='/login/google/')
-                    i.fa.fa-google-plus-square.fa-lg
-                    |  Google
-                if oauthTumblr
-                  a.btn.btn-info(href='/login/tumblr/')
-                    i.fa.fa-tumblr-square.fa-lg
-                    |  Tumblr
-
+        div#login
+        if oauthTwitter || oauthGitHub || oauthFacebook || oauthGoogle || oauthTumblr            
+          p Or sign in using...
+          if oauthMessage
+            div.alerts
+              div.alert.alert-info.alert-dismissable
+                button.close(type='button', data-dismiss='alert') &times;
+                |#{oauthMessage}&nbsp;
+                b
+                  a(href='/signup/') Sign Up Here
+          div.form-actions
+            div.btn-group.btn-group-justified
+              if oauthTwitter
+                a.btn.btn-info(href='/login/twitter/')
+                  i.fa.fa-twitter.fa-lg
+                  |  Twitter
+              if oauthGitHub
+                a.btn.btn-info(href='/login/github/')
+                  i.fa.fa-github.fa-lg
+                  |  GitHub
+              if oauthFacebook
+                a.btn.btn-info(href='/login/facebook/')
+                  i.fa.fa-facebook-square.fa-lg
+                  |  Facebook
+              if oauthGoogle
+                a.btn.btn-info(href='/login/google/')
+                  i.fa.fa-google-plus-square.fa-lg
+                  |  Google        
 
         script(type='text/template', id='tmpl-login')
           form
@@ -70,8 +67,11 @@ block body
               span.help-block <%- errfor.password %>
             div.col-sm-2.form-actions
               button.btn.btn-primary.btn-login(type='button') Entrar                      
-        hr
+      hr
+      p
+        ¿No tienes tu cuenta en compart.io todavía? ¡Te esperamos! 
+        a(href='/signup')¡Date de alta!
         
-        div.row
-          div.col-sm-12
-            img.img-responsive.center-block(src="/_img/login_compartio.png" alt="compart.io")
+      div.row
+        div.col-sm-12
+          img.img-responsive.center-block(src="/_img/login_compartio.png" alt="compart.io")

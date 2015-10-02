@@ -36,7 +36,7 @@ if (req.params.id != null){
 		    console.log(user_id);
 
 		    outcome.user = doc;
-		    console.log("doc: " + doc);
+		    //console.log("doc: " + doc);
 		    
 		    if (doc == null)
 		    	callback(err, null);		    	
@@ -63,9 +63,9 @@ if (req.params.id != null){
 				callback(err, null);
 			}
 			else if (donations.length) {
-			    console.log('Found:', donations);
+			    //console.log('Found:', donations);
 			} else {
-			    console.log('No donations found with defined "find" criteria!');
+			    console.log('No donations found with defined "find" criteria for ' + outcome.user.username);
 			}
 		    outcome.donations = donations;
 			callback();
@@ -90,9 +90,9 @@ if (req.params.id != null){
 				callback(err, null);
 			}
 			else if (needs.length) {
-			    console.log('Found:', needs);
+			    //console.log('Found:', needs);
 			} else {
-			    console.log('No needs found with defined "find" criteria!');
+			    console.log('No needs found with defined "find" criteria for ' + outcome.user.username);
 			}
 		    outcome.needs = needs;
 			callback();
@@ -117,9 +117,9 @@ if (req.params.id != null){
 				callback(err, null);
 			}
 			else if (donations_delivered.length) {
-			    console.log('Found:', donations_delivered);
+			   // console.log('Found:', donations_delivered);
 			} else {
-			    console.log('No donations found with defined "find" criteria!');
+			    console.log('No donations delivered found with defined "find" criteria for ' + outcome.user.username);
 			}
 		    outcome.donations_delivered = donations_delivered;
 			callback();
@@ -145,12 +145,12 @@ if (req.params.id != null){
 				callback(err, null);
 			}
 			else if (needs_delivered.length) {
-			    console.log('Found:', needs_delivered);
+			  //  console.log('Found:', needs_delivered);			    
 			} else {
-			    console.log('No needs_delivered found with defined "find" criteria!');
+			    console.log('No needs_delivered found with defined "find" criteria for ' + outcome.user.username);
 			}
 		    outcome.needs_delivered = needs_delivered;
-			console.log("needs_delivered: " + needs_delivered);
+			
 			callback();
 		});		
 

@@ -1,7 +1,7 @@
 extends ../../../layouts/default
 
 block head
-  title Reset Your Password
+  title Recupera tu contraseña
 
 block feet
   script(src='/views/login/reset/index.min.js?#{cacheBreaker}')
@@ -10,7 +10,7 @@ block body
   div.row
     div.col-sm-6
       div.page-header
-        h1 Reset Your Password
+        h1 Recupera tu contraseña
       div#reset
 
   script(type='text/template', id='tmpl-reset')
@@ -33,17 +33,17 @@ block body
         |<% } %>
       |<% if (!success && id != undefined) { %>
       div.form-group(class!='<%- errfor.password ? "has-error" : "" %>')
-        label New Password:
+        label Nueva contraseña:
         input.form-control(type='password', name='password', value!='<%= password %>')
         span.help-block <%- errfor.password %>
       div.form-group(class!='<%- errfor.confirm ? "has-error" : "" %>')
-        label Confirm Password:
+        label Confirma la contraseña:
         input.form-control(type='password', name='confirm', value!='<%= confirm %>')
         span.help-block <%- errfor.confirm %>
       |<% } %>
       div.form-group
         |<% if (!success && id != undefined) { %>
-        button.btn.btn-primary.btn-reset(type='button') Set Password
+        button.btn.btn-primary.btn-reset(type='button') Establecer contraseña
         |<% } %>
         |&nbsp;
-        a.btn.btn-link(href='/login/') Back to Login
+        a.btn.btn-link(href='/login/') Entrar

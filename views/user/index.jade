@@ -9,7 +9,10 @@ block head
 		title #{result.user.username} - compart.io
 		- var name = result.user.username
 		- var fullname = name
-	
+
+block neck
+	link(rel='stylesheet', href='/views/user/index.min.css?#{cacheBreaker}')
+
 block body
 	div.page.user-profile
 		div.container
@@ -25,7 +28,7 @@ block body
 					
 					p.about #{result.user.about}		
 				
-					p 
+					p.city 
 						| Mi ciudad: 
 						a(href="/#{result.user.city.slug}") #{result.user.city.name} 			
 

@@ -29,8 +29,8 @@ if (req.params.id != null){
 	function(callback) {
 		if(compartio_id != null){
 		req.app.db.models.Compartio.findById(compartio_id)
-		.populate('city_id')
-		.populate('category_id')
+		//.populate('city_id')
+		//.populate('category_id')		
 		.exec(function(err, doc) {
 		    if (err) { // On a successful response, the ‘err’ argument is null
 		        callback(err, null); // Call the callback with an actual error object
@@ -111,12 +111,13 @@ if (req.params.id != null){
 			search = search + "{ _id: '"+outcome.compartio.giver_user_id+"'}";
 		}
 		search = search + "]";
+		
 		req.app.db.models.User.find( { $or: eval(search)})
 			.exec(function(err, user) {
 		    if (err) {
 		        callback(err, null);
 		    }
-	    	outcome.user = user;
+	    	outcome.user = user;	    	
 			callback();
 		});
 	}, // Interested users

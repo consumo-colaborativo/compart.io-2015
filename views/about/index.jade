@@ -10,29 +10,34 @@ block neck
   link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:300,400,700', type='text/css')
 
 block body
-  div
-    h1
-      a(href="/") Compartio
+  div(id="about").page
+    div.container
+      div.row        
+        h1 El proyecto
+        section
+          h2 Qué es           
+          img.img-responsive(style="float:left; max-width: 520px; margin-bottom: 24px; margin-right: 24px;", src="/_img/compartio_about.png", alt="compart.io")
+          p Compart.io es una plataforma online de consumo colaborativo para donar lo que te sobra (o ya no usas) y buscar (o pedir) lo que necesitas. Es una herramienta sin fines comerciales, desarrollada por personas voluntarias.
+          p Compart.io colabora a transformar el mundo hacia un consumo más responsable, sostenible y solidario, basado en los principios de consumo colaborativo: el aprovechamiento de recursos y el valor de colaborar y compartir.
+          p La idea se inició en Junio de 2012 con epicentro en Córdoba (España) mediante la creación de un <a href="https://www.facebook.com/groups/310342205721740/">grupo de Consumo Colaborativo</a> en Facebook bajo el lema "No compres; pide. No tires; regala". Este proyecto piloto cuenta, hasta la fecha, con más de 10.000 miembros.
     
-    h2 El proyecto
-
-    img(src="/_img/perfil.png", alt="imagen de perfil de compart.io")
-
-    div(class="columnas")
-      h6
-        <strong>Compart.io</strong> es una plataforma online de consumo colaborativo, abierta, libre y sin fines comerciales, desarrollada por personas voluntarias. Lanzaremos la primera versión en la primavera de 2015.</h6>
-
-      div(class="col1")
-        h3 ¿Qué es?
-        p <strong>Compart.io</strong> es una plataforma online para donar lo que te sobra o ya no usas y buscar o pedir lo que necesitas.</strong> Compart.io colabora a transformar el mundo hacia un consumo más responsable, sostenible y solidario, basado en los principios de consumo colaborativo, el aprovechamiento de recursos y el valor de colaborar y compartir.
-        p La idea se inició en Junio de 2012 con epicentro en Córdoba (España) mediante la creación de un <a href="https://www.facebook.com/groups/310342205721740/">grupo de Consumo Colaborativo</a> en Facebook bajo el lema "No compres; pide. No tires; regala". Este proyecto piloto cuenta, hasta la fecha, con más de 10.000 miembros.
-
-      div(class="col2")
-        h3 Libre y abierto
-        p Compart.io es un proyecto de código <strong>libre</strong>, disponible en <a href="https://github.com/consumo-colaborativo/compart.io-2015">GitHub</a> y distribuido bajo <a href="http://www.gnu.org/copyleft/gpl.html">licencia GPL</a>, que garantiza la libertad de usar, compartir y modificar el software. De esta manera compart.io puede replicarse y reinvertarse a sí mismo en otros lugares y comunidades.
-        p Compart.io es un proyecto <strong>abierto</strong> donde cualquier persona puede unirse y colaborar. ¡Cuantas más, mejor! Para ello, estamos trabajando en documentar el código y definir la forma de <a href="https://github.com/consumo-colaborativo/compart.io-2015/issues">contribuir</a>. El <a href="https://github.com/consumo-colaborativo?tab=members">equipo inicial de mantenedores</a> está formado por Álvaro, Toni, Delphine, Javier y Magda.
-          
-    div      
-      p(class="pie") Si tienes alguna pregunta, no dudes en escribirnos a: 
-          script.
-            document.write('<a href="mailto:hola@com'+'part.io">hola@co'+'mpart.io</a>');
+      div.row 
+        section
+          h2 Libre y abierto 
+          img.img-responsive(style="float:right; max-width: 350px; margin-bottom: 24px; margin-left: 24px;" src="/_img/compartio_about2.png", alt="compart.io")
+          p Compart.io es un proyecto de código libre, disponible en GitHub y distribuido bajo licencia GPL, que garantiza la libertad de usar, compartir y modificar el software. De esta manera compart.io puede replicarse y reinventarse a sí mismo en otros lugares y comunidades.
+          p ¡Estamos deseando que puedas unirte a Compart.io! Como en todo proyecto libre para poder abrirlo a aportaciones, primero tenemos que desarrollar una versión básica y documentarla adecuadamente. Si estás interesado, puedes suscribirte a la lista y te mantendremos informado.
+                
+      div      
+        p(class="pie") Si tienes alguna pregunta, no dudes en escribirnos a: 
+            script.
+              document.write('<a href="mailto:hola@com'+'part.io">hola@co'+'mpart.io</a>');
+      
+      form(id="mc-embedded-subscribe-form", action="http://compart.us3.list-manage1.com/subscribe/post?u=39196c96c403178f9d4d677b4&amp;id=5aa7bf55a1", method="post", name="mc-embedded-subscribe-form", target="_blank", novalidate="", class="validate")          
+        div.col-sm-5.form-group
+          label(for="mce-EMAIL") Tu email:
+          input.form-control(id="mce-EMAIL", type="email", value="", name="EMAIL", placeholder="", required="", class="email")
+                      
+        div.col-sm-2.form-actions
+          input(id="mc-embedded-subscribe", type="submit", value="OK", name="subscribe", class="button btn btn-primary")
+            
