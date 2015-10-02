@@ -11,6 +11,7 @@ exports = module.exports = function(app, mongoose) {
     is_donation	  : { type: Boolean, required: true},
     url_image     : { type: String },
     created       : { type: Date },
+    delivered     : { type: Date },
     updated       : { type: Date },
     city_id     	: { type: mongoose.Schema.Types.ObjectId, ref: 'City'},
     category_id	  : { type: mongoose.Schema.Types.ObjectId, ref: 'CompartioCategory'},
