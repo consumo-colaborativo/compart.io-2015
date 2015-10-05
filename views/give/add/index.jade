@@ -10,7 +10,7 @@ block body
     form(action='/give/add/',method='post')
       div
         span
-          <input type="hidden" name="_csrf" value={{ token }} />
+          //<input type="hidden" name="_csrf" value={{ token }} />
           label title: 
           input(id='title',type='text',value='',placeholder='título del compartio',name='title')
           br
@@ -18,5 +18,6 @@ block body
           input(id='description',type='text',value='',placeholder='descripcion del compartio',name='description')
           br
           br
+          input(type='hidden', name='_csrf', value='#{csrftoken}')
           input(type='submit',value='Guardar')
 

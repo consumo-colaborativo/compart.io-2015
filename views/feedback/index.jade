@@ -1,7 +1,7 @@
 extends ../../layouts/default
 
 block head
-  title Envíanos tu feedback // compart.io
+  title #{title} // compart.io
 
 block neck
   link(rel='stylesheet', href='/views/feedback/index.min.css?#{cacheBreaker}')
@@ -13,14 +13,15 @@ block body
   div.page
     div.container
       div.row
-        div.col-sm-12.page-header
-            p.info Envíanos un mensaje
+        div.col-sm-12.page-header            
+            if mensaje
+              h2 #{mensaje}
+            else
+              h2 Envíanos un mensaje
 
       div.row
-        div#feedback
-            script(type='text/template', id='tmpl-feedback')
-            form(method="post", action="/feedback/")
-              div.form-group
+        form#feedback-form(name="addfeedback" method="post", action="/addfeedback")
+          div.form-group
                 label Elige una categoría:
                 br
                 - var feedback_subjects = [ "Algo no funciona", "Uso inadecuado de compart.io", "Tengo una sugerencia/idea", "Sobre la plataforma", "¡Quiero ayudar!", "Comentarios generales"]
@@ -35,6 +36,7 @@ block body
               div.form-group()
                 label Tu email:
                 input.form-control(type='text', name='email')
-                span.help-block      
+                span.help-block                    
               div.form-group
-                button.btn.btn-primary.btn-feedback(type='button') Enviar mensaje
+                input(type='hidden', name='_csrf', value='#{csrftoken}')
+                button#btnSubmit.btn.btn-primary.btn-feedback(type='submit') Enviar mensaje

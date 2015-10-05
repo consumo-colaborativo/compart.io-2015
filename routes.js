@@ -53,7 +53,7 @@ exports = module.exports = function(app, passport) {
   app.get('/contribute/', require('./views/contribute/index').init);
 
   app.get('/feedback/', require('./views/feedback/index').init);
-  app.post('/feedback/', require('./views/feedback/index').addFeedback);
+  app.post('/addfeedback/', require('./views/feedback/index').addFeedback); 
   
   
   // MAGDA START Compartio Routes View ------------------------------------------

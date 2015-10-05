@@ -14,10 +14,11 @@ exports = module.exports = function(app, mongoose) {
 	                            
 	// define the schema for our MESSAGE / FEEDBACK model
 	var feedbackSchema = mongoose.Schema({
-	    name:      { type: String, default: '' },
-	    email:     { type: String, default: '' },
-	    message:   { type: String, default: '' },
-	    subject  : { type: String, enum: feedback_subjects}
+	    name: 		{ type: String, default: '' },
+	    email:     	{ type: String, default: '' },
+	    message:   	{ type: String, default: '' },
+	    subject: 	{ type: String, enum: feedback_subjects},
+	    created: 	{ type: Date }
 	}); // end categorySchema
 	
 	feedbackSchema.plugin(require('./plugins/pagedFind'));
