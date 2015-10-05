@@ -8,6 +8,7 @@ var config = require('./config'),
     session = require('express-session'),
     mongoStore = require('connect-mongo')(session),
     http = require('http'),
+    https = require('https'),
     path = require('path'),
     passport = require('passport'),
     mongoose = require('mongoose'),
@@ -62,11 +63,15 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(csrf({ cookie: { signed: true } }));
+//app.use(csrf());
 helmet(app);
+
+
 
 //response locals
 app.use(function(req, res, next) {
   res.cookie('_csrfToken', req.csrfToken());
+  res.locals.csrftoken = req.csrfToken();
   res.locals.user = {};
   res.locals.user.defaultReturnUrl = req.user && req.user.defaultReturnUrl();
   res.locals.user.username = req.user && req.user.username;
