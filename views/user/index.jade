@@ -93,8 +93,15 @@ block body
 							p 
 								| Hace x días recibió una donación de 
 								a(href="/user/#{obj.giver_user_id._id}", title="Ir al perfil de #{giver_user_name} en compart.io") #{giver_user_name}
-							- var fecha = obj.delivered
-							p Fecha: #{fecha}
+							- var hoy = Date.now()
+							p Fecha de entrega: #{obj.delivered}													
+							p Fecha de entrega en formato toDateString: #{obj.delivered.toDateString()}
+							p Hoy: #{hoy}
+
+							p Hace: #{hoy - obj.delivered}
+							- var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+							//- var diffDays = Math.round(Math.abs((hoy.getTime() - obj.delivered.getTime())/(oneDay)));
+							p Diferencia en días: 
 
 							p Nombre: #{obj.title}
 							p 
@@ -110,3 +117,4 @@ block body
 								img.user-image.img-rounded.user-image-small(src="#{result.user.url_image}", alt="#{result.user.name}")
 
 
+block feet
