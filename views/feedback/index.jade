@@ -23,16 +23,15 @@ block body
         form#feedback-form(name="addfeedback" method="post", action="/addfeedback")
           div.form-group
                 label Elige una categoría:
-                br
-                - var feedback_subjects = [ "Algo no funciona", "Uso inadecuado de compart.io", "Tengo una sugerencia/idea", "Sobre la plataforma", "¡Quiero ayudar!", "Comentarios generales"]
+                br                
                 select(name='subject') 
-                  each subject, i in feedback_subjects
-                    option(value=i) #{subject}            
+                  each tema, i in temas
+                    option(value="#{tema}") #{tema}
 
               div.form-group()
                 label Mensaje:
-                textarea.form-control(name='message', rows='5') 
-                span.help-block    
+                textarea.form-control(name='message', rows='5')
+                span.help-block
               div.form-group()
                 label Tu email:
                 input.form-control(type='text', name='email')

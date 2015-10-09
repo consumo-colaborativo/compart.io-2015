@@ -2,7 +2,13 @@
 
 
 exports.init = function(req, res){
-  res.render('feedback/index', { title: "Contacto"});
+  
+  var feedback = req.app.db.model('Feedback');
+  var temas = feedback.schema.paths.subject.enumValues;
+
+  //console.log(feedback.schema.paths.subject.enumValues);
+
+  res.render('feedback/index', { title: "Contacto", temas: temas });
 };
 
 
@@ -12,13 +18,13 @@ exports.test = function(req, res){
 
 // POST - Insert a new feedback in the DB
 exports.addFeedback = function(req, res){
+  
   console.log('POST');
   console.log(req.body);
   //console.log(req.app.db);
   console.log("req.csrfToken(): " + req.csrfToken());
   //console.log("req.csrftoken: " + req.csrftoken);
   //console.log("Session: " + req.session);
-
   
   // Set our internal DB variable
   var db = req.app.db;
@@ -31,15 +37,18 @@ exports.addFeedback = function(req, res){
   // Set our collection
   //var collection = db.get('feedbacks');
 
+  var date = new Date();
+
   // Submit to the DB
   var feedback = req.app.db.model('Feedback');
 
   //req.app.db.Models.Feedback.create({
   feedback.create({
         //"username" : userName,
-        //"subject" : asunto,
+        "subject" : asunto,
         "message" : mensaje,
-        "email" : email
+        "email" : email,
+        "created": Date.now()
         // add created date        
     }, function (err, doc) {
         if (err) {
@@ -50,7 +59,9 @@ exports.addFeedback = function(req, res){
         else {
             // And forward to success page
             //res.redirect("feedback/index", { mensaje: "Gracias por tu mensaje"} );
-            res.render("feedback/index", { mensaje: "Gracias por tu mensaje"} );
+            //res.render("feedback/ok", { mensaje: "Gracias por tu mensaje"} );
+            //res.send('Gracias por tu mensaje');            
+            res.redirect("/feedback", { mensaje: "Gracias por tu mensaje"} );
         }
     });  
 };
