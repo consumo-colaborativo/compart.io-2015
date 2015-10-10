@@ -9,9 +9,9 @@ block body
 	div.page
 		div.container
 			h1 #{result.compartio.title} 
-			p 
-				| disponible en 
-				a(href='/#{result.city.slug}') #{result.city.name}
+				small
+					| en 
+					a(href='/#{result.city.slug}') #{result.city.name}
 			p
 				img.compartio-image(src="#{result.compartio.url_image}", alt="#{result.compartio.title}")
 			p #{result.user.username}

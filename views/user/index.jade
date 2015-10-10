@@ -91,19 +91,12 @@ block body
 							else
 								- var giver_user_name = obj.giver_user_id.username 
 							p 
-								| Hace x días recibió una donación de 
-								a(href="/user/#{obj.giver_user_id._id}", title="Ir al perfil de #{giver_user_name} en compart.io") #{giver_user_name}
-							- var hoy = Date.now()
-							p Fecha de entrega: #{obj.delivered}													
-							p Fecha de entrega en formato toDateString: #{obj.delivered.toDateString()}
-							p Hoy: #{hoy}
-
-							p Hace: #{hoy - obj.delivered}
-							- var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-							//- var diffDays = Math.round(Math.abs((hoy.getTime() - obj.delivered.getTime())/(oneDay)));
-							p Diferencia en días: 
-
-							p Nombre: #{obj.title}
+								| Recibió un 
+								a(href="/give/view/#{obj._id}") #{obj.title} 
+								| de 
+								a(href="/user/#{obj.giver_user_id._id}", title="Ir al perfil de #{giver_user_name} en compart.io") #{giver_user_name} 
+								| #{moment(obj.delivered).fromNow()}.
+																				
 							p 
 								img.compartio-image(src="#{obj.url_image}", alt="#{obj.title}")
 							p id: #{obj._id}

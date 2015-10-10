@@ -13,7 +13,8 @@ var config = require('./config'),
     passport = require('passport'),
     mongoose = require('mongoose'),
     helmet = require('helmet'),
-    csrf = require('csurf');
+    csrf = require('csurf'),
+    moment = require('moment');
 
 //create express app
 var app = express();
@@ -45,6 +46,9 @@ app.set('view engine', 'jade');
 if (app.get('env') === 'development') {
   app.locals.pretty = true;
 }
+
+moment.locale('es');
+app.locals.moment = moment;
 
 //middleware
 app.use(require('morgan')('dev'));
