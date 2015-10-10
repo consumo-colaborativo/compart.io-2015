@@ -48,9 +48,12 @@ exports = module.exports = function(app, passport) {
   app.get('/', require('./views/home/index').init);   
   app.get('/home/', require('./views/index').init); // falta redireccionar a home compartio
 
-// static
+  // static
   app.get('/about/', require('./views/about/index').init);
   app.get('/contribute/', require('./views/contribute/index').init);
+
+  app.get('/legal/', require('./views/legal/index').init);
+
 
   app.get('/feedback/', require('./views/feedback/index').init);
   app.post('/addfeedback/', require('./views/feedback/index').addFeedback); 
@@ -116,9 +119,9 @@ exports = module.exports = function(app, passport) {
   app.get('/login/tumblr/callback/', require('./views/login/index').loginTumblr);
 
   //admin
+  app.get('/admin/', require('./views/admin/index').init);
   app.all('/admin*', ensureAuthenticated);
   app.all('/admin*', ensureAdmin);
-  app.get('/admin/', require('./views/admin/index').init);
 
   //admin > users
   app.get('/admin/users/', require('./views/admin/users/index').find);
