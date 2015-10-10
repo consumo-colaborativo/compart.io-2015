@@ -18,7 +18,8 @@ exports = module.exports = function(app, mongoose) {
 	    email:     	{ type: String, default: '' },
 	    message:   	{ type: String, default: '' },
 	    subject: 	{ type: String, enum: feedback_subjects},
-	    created: 	{ type: Date }
+	    created: 	{ type: Date },
+	    __v: 		{ type: Number, select: false}
 	}); // end categorySchema
 	
 	feedbackSchema.plugin(require('./plugins/pagedFind'));

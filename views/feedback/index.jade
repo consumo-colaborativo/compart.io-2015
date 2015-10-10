@@ -29,12 +29,12 @@ block body
                     option(value="#{tema}") #{tema}
 
               div.form-group()
-                label Mensaje:
-                textarea.form-control(name='message', rows='5')
+                //label Mensaje:
+                textarea.form-control(name='message', rows='5', placeholder="Escribe aquí tu mensaje")
                 span.help-block
               div.form-group()
-                label Tu email:
-                input.form-control(type='text', name='email')
+                //label Tu email:
+                input.form-control(type='text', name='email', placeholder="Escribe aquí tu email")
                 span.help-block                    
               div.form-group
                 input(type='hidden', name='_csrf', value='#{csrftoken}')
