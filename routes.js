@@ -69,8 +69,7 @@ exports = module.exports = function(app, passport) {
   app.get('/give/add/', require('./views/give/add/index').init);
   //
   app.post('/give/add/', require('./views/give/add/index').prueba);
-  app.post('/give/add/', require('./views/give/add/index').prueba);
-  app.post('/give/add/', require('./views/give/add/index').prueba);
+
    // Need > Add 
   app.get('/need/add/', require('./views/need/add/index').init);
 
