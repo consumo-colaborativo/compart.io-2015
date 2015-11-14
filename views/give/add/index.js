@@ -1,11 +1,22 @@
 'use strict';
 
 exports.init = function(req, res){
-  res.render('give/add/index');
+
+  var compartio = req.app.db.model('Compartio');
+  var conditions = compartio.schema.paths.condition.enumValues;
+
+  //var categorias = listarCategorias();
+  var categorias = ["Una", "Dos"];
+
+  console.log(conditions);
+  
+  res.render('give/add/index' , { conditions: conditions, categorias: categorias });
 };
 
 exports.prueba = function(req, res, next){
   console.log(req.body);
+  console.log(req.files);
+
   res.render('give/add/index');
 };
 

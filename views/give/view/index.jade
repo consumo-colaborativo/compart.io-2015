@@ -19,7 +19,10 @@ block body
 			p Descripción 
 			p #{result.compartio.description}
 			p Estado
-			p #{result.compartio.status}
+			if result.compartio.status == 'delivered'
+				p entregado a #{result.compartio.receiver_user_id}
+			else
+				p #{result.compartio.status}
 			p Ciudad: #{result.city.name}
 			p --- Usuarios interesados
 			if result.interested_users != null

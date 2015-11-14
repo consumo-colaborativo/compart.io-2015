@@ -1,23 +1,40 @@
 extends ../../../layouts/default
 
 block head
-  title Guardar Compartio
+  title Nuevo compartio
 
 block body
-  h1 prueba para guardar compartio
-  br
-  div
-    form(action='/give/add/',method='post')
-      div
-        span
-          //<input type="hidden" name="_csrf" value={{ token }} />
+  div.container
+    h1 Test nuevo compartio
+    br
+    div
+      form(action="/give/add", method="post")
+        div.form-group
           label title: 
-          input(id='title',type='text',value='',placeholder='título del compartio',name='title')
-          br
+          input(id='title',type='text',value='',placeholder='Título o nombre del compartio',name='title')
+          
+        div.form-group
           label descripcion: 
-          input(id='description',type='text',value='',placeholder='descripcion del compartio',name='description')
-          br
-          br
-          input(type='hidden', name='_csrf', value='#{csrftoken}')
-          input(type='submit',value='Guardar')
+          input(id='description',type='text',value='',placeholder='Descripción del compartio',name='description')        
+        
+        div.form-group
+          label Condition: 
+          select(name='condition') 
+            each condition, i in conditions
+              option(value="#{condition}") #{condition}
 
+        div.form-group
+          label Image: 
+          input(id='image',type='file',value='',placeholder='Sube una imagen o fotografía',name='image')
+
+        div.form-group
+          label Category_id: 
+          input(id='category',type='text',value='',placeholder='Selecciona una categoría',name='category')
+
+        div.form-group
+          label City_id: 
+          input(id='city',type='text',value='',placeholder='Ciudad',name='city')
+          
+        div.form-group
+          input(type='hidden', name='_csrf', value='#{csrftoken}')
+          button#btnSubmit.btn.btn-primary(type='submit') Publicar
