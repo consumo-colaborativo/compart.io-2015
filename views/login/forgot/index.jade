@@ -11,7 +11,7 @@ block body
     div.row
       div.col-sm-6
         div.page-header
-          h1 Forgot Your Password?
+          h1 ¿Olvidaste tu contraseña?
         div#forgot
 
   script(type='text/template', id='tmpl-forgot')
@@ -29,13 +29,13 @@ block body
         |<% } %>
       |<% if (!success) { %>
       div.form-group(class!='<%- errfor.email ? "has-error" : "" %>')
-        label Enter Your Email:
-        input.form-control(type='text', name='email', value!='<%= email %>')
+        //label Enter Your Email:
+        input.form-control(type='text', placeholder='Escribe aquí tu email', name='email', value!='<%= email %>')
         span.help-block <%- errfor.email %>
       |<% } %>
       div.form-group
         |<% if (!success) { %>
-        button.btn.btn-primary.btn-forgot(type='button') Send Reset
+        button.btn.btn-primary.btn-forgot(type='button') Enviar recordatorio
         |<% } %>
         |&nbsp;
-        a.btn.btn-link(href='/login/') Back to Login
+        a.btn.btn-link(href='/login/') Entrar
