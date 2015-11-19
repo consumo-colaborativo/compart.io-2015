@@ -15,10 +15,6 @@
   ],
   "dependencies": {
     "jquery": "latest",
-    "nested": "latest",
-    "bourbon": "latest",
-    "snap.svg": "latest",
-    "magnific-popup": "latest",
-    "tooltipster": "latest"
+    "bourbon": "latest"
   }
 }

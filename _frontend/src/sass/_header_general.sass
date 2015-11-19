@@ -1,0 +1,140 @@
+// *
+// 	background-color: rgba(0,0,0,0.1)
+header#header-list
+	padding: 20px 25px 20px 25px
+	@media (min-width: $media-tablet)
+		padding: 40px 50px 40px 50px
+	background-color: #fff
+	.row1
+		@include clearfix
+		.logo
+			@media (min-width: $media-tablet)
+				float: left
+				width: 50%
+			h1
+				display: inline-block
+				margin: 0 0 20px 0
+				@media (min-width: $media-tablet)
+					margin: 0 0 40px 0
+				width: 288px
+				height: 34px
+				@include retina-image('../_img/logo_cab_list', 288px 34px)
+				background-size: 288px 34px
+				text-indent: -100%
+				a
+					display: block
+					width: 288px
+					height: 34px
+		.user-box-container
+			@media (min-width: $media-tablet)
+				float: left
+				width: 50%
+				margin-top: 0
+				text-align: right
+			.user-box
+				display: inline-block
+				&.logged
+					a
+						display: inline-block
+						vertical-align: bottom
+						height: 35px
+						&.usuario
+							padding: 6px 0 0 0
+							margin-right: 10px
+							font-size: 13px
+							text-decoration: none
+							color: $color-marron-oscuro-1
+							&:hover
+								text-decoration: none
+								color: $color-marron-claro-3
+						&.perfil
+							padding-bottom: 2px
+							img
+								@include border-top-radius(50%)
+								@include border-bottom-radius(50%)
+						&.notifications
+							padding-top: 2px
+							text-decoration: none
+							line-height: 30px
+							color: $color-marron-oscuro-1
+							span
+								@include icon('before', 'notifications', true)
+								&:before
+									font-size: rem(33px)
+							&:hover
+								color: $color-marron-claro-3
+							&.on
+								padding-top: 6px
+								color: $color-alerta-1
+								span
+									@include icon('before', 'notifications_on', true)
+									&:before
+										font-size: rem(41.2px)
+										line-height: 30px
+								&:hover
+									color: $color-marron-claro-3
+							
+				&.not-logged
+					@media (min-width: $media-tablet)
+						padding-top: 5px
+					a
+						display: inline-block
+						margin: 0 24px 0 0
+						@media (min-width: $media-tablet)
+							margin: 0 0 0 24px
+						font-size: em(13px)
+						line-height: 1em
+						text-transform: uppercase
+						text-decoration: none
+						color: $color-marron-oscuro-1
+						&:hover
+							color: $color-marron-claro-2
+			
+	.phrase
+		display: block
+		@include clearfix
+		.part1
+			float: left
+		form
+			>span
+				font-size: em(13px)
+				color: #58331E
+				line-height: 18px
+				&.disabled
+					opacity: $opacity-disabled
+		.select
+			vertical-align: middle
+			margin: 0 3px
+			&.city
+				width: 202px
+				>.dropdown
+					width: 202px
+			&.action
+				width: 150px
+				>.dropdown
+					width: 150px
+		.input_search
+			vertical-align: middle
+		.categories
+			float: right
+			text-align: right
+			a
+				font-size: em(13px)
+				text-decoration: none
+				color: $color-marron-claro-3
+				&:hover
+					color: $color-marron-oscuro-1
+				span
+					@include icon('before', 'categories', true)
+					margin-left: 10px
+					&:before
+						font-size: em(17px)
+			&.disabled
+				opacity: $opacity-disabled
+				a:hover
+					color: $color-marron-claro-3
+			
+			&.opened
+				span
+					@include icon('before', 'categories_close', true)
+			

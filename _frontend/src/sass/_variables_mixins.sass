@@ -1,0 +1,66 @@
+/* variables and mixins */
+//@import url(http://fonts.googleapis.com/css?family=Alike);
+//@import //url(http://fonts.googleapis.com/css?family=Roboto);
+
+
+
+
+//  _  _   __   ____  __   __   ____  __    ____  ____ 
+// / )( \ / _\ (  _ \(  ) / _\ (  _ \(  )  (  __)/ ___)
+// \ \/ //    \ )   / )( /    \ ) _ (/ (_/\ ) _) \___ \
+//  \__/ \_/\_/(__\_)(__)\_/\_/(____/\____/(____)(____/
+//
+
+
+// Define your breakpoints
+$desktop: "only screen and (min-width : 840px)"
+$tablet: "only screen and (min-width : 760px)"
+$mobile: "only screen and (min-width : 450px)"
+
+$color-principal-1: #703917 //Color desplegables
+$color-marron-claro-1: #F4ECE1
+$color-marron-claro-2: #E1D4C3
+$color-marron-claro-3: #B89267 
+$color-marron-oscuro-1: #58331E
+$color-alerta-1: #F24706
+// $color-marron-oscuro-2: #E1D4C3
+
+// $color-principal-don-3: #D9BB96
+
+$margen-general: 40px
+
+//Tamaños
+// Mobile hasta->
+$media-tablet: 768px
+
+//  _  _  __  _  _  __  __ _  ____ 
+// ( \/ )(  )( \/ )(  )(  ( \/ ___)
+// / \/ \ )(  )  (  )( /    /\___ \
+// \_)(_/(__)(_/\_)(__)\_)__)(____/
+//
+
+
+
+@mixin boton($size: 1, $color: 1)
+	display: inline-block
+	text-decoration: none
+	@if $color == 1
+		@include linear-gradient(to bottom, #45474A, #000000)
+		color: #fff
+		&:hover
+			@include linear-gradient(to bottom, lighten(#45474A,30%), lighten(#000000,40%))
+	@if $color == 2
+		@include linear-gradient(to bottom, #AF7E4D, #723B18)
+		color: #fff
+		&:hover
+			@include linear-gradient(to bottom, lighten(#AF7E4D,30%), lighten(#723B18,40%))
+	@if $size == 1
+		padding: 5px 10px
+		font-size: rem(11px)
+		border-radius: 4px
+	@if $size == 2
+		padding: 9px 16px
+		font-size: rem(14px)
+		border-radius: 5px
+	span.icon
+		float: right

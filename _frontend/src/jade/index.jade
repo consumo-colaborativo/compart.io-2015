@@ -1,0 +1,116 @@
+extends layouts/inicio
+
+append mainVars
+	- currentPage = 'index'
+	- pageTitle = 'Compart.io'
+	- metaDesc = 'Descripción.'
+
+block content
+	header#header-home
+		div.background1
+			div.background2
+				.col1
+					h1
+						span Compartio
+					p
+						strong ¡Bienvenido!
+						br
+						| Este es un espacio donde buscar lo que necesitas y dar lo que te sobra.
+					select.not-selected
+						option Elije tu ciudad
+						option Albacete
+						option Córdoba
+				.col2
+					#userpanel
+						.not-logged
+							a(href="#") Entrar
+							a(href="#") Crear cuenta
+
+
+	section#contenido-home1
+		div
+			.col1
+				img(src="_img/home_muneco1.gif" width="226" height="135" style="margin-top: 14px")
+				h3 Da lo que te sobra...
+				p Porque todos tenemos en casa cosas que nos sobran, que guardamos por si acaso o que nos da pena tirar. Aquí te damos la posibilidad de sacarles provecho de forma solidaria y de paso, liberar tu trastero. Qué bien ¿no?
+			.col2
+				img(src="_img/home_muneco2.gif" width="113" height="149")
+				h3 ...y busca lo que necesitas.
+				p Tus niños crecen y sus necesidades con ellas, te acabas de emancipar,  tienes que mudarte, o tienes oficina nueva... Aquí puedes encontrar lo que te haga falta sin nada en cambio. Así es de maja la gente y así es el consumo colaborativo.
+			.col3
+				img(src="_img/home_muneco3.gif" width="238" height="149")
+				h3 un proyecto colaborativo
+				p Compart.io colabora a transformar el mundo hacia una forma de vida y consumo más responsable, sostenible y solidario. Es un proyecto social abierto, libre y sin ánimo de lucro, desarrollado por voluntarios. ¿Quieres participar? <a href="#">Saber más</a>.
+
+	section#contenido-home2
+		div
+			.col1
+				h5 Últimos compartios entregados:
+				.svgmask
+					svg(height="0" width="0")
+							defs
+								mask#bocadillo
+									path(fill="#FFFFFF", width='116', height='116', d="M11.9,0C11.9,0,0,0,0,11.9v68.8c0,0,0,11.9,11.9,11.9h44.7c0,0,11.9,0,19.2,9.4l9.4,12.2c0,0,1.1,1.5,2,1.5 h0c0.5,0,0.9-0.6,0.8-2.5l-0.5-8.7c0,0-0.7-11.9,11.3-11.9h5c0,0,11.9,0,11.9-11.9V11.9c0,0,0-11.9-11.9-11.9H11.9z")
+				div.svgs
+					div
+						a(href="#")
+							svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+								image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+					div
+						a(href="#")
+							svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+								image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+					div
+						a(href="#")
+							svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+								image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+					div
+						a(href="#")
+							svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+								image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+					div
+						a(href="#")
+							svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+								image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+					div
+						a(href="#")
+							svg(preserveaspectratio='xMinYMin', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='116', height='116', viewbox='0 0 116 116')
+								image#canTop(mask='url(#bocadillo)', width='116', height='116', xlink:href='http://lorempixel.com/232/232/')
+
+			.col2
+				h5 Vídeo de presentación:
+				a.popupvideo(href="https://vimeo.com/29226795")
+					img(src="_img/video_thumb.jpg")
+					span
+						span
+							span
+	footer
+		div
+			.col1
+				ul.social
+					li.facebook
+						a(href="#")
+							span
+							span Facebook
+					li.twitter
+						a(href="#")
+							span
+							span Twitter
+				ul.corp
+					li
+						a(href="#")
+							| El proyecto
+					li
+						a(href="#")
+							| Contacto
+			.col2
+				ul
+					li
+						a(href="#").facebook
+							| Política de confidencialidad
+					li
+						a(href="#").facebook
+							| Aviso legal
+					li
+						a(href="#").facebook
+							| Política de cookies

@@ -1,0 +1,232 @@
+// Header
+header#header-list
+	.row1
+		.logo
+			h1 
+				a(href="/")
+					| Compartio
+		.user-box-container
+			if usuario
+				.user-box.logged
+					a.usuario(href="#")
+						| Hola Osvaldo
+					a.perfil(href="#")
+						img(src="s3imagenes/avatar.jpg" width="33" height="33")
+					a.notifications(href="#")
+						span
+					a.notifications.on(href="#")
+						span
+			else
+				.user-box.not-logged
+					a.login(href="#")
+						| Entra
+					a.register(href="#")
+						| Crea tu cuenta
+	.phrase
+		.part1
+			form
+				span En 
+				.select.city.selected
+					input(type="hidden" name="city" value="cordoba")
+					.button
+						a(href="#")
+							| Córdoba
+							span
+					.dropdown.nano
+						ul.nano-content
+							li
+								a(href="alava")
+									| Álava
+							li
+								a(href="albacete")
+									| Albacete
+							li
+								a(href="#")
+									| Alicante
+							li
+								a(href="#")
+									| Almería
+							li
+								a(href="#")
+									| Asturias
+							li
+								a(href="#")
+									| Ávila
+							li
+								a(href="#")
+									| Badajoz
+							li
+								a(href="#")
+									| Barcelona
+							li
+								a(href="#")
+									| Burgos
+							li
+								a(href="#")
+									| Cáceres
+							li
+								a(href="#")
+									| Cádiz
+							li
+								a(href="#")
+									| Cantabria
+							li
+								a(href="#")
+									| Castellón
+							li
+								a(href="#")
+									| Ceuta
+							li
+								a(href="#")
+									| Ciudad Real
+							li
+								a.selected(href="#")
+									| Córdoba
+							li
+								a(href="#")
+									| Cuenca
+							li
+								a(href="#")
+									| Girona
+							li
+								a(href="#")
+									| Las Palmas
+							li
+								a(href="#")
+									| Granada
+							li
+								a(href="#")
+									| Guadalajara
+							li
+								a(href="#")
+									| Guipúzcoa
+							li
+								a(href="#")
+									| Huelva
+							li
+								a(href="#")
+									| Huesca
+							li
+								a(href="#")
+									| Illes Balears
+							li
+								a(href="#")
+									| Jaén
+							li
+								a(href="#")
+									| A Coruña
+							li
+								a(href="#")
+									| La Rioja
+							li
+								a(href="#")
+									| León
+							li
+								a(href="#")
+									| Lleida
+							li
+								a(href="#")
+									| Lugo
+							li
+								a(href="#")
+									| Madrid
+							li
+								a(href="#")
+									| Málaga
+							li
+								a(href="#")
+									| Melilla
+							li
+								a(href="#")
+									| Murcia
+							li
+								a(href="#")
+									| Navarra
+							li
+								a(href="#")
+									| Ourense
+							li
+								a(href="#")
+									| Palencia
+							li
+								a(href="#")
+									| Pontevedra
+							li
+								a(href="#")
+									| Salamanca
+							li
+								a(href="#")
+									| Segovia
+							li
+								a(href="#")
+									| Sevilla
+							li
+								a(href="#")
+									| Soria
+							li
+								a(href="#")
+									| Tarragona
+							li
+								a(href="#")
+									| Santa Cruz de Tenerife
+							li
+								a(href="#")
+									| Teruel
+							li
+								a(href="#")
+									| Toledo
+							li
+								a(href="#")
+									| Valencia
+							li
+								a(href="#")
+									| Valladolid
+							li
+								a(href="#")
+									| Vizcaya
+							li
+								a(href="#")
+									| Zamora
+							li
+								a(href="#")
+									| Zaragoza
+							li.link
+								a(href="#")
+									| ¿No ves tu ciudad?
+				.select.action
+					input(type="hidden" name="action" value="")
+					.button
+						a(href="#")
+							| ¿Das o necesitas?
+							span
+					.dropdown
+						ul
+							li
+								a(href="give")
+									| doy
+							li
+								a(href="need")
+									| necesito
+
+				if busqueda
+					span  un/una
+					.input_search
+						input(type="text" placeholder="Escribe aquí...")
+						button
+							span
+				else
+					span.disabled  un/una
+					.input_search
+						input(type="text" placeholder="Escribe aquí..." disabled)
+						button(disabled)
+							span
+		if categorias
+			.categories
+				a(href="#")
+					| Mostrar las categorías
+					span
+		else
+			.categories.disabled
+				a
+					| Mostrar las categorías
+					span
