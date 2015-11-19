@@ -51,3 +51,5 @@ config.js
 
 _frontend/.sass-cache
 _frontend/bower_components
+
+Icon*
