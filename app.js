@@ -36,7 +36,6 @@ app.db.once('open', function () {
 //config data models (load models.js file)
 require('./models')(app, mongoose);
 
-
 //settings
 app.disable('x-powered-by');
 app.set('port', config.port);
@@ -66,11 +65,10 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(csrf({ cookie: { signed: true } }));
-//app.use(csrf());
+//app.use(csrf({ cookie: { signed: true } }));
+app.use(csrf());
+
 helmet(app);
-
-
 
 //response locals
 app.use(function(req, res, next) {
@@ -108,8 +106,12 @@ by just asking the app for a new one req.app.utility.workflow(req, res).
 The workflows we create live and die during each request/response 
 life-cycle, hence they are re-created when another subsequent request is made.
 */
+  
 
 //listen up
-app.server.listen(app.config.port, function(){
+var server = app.server.listen(app.config.port, function(){
   //and... we're live
+  var host = server.address().address;
+  var port = server.address().port;  
+  console.log('http://%s:%s', host, port);
 });
