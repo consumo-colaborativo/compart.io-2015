@@ -34,7 +34,7 @@ var /* BEGIN ENVIRONMENT CONFIG */
     plumber             = require('gulp-plumber');
  
 var onError = function (err) { beep([0, 0, 0,0,0]); gulputil.log(gulputil.colors.green(err)); };
-
+ 
 /**
  * Check to see if --vars were set.
  */

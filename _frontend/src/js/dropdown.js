@@ -28,7 +28,7 @@
 				$('.select.open').removeClass('open');
 				select.addClass("open");
 				//Scroll
-				$(".nano").nanoScroller();
+				$(this).find(".nano").nanoScroller();
 			}
 		});
 		//Coloca el seleccionado en el desplegable y rellena el input

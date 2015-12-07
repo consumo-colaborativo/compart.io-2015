@@ -36,6 +36,24 @@ $icons: (
     twitter: '\EA0B'
 );
 
+@mixin icon($iconname, $size: null){
+    display: inline-block;
+    font-family: 'iconos';
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-transform: none;
+    &:before{
+        content: map-get($icons,$iconname);
+        @if($size){
+            font-size: $size;
+        }
+    }
+}
+
 @each $name, $icon in $icons {
     .icon-#{$name}:before {
         content: $icon;

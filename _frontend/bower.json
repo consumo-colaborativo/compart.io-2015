@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "jquery": "latest",
-    "bourbon": "latest"
+    "bourbon": "latest",
+    "nanoscroller": "~0.8.7"
   }
 }

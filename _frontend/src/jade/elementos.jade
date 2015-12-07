@@ -12,11 +12,18 @@ html(lang='en')
 		h2 Cabecera
 		h3 Sin búsqueda ni categorías ni usuario
 		div(style="margin: 0 -40px;")
+			-mostrar_frase = false
+			include layouts/default-partials/header
+		h3 Con búsqueda y categorías desactivadas. Usuario activo
+		div(style="margin: 0 -40px;")
+			-mostrar_frase = true
 			-busqueda = false
 			-categorias = false
+			-usuario = true
 			include layouts/default-partials/header
 		h3 Con búsquedas, categorías y usuario activo
 		div(style="margin: 0 -40px;")
+			-mostrar_frase = true
 			-busqueda = true
 			-categorias = true
 			-usuario = true
