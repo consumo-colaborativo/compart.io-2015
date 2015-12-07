@@ -3,7 +3,8 @@ extends layouts/inicio
 append mainVars
 	- currentPage = 'index'
 	- pageTitle = 'Compart.io'
-	- metaDesc = 'Descripción.'
+	- metaDesc = 'Descripción corta.'
+	- metaDescLog = 'Descripción larga.'
 
 block content
 	header#header-home
@@ -83,7 +84,7 @@ block content
 					img(src="_img/video_thumb.jpg")
 					span
 						span
-							span
+							span.icon.icon-flecha1-right
 	footer
 		div
 			.col1

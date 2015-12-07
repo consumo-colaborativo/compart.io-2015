@@ -197,7 +197,8 @@ gulp.task('vendor', ['scripts_vendor']);
  */
 gulp.task('watch', ['build'], function () {
     browsersync({
-        proxy: conf_url_dest
+        proxy: conf_url_dest,
+        open: 'external'
     });
     gulp.watch('src/sass/*.sass', ['style']);
     gulp.watch('src/sass/*.scss', ['style']);

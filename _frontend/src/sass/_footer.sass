@@ -29,14 +29,20 @@ footer
 				&.facebook
 					a
 						span:first-child
-							@include icon('before', 'facebook', true)
+							/* @include icon('before', 'facebook', true) */
+							//TODO
+							@extend icon
+							@extend icon-facebook
 							font-size: 24px
 						span:last-child
 							display: none
 				&.twitter
 					a
 						span:first-child
-							@include icon('before', 'twitter', true)
+							//@include icon('before', 'twitter', true)
+							//TODO
+							@extend icon
+							@extend icon-twitter
 							font-size: 24px
 						span:last-child
 							display: none

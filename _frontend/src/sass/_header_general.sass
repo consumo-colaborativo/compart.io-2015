@@ -58,7 +58,9 @@ header#header-list
 							line-height: 30px
 							color: $color-marron-oscuro-1
 							span
-								@include icon('before', 'notifications', true)
+								//@include icon('before', 'notifications', true)
+								@extend icon
+								@extend icon-notifications
 								&:before
 									font-size: rem(33px)
 							&:hover
@@ -67,7 +69,9 @@ header#header-list
 								padding-top: 6px
 								color: $color-alerta-1
 								span
-									@include icon('before', 'notifications_on', true)
+									//@include icon('before', 'notifications_on', true)
+									@extend icon
+									@extend icon-notifications_on
 									&:before
 										font-size: rem(41.2px)
 										line-height: 30px
@@ -125,7 +129,9 @@ header#header-list
 				&:hover
 					color: $color-marron-oscuro-1
 				span
-					@include icon('before', 'categories', true)
+					//@include icon('before', 'categories', true)
+					@extend icon
+					@extend icon-categories
 					margin-left: 10px
 					&:before
 						font-size: em(17px)
@@ -136,5 +142,7 @@ header#header-list
 			
 			&.opened
 				span
-					@include icon('before', 'categories_close', true)
+					//@include icon('before', 'categories_close', true)
+					@extend icon
+					@extend icon-categories_close
 			

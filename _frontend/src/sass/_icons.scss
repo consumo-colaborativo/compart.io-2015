@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'iconos';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../_fonts/iconos.eot');
+    src: url('../_fonts/iconos.woff2') format('woff2'),
+         url('../_fonts/iconos.woff') format('woff'),
+         url('../_fonts/iconos.ttf') format('truetype'),
+         url('../_fonts/iconos.eot?#iefix') format('embedded-opentype');
+}
+
+.icon[class^="icon-"],
+.icon[class*=" icon-"] {
+    display: inline-block;
+    font-family: 'iconos';
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-transform: none;
+}
+
+$icons: (
+    busqueda: '\EA01',
+    categories: '\EA02',
+    categories_close: '\EA03',
+    facebook: '\EA04',
+    flecha1-down: '\EA05',
+    flecha1-left: '\EA06',
+    flecha1-right: '\EA07',
+    flecha1-up: '\EA08',
+    notifications: '\EA09',
+    notifications_on: '\EA0A',
+    twitter: '\EA0B'
+);
+
+@each $name, $icon in $icons {
+    .icon-#{$name}:before {
+        content: $icon;
+    }
+}
