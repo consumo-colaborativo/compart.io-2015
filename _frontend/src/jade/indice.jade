@@ -1,5 +1,5 @@
 doctype html
-html(lang='es' ng-app="Compartio")
+html(lang='en')
 	//    ___  __   _  _  ____   __   ____  ____    __  __  
 	//   / __)/  \ ( \/ )(  _ \ / _\ (  _ \(_  _)  (  )/  \ 
 	//  ( (__(  O )/ \/ \ ) __//    \ )   /  )(  _  )((  O )
@@ -7,9 +7,14 @@ html(lang='es' ng-app="Compartio")
 	//
 		
 	include layouts/default-partials/html-head
-	body(style="padding: 40px;" ng-controller="MainCtrl as main")
-		a(ui-sref="city({city_slug: 'jolala'})") Ir a ciudad jolala
-		div(ui-view="header")
-		div(ui-view="content")
-			| aaaa
+	body(style="padding: 40px; background-color: #ccc;")
+		h1 Índice de plantillas Compart.io
+		ol
+			li
+				a(href="elementos.html") Elementos generales
+			li
+				a(href="inicio.html") Inicio
+
+
+
 		include layouts/default-partials/scripts

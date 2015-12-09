@@ -53,3 +53,4 @@ _frontend/.sass-cache
 _frontend/bower_components
 
 Icon*
+_frontend/ftpconfig.json

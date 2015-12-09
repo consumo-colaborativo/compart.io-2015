@@ -16,6 +16,8 @@
   "dependencies": {
     "jquery": "latest",
     "bourbon": "latest",
-    "nanoscroller": "~0.8.7"
+    "nanoscroller": "~0.8.7",
+    "angular": "1.5.0-beta.2",
+    "angular-ui-router": "~0.2.15"
   }
 }

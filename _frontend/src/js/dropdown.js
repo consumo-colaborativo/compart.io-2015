@@ -11,13 +11,14 @@
 	$(dropdownInicia);
 
 	function dropdownInicia(){
-
 		// Cierra popup al clickar fuera
 		$('html').click(function() {
 			$('.select.open').removeClass('open');
 		});
 
 		$('.select:not(.disabled)').click(function(e){
+			console.log("abriendo");
+
 			e.stopPropagation();
 			e.preventDefault();
 			var select = $(e.target).parents('.select');
@@ -40,7 +41,10 @@
 			$(e.target).parents('.select').find('.button a').html(text+'<span></span>');
 			$(e.target).parents('.select').find('input').val(slug);
 			$(e.target).parents('.select').find('form').submit();
-		})
+		});
 
 	}
 }(jQuery));
+function dropdownChange(){
+	console.log("j2j2j2j2");
+}

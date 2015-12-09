@@ -15,6 +15,7 @@ var /* BEGIN ENVIRONMENT CONFIG */
     gulp                = require('gulp'),
     gulpif              = require('gulp-if'),
     gulputil            = require('gulp-util'),
+    rename              = require('gulp-rename'),
     jade                = require('gulp-jade'),
     path                = require('path'),
     reload              = browsersync.reload,
@@ -31,7 +32,9 @@ var /* BEGIN ENVIRONMENT CONFIG */
     autoprefixer        = require('gulp-autoprefixer'),
     beep                = require('beepbeep'),
     jshint              = require('gulp-jshint'),
-    plumber             = require('gulp-plumber');
+    plumber             = require('gulp-plumber'),
+    ftp                 = require('vinyl-ftp');
+var ftpconfig = require('./ftpconfig.json');
  
 var onError = function (err) { beep([0, 0, 0,0,0]); gulputil.log(gulputil.colors.green(err)); };
  
@@ -60,6 +63,18 @@ gulp.task('style', function () {
     return gulp.src('./src/sass/*.sass')
         .pipe(plumber({ errorHandler: onError }))
         .pipe(changed(conf_style_dest))
+        .pipe(sass({ 'indentedSyntax': true}))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest(conf_style_dest))
+        .pipe(reload({stream:true}));
+});
+gulp.task('style_prod', function () {
+    return gulp.src('./src/sass/*.sass')
+        .pipe(plumber({ errorHandler: onError }))
+        .pipe(changed(conf_style_dest))
         .pipe(sass({ 'indentedSyntax': true, 'outputStyle': 'compressed'}))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
@@ -74,7 +89,7 @@ gulp.task('style', function () {
  * Jade to html.
  */
 gulp.task('jade', function () {
-    return gulp.src('./src/jade/*.jade')
+    return gulp.src('./src/jade/**/*.jade')
         .pipe(plumber({ errorHandler: onError }))
         .pipe(jade({
             'pretty': true
@@ -102,7 +117,17 @@ gulp.task('images', function () {
  * Compress javascript.
  */
 gulp.task('scripts', function () {
-    return gulp.src('./src/js/*.js')
+    return gulp.src('./src/js/**/*.js')
+        .pipe(plumber({ errorHandler: onError }))
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(concat('main.js'))
+        .pipe(changed(conf_script_dest))
+        .pipe(gulp.dest(conf_script_dest))
+        .pipe(reload({stream:true}));
+});
+gulp.task('scripts_prod', function () {
+    return gulp.src('./src/js/**/*.js')
         .pipe(plumber({ errorHandler: onError }))
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
@@ -112,6 +137,7 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest(conf_script_dest))
         .pipe(reload({stream:true}));
 });
+
 /**
  * Generate javascript brom bower installation.
  */
@@ -121,7 +147,15 @@ gulp.task('scripts_vendor', function () {
     return gulp.src(files)
         .pipe(plumber({ errorHandler: onError }))
         .pipe(concat('vendor.js'))
-        // .pipe(changed(conf_script_dest))
+        .pipe(gulp.dest(conf_script_dest))
+        .pipe(reload({stream:true}));
+});
+gulp.task('scripts_vendor_prod', function () {
+    var files = mainBowerFiles('**/*.js',{debugging : true});
+    files.push('src/js/vendor/*.js');
+    return gulp.src(files)
+        .pipe(plumber({ errorHandler: onError }))
+        .pipe(concat('vendor.js'))
         .pipe(uglify()) //DEV
         .pipe(gulp.dest(conf_script_dest))
         .pipe(reload({stream:true}));
@@ -161,14 +195,15 @@ gulp.task('icons_build', function(){
 
 
 // /**
-//  * Copy dynamic images.
+//  * Copy htacess.
 //  */
 
 
-// gulp.task('copydynamicimages', function() {
-//    gulp.src('./src/img_dinamicas/**/*.*')
-//    .pipe(gulp.dest(conf_dynamic_images_dest));
-// });
+gulp.task('copy_htaccess', function() {
+   gulp.src('./src/htaccess')
+   .pipe(rename('.htaccess'))
+   .pipe(gulp.dest('public/'));
+});
 
 
 /**
@@ -182,14 +217,64 @@ gulp.task('copyfavicons', function() {
 });
 
 
+
+/**
+* FTP UPLOAD
+*/
+/** Configuration **/
+
+
+var port = 21;  
+var localFilesGlob = ['./public/**/*.*'];  
+var remoteFolder = '/public_html/p/compartio';
+
+
+// helper function to build an FTP connection based on our configuration
+function getFtpConnection() {  
+    return ftp.create({
+        host: ftpconfig.host,
+        port: port,
+        user: ftpconfig.user,
+        password: ftpconfig.password,
+        parallel: 5,
+        log: gulputil.log
+    });
+}
+
+
+
+/**
+ * Deploy task.
+ * Copies the new files to the server
+ *
+ * Usage: `FTP_USER=someuser FTP_PWD=somepwd gulp ftp-deploy`
+ */
+gulp.task('ftp-deploy', function() {
+
+    var conn = getFtpConnection();
+
+    return gulp.src(localFilesGlob, { base: './public', buffer: false })
+        .pipe( conn.newer( remoteFolder ) ) // only upload newer files 
+        .pipe( conn.dest( remoteFolder ) )
+    ;
+});
+
+
+
+
+
+
+
 /**
  * All build tasks.
  */
-gulp.task('build', ['icons_build', 'copyfavicons', 'style', 'jade', 'images', 'vendor', 'scripts']);
+gulp.task('build', ['scripts_vendor', 'copy_htaccess', 'icons_build', 'copyfavicons', 'style', 'jade', 'images', 'vendor', 'scripts']);
+gulp.task('buildprod', ['scripts_vendor_prod', 'copy_htaccess', 'icons_build', 'copyfavicons', 'style_prod', 'jade', 'images', 'vendor', 'scripts_prod']);
 
 gulp.task('icons', ['icons_build', 'style']);
 
 gulp.task('vendor', ['scripts_vendor']);
+gulp.task('vendorprod', ['scripts_vendor_prod']);
 
 
 /**
@@ -203,9 +288,9 @@ gulp.task('watch', ['build'], function () {
     gulp.watch('src/sass/*.sass', ['style']);
     gulp.watch('src/sass/*.scss', ['style']);
     gulp.watch('src/jade/**/*.jade', ['jade']);
-    gulp.watch('src/js/*.js', ['scripts']);
+    gulp.watch('src/js/**/*.js', ['scripts']);
     gulp.watch('src/icons/*.svg', ['icons']);
-    gulp.watch('src/img/*.*', ['images']);
+    gulp.watch('src/img/**/*.*', ['images']);
     // gulp.watch('./dist/*html').on('change', reload);
     gulputil.log(gulputil.colors.inverse("Te estoy vigilando"));
 });
