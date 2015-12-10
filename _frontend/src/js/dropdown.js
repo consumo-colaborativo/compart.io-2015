@@ -1,6 +1,6 @@
 /*jslint browser:true */
 /*global $, jQuery*/
-(function ($) {
+/*(function ($) {
   "use strict";
   //  ____  ____   __  ____  ____   __   _  _  __ _ 
 	// (    \(  _ \ /  \(  _ \(    \ /  \ / )( \(  ( \
@@ -47,4 +47,4 @@
 }(jQuery));
 function dropdownChange(){
 	console.log("j2j2j2j2");
-}
+}*/

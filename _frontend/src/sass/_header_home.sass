@@ -23,7 +23,7 @@ header#header-home
 			@media #{$mobile}
 				text-align: left
 			h1
-
+				position: relative
 				$width: 273px
 				$height: 32px
 				display: inline-block
@@ -32,7 +32,15 @@ header#header-home
 				margin: 0
 				background: url(../_img/logo.png) no-repeat center center
 				background-size: $width $height
-				text-indent: -999px
+				a,
+				span
+					position: absolute
+					top: 0
+					right: 0
+					bottom: 0
+					left: 0
+					text-indent: -999px
+
 			p
 				max-width: 340px
 				font-size: 17px

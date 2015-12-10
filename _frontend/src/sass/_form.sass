@@ -10,15 +10,16 @@
 		a
 			cursor: default
 	>.button
-		a
-			display: block
-			padding: 8px 10px 8px 10px
-			text-decoration: none
-			color: $color-marron-claro-1
-			background-color: $color-marron-oscuro-1
-			@include border-top-radius(4px)
-			@include border-bottom-radius(4px)
-			span
+		display: block
+		padding: 8px 10px 8px 10px
+		text-decoration: none
+		color: $color-marron-claro-1
+		background-color: $color-marron-oscuro-1
+		cursor: pointer
+		@include border-top-radius(4px)
+		@include border-bottom-radius(4px)
+		>span
+			>span
 				@include icon('flecha1-down',em(22px))
 				float: right
 				margin-top: 2px
@@ -52,21 +53,19 @@
 			background-color: $color-marron-claro-1
 			@include border-bottom-radius(4px)
 			li
-				a
-					display: block
-					padding: 8px 10px 8px 10px
-					text-decoration: none
-					white-space: nowrap
-					color: $color-marron-oscuro-1
-					&.selected,
-					&:hover
-						background-color: $color-marron-claro-2
+				display: block
+				padding: 8px 10px 8px 10px
+				text-decoration: none
+				white-space: nowrap
+				color: $color-marron-oscuro-1
+				cursor: pointer
+				&.selected,
+				&:hover
+					background-color: $color-marron-claro-2
 				&.link
-					a
-						font-weight: 700
+					font-weight: 700
 				&:last-child
-					a
-						@include border-bottom-radius(5px)
+					@include border-bottom-radius(5px)
 			
 					
 	&.open

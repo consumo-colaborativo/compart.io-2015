@@ -1,6 +1,6 @@
 /*jslint browser:true */
 /*global $, jQuery*/
-(function ($) {
+/*(function ($) {
   "use strict";
   //  ____  ____   __  ____  ____   __   _  _  __ _ 
 	// (    \(  _ \ /  \(  _ \(    \ /  \ / )( \(  ( \
@@ -47,7 +47,7 @@
 }(jQuery));
 function dropdownChange(){
 	console.log("j2j2j2j2");
-}
+}*/
 /*jslint browser:true */
 /*global $, jQuery*/
 (function ($) {
@@ -80,10 +80,25 @@ function dropdownChange(){
   	$('.popupvideo').magnificPopup({type:'iframe'});
 	}
 }(jQuery));
+//Modulos
+// Compartio
+// Compartio.common
+// 	Variables:
+//		cities: Listado de ciudades
+//		selectedCity: Ciudad seleccionada
+// Compartio.city
+// Compartio.home
+
+
+
+
 var compartioModule = angular.module('Compartio',
 	[
 		'ui.router',
-		'Compartio.Common'
+		'angular-storage',
+		'Compartio.Common',
+		'Compartio.City'
+
 		//'ngRoute',
 		//'ngAnimate',
 		//'firebase',
@@ -106,8 +121,7 @@ compartioModule.config(function($stateProvider, $urlRouterProvider, $locationPro
 						url: '/',
 						views:{
 							'header':{
-								controller: 'HomeCtrl',
-								templateUrl: '/partials/partial-header-home.html'
+								templateUrl: '/partials/partial-header.html'
 							},
 							'content': {
 								controller: 'HomeCtrl',
@@ -119,8 +133,12 @@ compartioModule.config(function($stateProvider, $urlRouterProvider, $locationPro
 				.state('city', {
 						url: '/:city_slug',
 						views:{
+							'header':{
+								templateUrl: '/partials/partial-header.html'
+							},
 							'content': {
-								controller: 'HomeCtrl'
+								controller: 'CityCtrl',
+								templateUrl: '/partials/partial-city.html'
 							},
 						}
 				});
@@ -414,10 +432,105 @@ compartioModule.config(function($stateProvider, $urlRouterProvider, $locationPro
 		$urlRouterProvider.otherwise('/');
 		$locationProvider.html5Mode(true);
 });
+
+
 angular.module('Compartio.Common', []);
 
+angular.module('Compartio.City', ['Compartio.Common']);
 angular.module('Compartio.Common')
-	.directive("dropdown", function($rootScope) {
+  .controller('HeaderCtrl', function(
+    CitiesModel,
+    $rootScope,
+    $scope,
+    $location,
+    $state,
+    DebugService
+  ) { //, LoginService
+  DebugService.log("Entering HeaderCtrl");
+  var header = this;
+  //Le dice a la cabecera si está en la home para mostrar una y otra
+	if($state.current.name === 'home'){
+		header.design = 'home';
+	} else {
+		header.design = 'list';
+	}
+
+  //main.currentUser = null;
+
+  //Cabecera
+  //Desplegable ciudades
+  // $rootScope.cities = [];
+  // CitiesModel.all()
+  //     .then(function (cities) {
+  //         $rootScope.cities = cities;
+  //     });
+  // $rootScope.selectedCity = "";
+  // $scope.cityChange = function(item){
+  //     // $location.go('city', 1)
+  //     if(item){
+  //         DebugService.log("Cambiando de ciudad");
+  //         $state.go('city', {'city_slug': item.slug});
+  //     }
+  // };
+  header.cityChange = function(item){
+    if(item){
+      console.log("Hay item", item);
+      if(item['slug']!=''){
+        var oldCity = $rootScope.selectedCity;
+        $rootScope.selectedCity = _.findWhere($rootScope.cities, {'slug': item['slug']});
+        DebugService.log("Cambiando a ciudad " + $rootScope.selectedCity.name);
+        //Cambia de ciudad si es diferente a la anterior
+        if(oldCity != $rootScope.selectedCity){
+          $state.go('city', {'city_slug': $rootScope.selectedCity.slug});
+        }
+      }
+    }
+  };
+})
+.run(function($rootScope) {
+  angular.element(document).on("click", function(e) {
+      $rootScope.$broadcast("documentClicked", angular.element(e.target));
+  });
+});
+angular.module('Compartio.Common')
+  .controller('MainCtrl', function(
+    CitiesModel,
+    $rootScope,
+    $scope,
+    $location,
+    $state,
+    DebugService
+  ) { //, LoginService
+  DebugService.log("Entering MainCtrl");
+  var main = this;
+
+  //main.currentUser = null;
+
+  $rootScope.cities = typeof($rootScope.cities) == 'undefined' ? [] : $rootScope.cities;
+  $rootScope.selectedCity = typeof($rootScope.selectedCity) == 'undefined' ? {
+    slug: ''
+  } : $rootScope.selectedCity;
+  DebugService.log("Ciudad: "  + $rootScope.selectedCity.slug);
+  CitiesModel.all()
+    .then(function (cities) {
+      $rootScope.cities = cities;
+    });
+
+
+})
+.run(function($rootScope, $state) {
+  angular.element(document).on("click", function(e) {
+      $rootScope.$broadcast("documentClicked", angular.element(e.target));
+  });
+  $rootScope.$on('$stateChangeStart', function(event, toState, fromState){
+    console.log(toState.name==="city"?"YRHA":"");
+  });
+});
+angular.module('Compartio.Common')
+	.directive("dropdown", function(
+		$rootScope,
+		DebugService
+		) {
 	return {
 		restrict: "E",
 		templateUrl: "partials/directive-dropdown.html",
@@ -425,98 +538,75 @@ angular.module('Compartio.Common')
 			placeholder: "@",
 			list: "=",
 			selected: "=",
-			property: "@"
+			property: "@",
+			callback: "&" //función con un argumento args
 		},
 		link: function(scope) {
-		// 	scope.listVisible = false;
-		// 	scope.isPlaceholder = true;
+			scope.listVisible = false;
+			scope.isPlaceholder = true;
+			DebugService.log("Selected "+scope.selected);
+			scope.select = function(item) {
+				scope.isPlaceholder = false;
+				scope.selected = item;
+				scope.listVisible = false;
+			};
 
-		// 	scope.select = function(item) {
-		// 		scope.isPlaceholder = false;
-		// 		scope.selected = item;
-		// 	};
+			scope.isSelected = function(item) {
+				return item[scope.property] === scope.selected[scope.property];
+			};
 
-		// 	scope.isSelected = function(item) {
-		// 		return item[scope.property] === scope.selected[scope.property];
-		// 	};
+			scope.show = function() {
+				scope.listVisible = true;
+			};
+			//Para cuando clicka fuera, se manda cerrar
+			$rootScope.$on("documentClicked", function(inner, target) {
+				if (!$(target[0]).is(".select.open") && $(target[0]).parents(".select.open").length === 0)
+					scope.$apply(function() {
+						scope.listVisible = false;
+					});
+			});
 
-		// 	scope.show = function() {
-		// 		scope.listVisible = true;
-		// 	};
-
-		// 	$rootScope.$on("documentClicked", function(inner, target) {
-		// 		console.log($(target[0]).is(".dropdown-display.clicked") || $(target[0]).parents(".dropdown-display.clicked").length > 0);
-		// 		if (!$(target[0]).is(".dropdown-display.clicked") && !$(target[0]).parents(".dropdown-display.clicked").length > 0)
-		// 			scope.$apply(function() {
-		// 				scope.listVisible = false;
-		// 			});
-		// 	});
-
-		// 	scope.$watch("selected", function(value) {
-		// 		scope.isPlaceholder = scope.selected[scope.property] === undefined;
-		// 		scope.display = scope.selected[scope.property];
-		// 	});
+			scope.$watch("selected", function(value) {
+				scope.isPlaceholder = scope.selected[scope.property] === undefined;
+				scope.display = scope.selected[scope.property];
+				//Si tiene callback, lo ejecuta
+				scope.callback({item: value});
+			});
 		}
-	}
+	};
 });
 angular.module('Compartio.Common')
-  .controller('MainCtrl', function($scope, $location) { //, LoginService
-    var main = this;
-    main.currentUser = null;
-    console.log("MainCtrl");
-
-    // $scope.$on('onCurrentUserId', function (ctx, id) {
-    //     main.currentUser = LoginService.getCurrentUser();
-    // });
-
-    // main.logout = function() {
-    //     LoginService.logout();
-    //     main.currentUser = null;
-    // };
-}
-);
+.service('CitiesModel',
+  function ($http) { //, UtilsService
+    var service = this;
+    service.all = function () {
+      return $http.get('https://compartiotest.firebaseio.com/cities.json', { cache: true})
+        .then(
+          function(result) {
+            return result.data;
+        }
+    );
+  };
+}); 
 angular.module('Compartio.Common')
-    .service('CitiesModel',
-        function ($http, EndpointConfigService) { //, UtilsService
-            var service = this,
-                MODEL = '/provincia/';
+	.constant('DEBUG', {
+		'active': true
+	})
+	.service('DebugService', function(DEBUG) {
+			var service = this;
+			service.log = function(txt){
+				var currentdate = new Date(),
+				txtdate = currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds() + ". ";
+				if(DEBUG.active){
+					console.log("%c"+txtdate+"%s", "color: blue", txt);
+				}
+			};
 
-            service.all = function () {
-                return $http.get(EndpointConfigService.getUrl(
-                    MODEL + EndpointConfigService.getCurrentFormat()))
-                        .then(
-                            function(result) {
-                                //return UtilsService.objectToArray(result);
-                                console.log("dldldld");
-                            }
-                        );
-            };
+	});
 
-            service.fetch = function (story_id) {
-                return $http.get(
-                    EndpointConfigService.getUrlForId(MODEL, story_id)
-                );
-            };
-
-            service.create = function (story) {
-                return $http.post(
-                    EndpointConfigService.getUrl(MODEL + EndpointConfigService.getCurrentFormat()), story
-                );
-            };
-
-            service.update = function (story_id, story) {
-                return $http.put(
-                    EndpointConfigService.getUrlForId(MODEL, story_id), story
-                );
-            };
-
-            service.destroy = function (story_id) {
-                return $http.delete(
-                    EndpointConfigService.getUrlForId(MODEL, story_id)
-                );
-            };
-        });
-angular.module('Compartio.Common')
+/*angular.module('Compartio.Common')
     //.constant('CURRENT_BACKEND', 'node')
     .constant('CURRENT_BACKEND', 'firebase')
     .service('EndpointConfigService', function($rootScope, CURRENT_BACKEND) {
@@ -526,11 +616,10 @@ angular.module('Compartio.Common')
                 node: { URI: 'http://localhost:4000/', root: 'api/clients/', format: ''}
             },
             currentEndpoint = endpointMap[CURRENT_BACKEND],
-            userId = null,
             backend = CURRENT_BACKEND;
 
         service.getUrl = function(model) {
-            return currentEndpoint.URI + currentEndpoint.root + userId + model;
+            return currentEndpoint.URI + currentEndpoint.root + model;
         };
 
         service.getUrlForId = function(model, id) {
@@ -553,19 +642,55 @@ angular.module('Compartio.Common')
             userId = id;
         });
     });
+*/
+// angular.module('Compartio.Common')
+// 	.service('CityService', function() {
+// 		var service = this;
+		
+// 	});
 
 angular.module('Compartio.Common')
-  .controller('HomeCtrl', function($scope, $location) { //, LoginService
-    var main = this;
-    main.currentUser = null;
-    console.log("HomeCtrl");
-    // $scope.$on('onCurrentUserId', function (ctx, id) {
-    //     main.currentUser = LoginService.getCurrentUser();
-    // });
+  .controller('HomeCtrl', function(
+        $rootScope,
+        $scope,
+        $location,
+        DebugService
+        //, LoginService
+    ) { 
+        var home = this;
+        //main.currentUser = null;
+        DebugService.log("Entering HomeCtrl");
+        $rootScope.selectedCity = {slug:''};
+    }
+    
+);
+angular.module('Compartio.City')
+  .controller('CityCtrl', function(
+        $rootScope,
+        $scope,
+        $location,
+        $state,
+        $stateParams,
+        DebugService,
+        CitiesModel
+    ) { 
+        var cityc = this;
+        //Si no hay cities $rootScope.cities, las carga y despues asigna $rootScopescope.selectedCity segun la state
+        if($rootScope.cities.length==0){
+        	CitiesModel.all().then(function(cities){
+        		$rootScope.cities = cities;
+        		$rootScope.selectedCity = _.findWhere($rootScope.cities, {'slug': $stateParams.city_slug});
+        	});
+        }
 
-    // main.logout = function() {
-    //     LoginService.logout();
-    //     main.currentUser = null;
-    // };
-	}
+
+        //main.currentUser = null;
+        // $rootScope.citySlug=$stateParams.city_slug;
+        // DebugService.log(":::"+$rootScope.citySlug);
+        // CitiesModel.all().then(function(cities){
+        // 	console.log(cities);
+        // });
+
+    }
+    
 );

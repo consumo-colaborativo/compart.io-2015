@@ -1,0 +1,57 @@
+
+<div ng-controller="HeaderCtrl as header">
+  <header id="header-home" ng-if="header.design == 'home'">
+    <div class="background1">
+      <div class="background2">
+        <div class="col1">
+          <h1><span>Compartio</span></h1>
+          <p><strong>¡Bienvenido!</strong><br/>Este es un espacio donde buscar lo que necesitas y dar lo que te sobra.</p>{{ main.test}}
+          <dropdown placeholder="Selecciona ciudad" list="cities" selected="selectedCity" property="name" callback="header.cityChange(item)"></dropdown>
+        </div>
+        <div class="col2">
+          <div id="userpanel">
+            <div class="not-logged"><a href="#">Entrar</a><a href="#">Crear cuenta</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <header id="header-list" ng-if="header.design == 'list'">
+    <div class="row1">
+      <div class="logo">
+        <h1> <a ui-sref="home">Compartio</a></h1>
+      </div>
+      <div class="user-box-container">
+        <div class="user-box not-logged"><a href="#" class="login">Entra</a><a href="#" class="register">Crea tu cuenta</a></div>
+      </div>
+    </div>
+    <div class="phrase">
+      <div class="part1">
+        <form><span>En </span>
+          <dropdown placeholder="Selecciona ciudad" list="cities" selected="selectedCity" property="name" callback="header.cityChange(item)"></dropdown>
+          <!--.select.action
+          input(type="hidden" name="action" value="")
+          .button
+          	a(href="#")
+          		| ¿Das o necesitas?
+          		span
+          .dropdown
+          	ul
+          		li
+          			a(href="give")
+          				| doy
+          		li
+          			a(href="need")
+          				| necesito
+          
+          --><span> necesito un/una</span>
+          <div class="input_search">
+            <input type="text" placeholder="Escribe aquí..."/>
+            <button><span></span></button>
+          </div>
+        </form>
+      </div>
+      <div class="categories disabled"><a>Mostrar las categorías<span></span></a></div>
+    </div>
+  </header>
+</div>

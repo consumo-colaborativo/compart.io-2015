@@ -1,7 +1,22 @@
+//Modulos
+// Compartio
+// Compartio.common
+// 	Variables:
+//		cities: Listado de ciudades
+//		selectedCity: Ciudad seleccionada
+// Compartio.city
+// Compartio.home
+
+
+
+
 var compartioModule = angular.module('Compartio',
 	[
 		'ui.router',
-		'Compartio.Common'
+		'angular-storage',
+		'Compartio.Common',
+		'Compartio.City'
+
 		//'ngRoute',
 		//'ngAnimate',
 		//'firebase',
@@ -24,8 +39,7 @@ compartioModule.config(function($stateProvider, $urlRouterProvider, $locationPro
 						url: '/',
 						views:{
 							'header':{
-								controller: 'HomeCtrl',
-								templateUrl: '/partials/partial-header-home.html'
+								templateUrl: '/partials/partial-header.html'
 							},
 							'content': {
 								controller: 'HomeCtrl',
@@ -37,8 +51,12 @@ compartioModule.config(function($stateProvider, $urlRouterProvider, $locationPro
 				.state('city', {
 						url: '/:city_slug',
 						views:{
+							'header':{
+								templateUrl: '/partials/partial-header.html'
+							},
 							'content': {
-								controller: 'HomeCtrl'
+								controller: 'CityCtrl',
+								templateUrl: '/partials/partial-city.html'
 							},
 						}
 				});
@@ -332,3 +350,4 @@ compartioModule.config(function($stateProvider, $urlRouterProvider, $locationPro
 		$urlRouterProvider.otherwise('/');
 		$locationProvider.html5Mode(true);
 });
+

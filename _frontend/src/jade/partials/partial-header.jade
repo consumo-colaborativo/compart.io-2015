@@ -1,0 +1,80 @@
+div(ng-controller="HeaderCtrl as header")
+	header#header-home(ng-if="header.design == 'home'")
+		div.background1
+			div.background2
+				.col1
+					h1
+						span
+							| Compartio
+					p
+						strong ¡Bienvenido!
+						br
+						| Este es un espacio donde buscar lo que necesitas y dar lo que te sobra.
+					{{ main.test}}
+					dropdown(placeholder="Selecciona ciudad" list="cities" selected="selectedCity" property="name", callback="header.cityChange(item)")
+				.col2
+					#userpanel
+						.not-logged
+							a(href="#") Entrar
+							a(href="#") Crear cuenta
+
+	header#header-list(ng-if="header.design == 'list'")
+		.row1
+			.logo
+				h1 
+					a(ui-sref="home")
+						| Compartio
+			.user-box-container
+				if usuario
+					.user-box.logged
+						a.usuario(href="#")
+							| Hola Bill
+						a.perfil(href="#")
+							img(src="http://www.fillmurray.com/66/66" width="33" height="33")
+						//a.notifications(href="#")
+							span
+						//a.notifications.on(href="#")
+							span
+				else
+					.user-box.not-logged
+						a.login(href="#")
+							| Entra
+						a.register(href="#")
+							| Crea tu cuenta
+		.phrase
+			.part1
+				form
+					span En 
+					dropdown(placeholder="Selecciona ciudad" list="cities" selected="selectedCity" property="name", callback="header.cityChange(item)")
+
+					//.select.action
+						input(type="hidden" name="action" value="")
+						.button
+							a(href="#")
+								| ¿Das o necesitas?
+								span
+						.dropdown
+							ul
+								li
+									a(href="give")
+										| doy
+								li
+									a(href="need")
+										| necesito
+
+					span  necesito un/una
+					.input_search
+						input(type="text" placeholder="Escribe aquí...")
+						button
+							span
+				
+			if categorias
+				.categories
+					a(href="#")
+						| Mostrar las categorías
+						span
+			else
+				.categories.disabled
+					a
+						| Mostrar las categorías
+						span

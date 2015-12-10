@@ -1,31 +1,12 @@
-.select(ng-click="dropdownChange")
-	.button
-		a(href="#")
-			| Selecciona una ciudadaa
+.select(ng-click="dropdownChange" ng-class="{ open: listVisible }")
+	.button(ng-click="show();")
+		span(ng-if="!isPlaceholder")
+			| {{display}}
+			span
+		span(ng-if="isPlaceholder")
+			| {{placeholder}}
 			span
 	.dropdown.nano
 		ul.nano-content
-			li.link
-				a(href="#")
-					| ¿No ves tu ciudad?
-			li.link
-				a(href="#")
-					| ¿No ves tu ciudad?
-			li.link
-				a(href="#")
-					| ¿No ves tu ciudad?
-			li.link
-				a(href="#")
-					| ¿No ves tu ciudad?
-			li.link
-				a(href="#")
-					| ¿No ves tu ciudad?
-			li.link
-				a(href="#")
-					| ¿No ves tu ciudad?
-			li.link
-				a(href="#")
-					| ¿No ves tu ciudad?
-			li.link
-				a(href="#")
-					| ¿No ves tu ciudad?
+			li(ng-repeat="item in list" ng-click="select(item)" ng-class="{ selected: isSelected(item) }")
+				| {{property !== undefined ? item[property] : item}}

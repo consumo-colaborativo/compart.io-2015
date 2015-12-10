@@ -1,0 +1,1 @@
+angular.module('Compartio.City', ['Compartio.Common']);

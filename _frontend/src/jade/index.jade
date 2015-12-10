@@ -7,9 +7,7 @@ html(lang='es' ng-app="Compartio")
 	//
 		
 	include layouts/default-partials/html-head
-	body(style="padding: 40px;" ng-controller="MainCtrl as main")
-		a(ui-sref="city({city_slug: 'jolala'})") Ir a ciudad jolala
+	body(ng-controller="MainCtrl as main")
 		div(ui-view="header")
 		div(ui-view="content")
-			| aaaa
 		include layouts/default-partials/scripts

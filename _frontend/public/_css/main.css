@@ -164,17 +164,18 @@ footer {
     opacity: 0.2; }
     .select.disabled a {
       cursor: default; }
-  .select > .button a {
+  .select > .button {
     display: block;
     padding: 8px 10px 8px 10px;
     text-decoration: none;
     color: #F4ECE1;
     background-color: #58331E;
+    cursor: pointer;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px; }
-    .select > .button a span {
+    .select > .button > span > span {
       display: inline-block;
       font-family: 'iconos';
       -moz-osx-font-smoothing: grayscale;
@@ -188,7 +189,7 @@ footer {
       margin-top: 2px;
       font-size: 0.7em;
       margin-left: 10px; }
-      .select > .button a span:before {
+      .select > .button > span > span:before {
         content: "";
         font-size: 1.375em; }
   .select.selected > .button a {
@@ -220,19 +221,20 @@ footer {
       background-color: #F4ECE1;
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px; }
-      .select > .dropdown ul li a {
+      .select > .dropdown ul li {
         display: block;
         padding: 8px 10px 8px 10px;
         text-decoration: none;
         white-space: nowrap;
-        color: #58331E; }
-        .select > .dropdown ul li a.selected, .select > .dropdown ul li a:hover {
+        color: #58331E;
+        cursor: pointer; }
+        .select > .dropdown ul li.selected, .select > .dropdown ul li:hover {
           background-color: #E1D4C3; }
-      .select > .dropdown ul li.link a {
-        font-weight: 700; }
-      .select > .dropdown ul li:last-child a {
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px; }
+        .select > .dropdown ul li.link {
+          font-weight: 700; }
+        .select > .dropdown ul li:last-child {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px; }
   .select.open > .button a {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -606,13 +608,21 @@ header#header-home {
         header#header-home .background2 .col1 {
           text-align: left; } }
       header#header-home .background2 .col1 h1 {
+        position: relative;
         display: inline-block;
         width: 273px;
         height: 32px;
         margin: 0;
         background: url(../_img/logo.png) no-repeat center center;
-        background-size: 273px 32px;
-        text-indent: -999px; }
+        background-size: 273px 32px; }
+        header#header-home .background2 .col1 h1 a,
+        header#header-home .background2 .col1 h1 span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          text-indent: -999px; }
       header#header-home .background2 .col1 p {
         max-width: 340px;
         font-size: 17px;

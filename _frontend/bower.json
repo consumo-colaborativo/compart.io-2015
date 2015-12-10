@@ -17,7 +17,9 @@
     "jquery": "latest",
     "bourbon": "latest",
     "nanoscroller": "~0.8.7",
-    "angular": "1.5.0-beta.2",
-    "angular-ui-router": "~0.2.15"
+    "angular": "latest",
+    "angular-ui-router": "~0.2.15",
+    "lodash": "~3.10.1",
+    "angular-storage": "~0.5.0"
   }
 }
