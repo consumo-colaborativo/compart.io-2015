@@ -35,10 +35,10 @@ angular.module('Compartio.Common')
   // };
   header.cityChange = function(item){
     if(item){
-      console.log("Hay item", item);
-      if(item['slug']!=''){
+      DebugService.log("Hay item", item);
+      if(item.slug!==''){
         var oldCity = $rootScope.selectedCity;
-        $rootScope.selectedCity = _.findWhere($rootScope.cities, {'slug': item['slug']});
+        $rootScope.selectedCity = _.findWhere($rootScope.cities, {'slug': item.slug});
         DebugService.log("Cambiando a ciudad " + $rootScope.selectedCity.name);
         //Cambia de ciudad si es diferente a la anterior
         if(oldCity != $rootScope.selectedCity){

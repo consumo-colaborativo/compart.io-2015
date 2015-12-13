@@ -1,2 +1,9 @@
 
-<h1>Ciudad: {{city}}</h1>
+<h1>Ciudad: {{selectedCity.name}}</h1>
+<ol>
+  <li ng-repeat="give in city.gives">
+    <h3>{{give.name}}</h3>
+    <h4>{{give.slug}}</h4>
+  </li>
+</ol>
+<div ng-if="!city.gives">No hay gives</div>

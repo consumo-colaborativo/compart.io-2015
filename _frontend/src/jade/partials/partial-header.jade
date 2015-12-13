@@ -67,7 +67,10 @@ div(ng-controller="HeaderCtrl as header")
 						input(type="text" placeholder="Escribe aquí...")
 						button
 							span
-				
+			div
+				| Categorias: 
+				span(ng-repeat="category in categories")
+					| {{category.name}} 
 			if categorias
 				.categories
 					a(href="#")

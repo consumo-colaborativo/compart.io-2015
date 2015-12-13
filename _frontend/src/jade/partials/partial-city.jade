@@ -1,2 +1,8 @@
 h1
-	| Ciudad: {{city}}
+	| Ciudad: {{selectedCity.name}}
+ol
+	li(ng-repeat="give in city.gives")
+		h3 {{give.name}}
+		h4 {{give.slug}}
+div(ng-if="!city.gives")
+	| No hay gives

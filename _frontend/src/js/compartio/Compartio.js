@@ -1,11 +1,13 @@
 //Modulos
 // Compartio
 // Compartio.common
-// 	Variables:
-//		cities: Listado de ciudades
-//		selectedCity: Ciudad seleccionada
+// 	
 // Compartio.city
 // Compartio.home
+// Variables de $rootScope:
+//		cities: Listado de ciudades
+//		selectedCity: Ciudad seleccionada
+//		categories: Listdo de categorias
 
 
 
@@ -49,13 +51,46 @@ compartioModule.config(function($stateProvider, $urlRouterProvider, $locationPro
 				})
 				
 				.state('city', {
-						url: '/:city_slug',
+						url: '/:city_slug/gives',
 						views:{
 							'header':{
 								templateUrl: '/partials/partial-header.html'
 							},
 							'content': {
-								controller: 'CityCtrl',
+								controller: 'CityCtrl as city',
+								templateUrl: '/partials/partial-city.html'
+							},
+						}
+				}).state('city_search', {
+						url: '/:city_slug/gives/search/:search_string',
+						views:{
+							'header':{
+								templateUrl: '/partials/partial-header.html'
+							},
+							'content': {
+								controller: 'CityCtrl as city',
+								templateUrl: '/partials/partial-city.html'
+							},
+						}
+				}).state('city_category', {
+						url: '/:city_slug/gives/category/:category_slug',
+						views:{
+							'header':{
+								templateUrl: '/partials/partial-header.html'
+							},
+							'content': {
+								controller: 'CityCtrl as city',
+								templateUrl: '/partials/partial-city.html'
+							},
+						}
+				}).state('city_search_and_category', {
+						url: '/:city_slug/gives/category/:category_slug/search/:search_string',
+						views:{
+							'header':{
+								templateUrl: '/partials/partial-header.html'
+							},
+							'content': {
+								controller: 'CityCtrl as city',
 								templateUrl: '/partials/partial-city.html'
 							},
 						}

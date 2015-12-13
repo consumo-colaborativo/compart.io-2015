@@ -24,11 +24,12 @@ angular.module('Compartio.Common')
 
 
 })
-.run(function($rootScope, $state) {
+.run(function($rootScope, $state, DebugService) {
+  //Dropdown
   angular.element(document).on("click", function(e) {
       $rootScope.$broadcast("documentClicked", angular.element(e.target));
   });
   $rootScope.$on('$stateChangeStart', function(event, toState, fromState){
-    console.log(toState.name==="city"?"YRHA":"");
+    DebugService.log("Cambiando de estado : "  + fromState.name + " a "+ toState.name);
   });
 });

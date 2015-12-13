@@ -83,11 +83,13 @@ function dropdownChange(){
 //Modulos
 // Compartio
 // Compartio.common
-// 	Variables:
-//		cities: Listado de ciudades
-//		selectedCity: Ciudad seleccionada
+// 	
 // Compartio.city
 // Compartio.home
+// Variables de $rootScope:
+//		cities: Listado de ciudades
+//		selectedCity: Ciudad seleccionada
+//		categories: Listdo de categorias
 
 
 
@@ -131,13 +133,46 @@ compartioModule.config(function($stateProvider, $urlRouterProvider, $locationPro
 				})
 				
 				.state('city', {
-						url: '/:city_slug',
+						url: '/:city_slug/gives',
 						views:{
 							'header':{
 								templateUrl: '/partials/partial-header.html'
 							},
 							'content': {
-								controller: 'CityCtrl',
+								controller: 'CityCtrl as city',
+								templateUrl: '/partials/partial-city.html'
+							},
+						}
+				}).state('city_search', {
+						url: '/:city_slug/gives/search/:search_string',
+						views:{
+							'header':{
+								templateUrl: '/partials/partial-header.html'
+							},
+							'content': {
+								controller: 'CityCtrl as city',
+								templateUrl: '/partials/partial-city.html'
+							},
+						}
+				}).state('city_category', {
+						url: '/:city_slug/gives/category/:category_slug',
+						views:{
+							'header':{
+								templateUrl: '/partials/partial-header.html'
+							},
+							'content': {
+								controller: 'CityCtrl as city',
+								templateUrl: '/partials/partial-city.html'
+							},
+						}
+				}).state('city_search_and_category', {
+						url: '/:city_slug/gives/category/:category_slug/search/:search_string',
+						views:{
+							'header':{
+								templateUrl: '/partials/partial-header.html'
+							},
+							'content': {
+								controller: 'CityCtrl as city',
 								templateUrl: '/partials/partial-city.html'
 							},
 						}
@@ -474,10 +509,10 @@ angular.module('Compartio.Common')
   // };
   header.cityChange = function(item){
     if(item){
-      console.log("Hay item", item);
-      if(item['slug']!=''){
+      DebugService.log("Hay item", item);
+      if(item.slug!==''){
         var oldCity = $rootScope.selectedCity;
-        $rootScope.selectedCity = _.findWhere($rootScope.cities, {'slug': item['slug']});
+        $rootScope.selectedCity = _.findWhere($rootScope.cities, {'slug': item.slug});
         DebugService.log("Cambiando a ciudad " + $rootScope.selectedCity.name);
         //Cambia de ciudad si es diferente a la anterior
         if(oldCity != $rootScope.selectedCity){
@@ -518,12 +553,13 @@ angular.module('Compartio.Common')
 
 
 })
-.run(function($rootScope, $state) {
+.run(function($rootScope, $state, DebugService) {
+  //Dropdown
   angular.element(document).on("click", function(e) {
       $rootScope.$broadcast("documentClicked", angular.element(e.target));
   });
   $rootScope.$on('$stateChangeStart', function(event, toState, fromState){
-    console.log(toState.name==="city"?"YRHA":"");
+    DebugService.log("Cambiando de estado : "  + fromState.name + " a "+ toState.name);
   });
 });
 angular.module('Compartio.Common')
@@ -575,19 +611,16 @@ angular.module('Compartio.Common')
 		}
 	};
 });
-angular.module('Compartio.Common')
-.service('CitiesModel',
-  function ($http) { //, UtilsService
-    var service = this;
-    service.all = function () {
-      return $http.get('https://compartiotest.firebaseio.com/cities.json', { cache: true})
-        .then(
-          function(result) {
-            return result.data;
-        }
-    );
-  };
-}); 
+// angular.module('Compartio.Common')
+// 	.service('DataService', function(CitiesModel, CategoriesModel) {
+// 			var service = this;
+// 			service.cities = 
+// 			service.citiesGetAll = function (){
+
+// 			}
+
+// 	});
+
 angular.module('Compartio.Common')
 	.constant('DEBUG', {
 		'active': true
@@ -596,11 +629,12 @@ angular.module('Compartio.Common')
 			var service = this;
 			service.log = function(txt){
 				var currentdate = new Date(),
-				txtdate = currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds() + ". ";
+				txtdate = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds() + "-" + currentdate.getMilliseconds() +". ";
 				if(DEBUG.active){
 					console.log("%c"+txtdate+"%s", "color: blue", txt);
+					for (var i=1; i < arguments.length; i++) {
+						console.log(arguments[i]);
+			    }
 				}
 			};
 
@@ -643,12 +677,143 @@ angular.module('Compartio.Common')
         });
     });
 */
-// angular.module('Compartio.Common')
-// 	.service('CityService', function() {
-// 		var service = this;
-		
-// 	});
+angular.module('Compartio.Common')
+.service('CategoriesModel',
+  function ($http) { //, UtilsService
+    var service = this;
+    service.all = function () {
+      return $http.jsonp('https://compartiotest.firebaseio.com/categories.json?callback=JSON_CALLBACK',  {cache: true})
+        .then(
+          function(result) {
+            return result.data;
+        }
+    );
+  };
+}); 
+angular.module('Compartio.Common')
+.service('CitiesModel',
+  function ($http) { //, UtilsService
+    var service = this;
+    service.all = function () {
+      return $http.jsonp('https://compartiotest.firebaseio.com/cities.json?callback=JSON_CALLBACK',  {cache: true})
+        .then(
+          function(result) {
+            return result.data;
+        }
+    );
+  };
+}); 
+angular.module('Compartio.Common')
+.service('GivesModel',
+  function ($http) { //, UtilsService
+    var service = this;
+    service.allFromCity = function ($citySlug) {
+      return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+        .then(
+          function(result) {
+            return result.data;
+       });
+    };
+    service.categoryFromCity = function ($citySlug, $categoryId) { //@TODO
+      return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+        .then(
+          function(result) {
+            return result.data;
+        });
+    };
+    service.searchFromCity = function ($citySlug, $searchString) { //@TODO
+      return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+        .then(
+          function(result) {
+            return result.data;
+        });
+    };
+    service.searchAndCategoryFromCity = function ($citySlug, $searchString, $categoryId) { //@TODO
+      return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+        .then(
+          function(result) {
+            return result.data;
+        });
+    };
+}); 
+angular.module('Compartio.City')
+  .controller('CityCtrl', function(
+        $rootScope,
+        $scope,
+        $location,
+        $state,
+        $stateParams,
+        DebugService,
+        CitiesModel,
+        CategoriesModel,
+        GivesModel
+    ) { 
+        var city = this;
 
+        //Carga las ciudades (cacheadas) y asigna la que concide con el slug a $rootScope.selectedCity;
+        $rootScope.cities = [];
+        CitiesModel.all().then(function(cities){
+    		$rootScope.cities = cities;
+            //Añade el item completo de la ciudad al rootScope.
+    		var selectedCity = _.findWhere($rootScope.cities, {'slug': $stateParams.city_slug});
+            // Si está en la lista, lo asigna, si no, vuelve a la home
+            if(typeof(selectedCity) !== 'undefined'){
+                $rootScope.selectedCity = selectedCity;
+                city.getGives();
+            } else {
+                $state.go('home');
+            }
+    	});
+
+        //Categories
+        $rootScope.categories = [];
+        CategoriesModel.all().then(function(categories){
+            $rootScope.categories = categories;
+        });
+
+        //Gives ALL
+        city.gives = [];
+        city.getGives = function(){
+            //Aquí ejecuta la función según el state
+            //state == city
+            if($state.current.name === 'city'){
+                GivesModel.allFromCity($rootScope.selectedCity.slug).then(function(gives){
+                    DebugService.log("GivesModel.allFromCity: ", gives);
+                    city.gives = gives;
+                    // $scope.gives = gives;
+                });
+            }
+            //state == city_search
+            if($state.current.name === 'city_search'){
+                GivesModel.searchFromCity($rootScope.selectedCity.slug, $stateParams.search_string).then(function(gives){
+                    DebugService.log("GivesModel.searchFromCity: "+$stateParams.search_string, gives);
+                    city.gives = gives;
+                    // $scope.gives = gives;
+                });
+            }
+            //state == city_category
+            if($state.current.name === 'city_category'){
+                GivesModel.categoryFromCity($rootScope.selectedCity.slug, $stateParams.category_slug).then(function(gives){
+                    DebugService.log("GivesModel.categoryFromCity: "+$stateParams.category_slug, gives);
+                    city.gives = gives;
+                    // $scope.gives = gives;
+                });
+            }
+            //state == city_search_and_category
+            if($state.current.name === 'city_search_and_category'){
+                GivesModel.searchAndCategoryFromCity($rootScope.selectedCity.slug, $stateParams.search_string, $stateParams.category_slug).then(function(gives){
+                    DebugService.log("GivesModel.categoryFromCity: "+ $stateParams.search_string+","+$stateParams.category_slug, gives);
+                    city.gives = gives;
+                    // $scope.gives = gives;
+                });
+            }
+        };
+
+
+
+    }
+    
+);
 angular.module('Compartio.Common')
   .controller('HomeCtrl', function(
         $rootScope,
@@ -661,36 +826,6 @@ angular.module('Compartio.Common')
         //main.currentUser = null;
         DebugService.log("Entering HomeCtrl");
         $rootScope.selectedCity = {slug:''};
-    }
-    
-);
-angular.module('Compartio.City')
-  .controller('CityCtrl', function(
-        $rootScope,
-        $scope,
-        $location,
-        $state,
-        $stateParams,
-        DebugService,
-        CitiesModel
-    ) { 
-        var cityc = this;
-        //Si no hay cities $rootScope.cities, las carga y despues asigna $rootScopescope.selectedCity segun la state
-        if($rootScope.cities.length==0){
-        	CitiesModel.all().then(function(cities){
-        		$rootScope.cities = cities;
-        		$rootScope.selectedCity = _.findWhere($rootScope.cities, {'slug': $stateParams.city_slug});
-        	});
-        }
-
-
-        //main.currentUser = null;
-        // $rootScope.citySlug=$stateParams.city_slug;
-        // DebugService.log(":::"+$rootScope.citySlug);
-        // CitiesModel.all().then(function(cities){
-        // 	console.log(cities);
-        // });
-
     }
     
 );
