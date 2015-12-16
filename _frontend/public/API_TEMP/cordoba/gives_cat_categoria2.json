@@ -1,0 +1,27 @@
+[
+	{
+		"id" : "2",
+		"slug" : "compartio3",
+		"name" : "Compartio 3"
+	},
+	{
+		"id" : "3",
+		"slug" : "compartio4",
+		"name" : "Compartio 4"
+	},
+	{
+		"id" : "4",
+		"slug" : "compartio5",
+		"name" : "Compartio 5"
+	},
+	{
+		"id" : "5",
+		"slug" : "compartio6",
+		"name" : "Compartio 6"
+	},
+	{
+		"id" : "6",
+		"slug" : "compartio7",
+		"name" : "Compartio 7"
+	}
+]

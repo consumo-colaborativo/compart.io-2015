@@ -219,6 +219,18 @@ gulp.task('copyfavicons', function() {
 
 
 /**
+ * Copy other public content.
+ */
+
+
+gulp.task('copyother', function() {
+   gulp.src('./src/copytopublic/**/*.*')
+   .pipe(gulp.dest('public'));
+});
+
+
+
+/**
 * FTP UPLOAD
 */
 /** Configuration **/
@@ -268,8 +280,8 @@ gulp.task('ftp-deploy', function() {
 /**
  * All build tasks.
  */
-gulp.task('build', ['scripts_vendor', 'copy_htaccess', 'icons_build', 'copyfavicons', 'style', 'jade', 'images', 'vendor', 'scripts']);
-gulp.task('buildprod', ['scripts_vendor_prod', 'copy_htaccess', 'icons_build', 'copyfavicons', 'style_prod', 'jade', 'images', 'vendor', 'scripts_prod']);
+gulp.task('build', ['scripts_vendor', 'copy_htaccess', 'copyother', 'icons_build', 'copyfavicons', 'style', 'jade', 'images', 'vendor', 'scripts']);
+gulp.task('buildprod', ['scripts_vendor_prod', 'copy_htaccess', 'copyother', 'icons_build', 'copyfavicons', 'style_prod', 'jade', 'images', 'vendor', 'scripts_prod']);
 
 gulp.task('icons', ['icons_build', 'style']);
 
@@ -291,6 +303,7 @@ gulp.task('watch', ['build'], function () {
     gulp.watch('src/js/**/*.js', ['scripts']);
     gulp.watch('src/icons/*.svg', ['icons']);
     gulp.watch('src/img/**/*.*', ['images']);
+    gulp.watch('src/copytopublic/**/*.*', ['copyother']);
     // gulp.watch('./dist/*html').on('change', reload);
     gulputil.log(gulputil.colors.inverse("Te estoy vigilando"));
 });

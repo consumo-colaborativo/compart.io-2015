@@ -1,0 +1,12 @@
+[
+	{
+		"id" : "0",
+		"slug" : "comparto1",
+		"name" : "A Compartio 1"
+	},
+	{
+		"id" : "1",
+		"slug" : "compartio2",
+		"name" : "Compartio 2"
+	}
+]

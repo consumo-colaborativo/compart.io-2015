@@ -90,6 +90,7 @@ function dropdownChange(){
 //		cities: Listado de ciudades
 //		selectedCity: Ciudad seleccionada
 //		categories: Listdo de categorias
+//		selectedCategorySlug: Slug de categoría activa si la hay
 
 
 
@@ -678,11 +679,28 @@ angular.module('Compartio.Common')
     });
 */
 angular.module('Compartio.Common')
+	.service('ErrorService', function(DEBUG) {
+			var service = this;
+			service.log = function(txt){
+				var currentdate = new Date(),
+				txtdate = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds() + "-" + currentdate.getMilliseconds() +". ";
+				if(DEBUG.active){
+					console.log("%c"+txtdate+"%s", "color: red", txt);
+					for (var i=1; i < arguments.length; i++) {
+						console.log(arguments[i]);
+			    }
+				}
+			};
+
+	});
+
+angular.module('Compartio.Common')
 .service('CategoriesModel',
   function ($http) { //, UtilsService
     var service = this;
-    service.all = function () {
-      return $http.jsonp('https://compartiotest.firebaseio.com/categories.json?callback=JSON_CALLBACK',  {cache: true})
+    service.all = function ($city_slug) {
+      //return $http.jsonp('https://compartiotest.firebaseio.com/categories.json?callback=JSON_CALLBACK',  {cache: true})
+      return $http.get('/API_TEMP/'+$city_slug+'/categories.json',  {cache: true})
         .then(
           function(result) {
             return result.data;
@@ -695,7 +713,8 @@ angular.module('Compartio.Common')
   function ($http) { //, UtilsService
     var service = this;
     service.all = function () {
-      return $http.jsonp('https://compartiotest.firebaseio.com/cities.json?callback=JSON_CALLBACK',  {cache: true})
+      //return $http.jsonp('https://compartiotest.firebaseio.com/cities.json?callback=JSON_CALLBACK',  {cache: true})
+      return $http.get('/API_TEMP/cities.json',  {cache: true})
         .then(
           function(result) {
             return result.data;
@@ -705,31 +724,40 @@ angular.module('Compartio.Common')
 }); 
 angular.module('Compartio.Common')
 .service('GivesModel',
-  function ($http) { //, UtilsService
+  function ($http,
+    ErrorService
+    ) { //, UtilsService
     var service = this;
     service.allFromCity = function ($citySlug) {
-      return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
-        .then(
-          function(result) {
-            return result.data;
-       });
+      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      return $http.get('/API_TEMP/'+$citySlug+'/gives.json')
+        .then(function successCallback(response) {
+          return response.data;
+        }, function errorCallback(response) {
+          ErrorService.log("Error al obtener gives:", response);
+        });
     };
-    service.categoryFromCity = function ($citySlug, $categoryId) { //@TODO
-      return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+    service.categoryFromCity = function ($citySlug, $categorySlug) { 
+      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      return $http.get('/API_TEMP/'+$citySlug+'/gives_cat_'+$categorySlug+'.json')
         .then(
-          function(result) {
-            return result.data;
+          function successCallback(response) {
+          return response.data;
+        }, function errorCallback(response) {
+          ErrorService.log("Error al obtener gives:", response);
         });
     };
     service.searchFromCity = function ($citySlug, $searchString) { //@TODO
-      return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      return $http.get('/API_TEMP/'+$citySlug+'/gives_search_'+$searchString+'.json')
         .then(
           function(result) {
             return result.data;
         });
     };
     service.searchAndCategoryFromCity = function ($citySlug, $searchString, $categoryId) { //@TODO
-      return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      return $http.get('/API_TEMP/'+$citySlug+'/gives.json')
         .then(
           function(result) {
             return result.data;
@@ -759,6 +787,7 @@ angular.module('Compartio.City')
             // Si está en la lista, lo asigna, si no, vuelve a la home
             if(typeof(selectedCity) !== 'undefined'){
                 $rootScope.selectedCity = selectedCity;
+                city.getCategories();
                 city.getGives();
             } else {
                 $state.go('home');
@@ -766,10 +795,13 @@ angular.module('Compartio.City')
     	});
 
         //Categories
-        $rootScope.categories = [];
-        CategoriesModel.all().then(function(categories){
-            $rootScope.categories = categories;
-        });
+        //city.categories = [];
+        city.getCategories = function(){
+            CategoriesModel.all($rootScope.selectedCity.slug).then(function(categories){
+                DebugService.log("Categoriás de "+$rootScope.selectedCity.name+":", categories);
+                $rootScope.categories = categories;
+            });
+        };
 
         //Gives ALL
         city.gives = [];
@@ -777,36 +809,68 @@ angular.module('Compartio.City')
             //Aquí ejecuta la función según el state
             //state == city
             if($state.current.name === 'city'){
-                GivesModel.allFromCity($rootScope.selectedCity.slug).then(function(gives){
-                    DebugService.log("GivesModel.allFromCity: ", gives);
-                    city.gives = gives;
-                    // $scope.gives = gives;
-                });
+                city.getGivesCity();
             }
             //state == city_search
             if($state.current.name === 'city_search'){
-                GivesModel.searchFromCity($rootScope.selectedCity.slug, $stateParams.search_string).then(function(gives){
-                    DebugService.log("GivesModel.searchFromCity: "+$stateParams.search_string, gives);
-                    city.gives = gives;
-                    // $scope.gives = gives;
-                });
+                city.getGivesSearch();
             }
             //state == city_category
             if($state.current.name === 'city_category'){
-                GivesModel.categoryFromCity($rootScope.selectedCity.slug, $stateParams.category_slug).then(function(gives){
-                    DebugService.log("GivesModel.categoryFromCity: "+$stateParams.category_slug, gives);
-                    city.gives = gives;
-                    // $scope.gives = gives;
-                });
+                city.getGivesCategory();
             }
             //state == city_search_and_category
             if($state.current.name === 'city_search_and_category'){
-                GivesModel.searchAndCategoryFromCity($rootScope.selectedCity.slug, $stateParams.search_string, $stateParams.category_slug).then(function(gives){
-                    DebugService.log("GivesModel.categoryFromCity: "+ $stateParams.search_string+","+$stateParams.category_slug, gives);
-                    city.gives = gives;
-                    // $scope.gives = gives;
-                });
+                city.getGivesCategoryAndSearch();
             }
+        };
+        city.getGivesCity = function(){
+            DebugService.log("Está en ciudad");
+            GivesModel.allFromCity($rootScope.selectedCity.slug).then(function(gives){
+                DebugService.log("GivesModel.allFromCity: ", gives);
+                city.gives = gives;
+                // $scope.gives = gives;
+            });
+        };
+        city.getGivesSearch = function(){
+            console.log($rootScope.selectedCity.slug, $stateParams.search_string);
+            GivesModel.searchFromCity($rootScope.selectedCity.slug, $stateParams.search_string).then(function(gives){
+                DebugService.log("GivesModel.searchFromCity: "+$stateParams.search_string, gives);
+                $rootScope.searchInput = $stateParams.search_string;
+                city.gives = gives;
+                // $scope.gives = gives;
+            });
+        };
+        city.getGivesCategory = function(){
+            $rootScope.selectedCategorySlug = $stateParams.category_slug;
+            DebugService.log("Categoría: "+$rootScope.selectedCategorySlug);
+            GivesModel.categoryFromCity($rootScope.selectedCity.slug, $stateParams.category_slug).then(function(gives){
+                DebugService.log("GivesModel.categoryFromCity: "+$stateParams.category_slug, gives);
+                city.gives = gives;
+                // $scope.gives = gives;
+            });
+        };
+        city.getGivesCategoryAndSearch = function(){
+            GivesModel.searchAndCategoryFromCity($rootScope.selectedCity.slug, $stateParams.search_string, $stateParams.category_slug).then(function(gives){
+                DebugService.log("GivesModel.categoryFromCity: "+ $stateParams.search_string+","+$stateParams.category_slug, gives);
+                city.gives = gives;
+                // $scope.gives = gives;
+            });
+        };
+
+        //Se ejecuta cuando cambia el imput
+        $rootScope.searchUpdate = function(){
+
+            if(this.searchInput){
+                // SI ES CATEGORIA //@TODO
+                $state.go('city_search', {city_slug: $rootScope.selectedCity.slug, search_string: this.searchInput}, {notify: false});
+                $stateParams.search_string = this.searchInput;
+                city.getGivesSearch();
+            } else {
+                 $rootScope.searchInput="";
+                 $state.go('city', {city_slug: $rootScope.selectedCity.slug});
+            }
+            DebugService.log("Buscando: "+this.searchInput);
         };
 
 

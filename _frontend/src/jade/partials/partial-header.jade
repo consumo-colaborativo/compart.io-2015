@@ -18,6 +18,9 @@ div(ng-controller="HeaderCtrl as header")
 							a(href="#") Entrar
 							a(href="#") Crear cuenta
 
+
+
+
 	header#header-list(ng-if="header.design == 'list'")
 		.row1
 			.logo
@@ -64,13 +67,14 @@ div(ng-controller="HeaderCtrl as header")
 
 					span  necesito un/una
 					.input_search
-						input(type="text" placeholder="Escribe aquí...")
+						input(type="text" ng-model="searchInput" ng-change="searchUpdate(this)" placeholder="Escribe aquí...")
 						button
 							span
 			div
-				| Categorias: 
+				| Categorias:
 				span(ng-repeat="category in categories")
-					| {{category.name}} 
+					a(ui-sref="city_category({city_slug: selectedCity.slug, category_slug: category.slug})" ng-class="{active: selectedCategorySlug == category.slug}")
+						| {{category.name}} 
 			if categorias
 				.categories
 					a(href="#")

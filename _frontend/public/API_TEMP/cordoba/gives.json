@@ -1,0 +1,37 @@
+[
+	{
+		"id" : "0",
+		"slug" : "comparto1",
+		"name" : "Compartio 1"
+	},
+	{
+		"id" : "1",
+		"slug" : "compartio2",
+		"name" : "Compartio 2"
+	},
+	{
+		"id" : "2",
+		"slug" : "compartio3",
+		"name" : "Compartio 3"
+	},
+	{
+		"id" : "3",
+		"slug" : "compartio4",
+		"name" : "Compartio 4"
+	},
+	{
+		"id" : "4",
+		"slug" : "compartio5",
+		"name" : "Compartio 5"
+	},
+	{
+		"id" : "5",
+		"slug" : "compartio6",
+		"name" : "Compartio 6"
+	},
+	{
+		"id" : "6",
+		"slug" : "compartio7",
+		"name" : "Compartio 7"
+	}
+]

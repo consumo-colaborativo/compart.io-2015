@@ -1,0 +1,32 @@
+[
+	{
+		"id" : "0",
+		"slug" : "categoria1",
+		"name" : "Categoría 1"
+	},
+	{
+		"id" : "1",
+		"slug" : "categoria2",
+		"name" : "Categoría 2"
+	},
+	{
+		"id" : "2",
+		"slug" : "categoria3",
+		"name" : "Categoría 3"
+	},
+	{
+		"id" : "3",
+		"slug" : "categoria4",
+		"name" : "Categoría 4"
+	},
+	{
+		"id" : "4",
+		"slug" : "categoria5",
+		"name" : "Categoría 5"
+	},
+	{
+		"id" : "5",
+		"slug" : "categoria6",
+		"name" : "Categoría 6"
+	}
+]

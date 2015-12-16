@@ -46,12 +46,12 @@
           
           --><span> necesito un/una</span>
           <div class="input_search">
-            <input type="text" placeholder="Escribe aquí..."/>
+            <input type="text" ng-model="searchInput" ng-change="searchUpdate(this)" placeholder="Escribe aquí..."/>
             <button><span></span></button>
           </div>
         </form>
       </div>
-      <div>Categorias: <span ng-repeat="category in categories">{{category.name}} </span></div>
+      <div>Categorias:<span ng-repeat="category in categories"><a ui-sref="city_category({city_slug: selectedCity.slug, category_slug: category.slug})" ng-class="{active: selectedCategorySlug == category.slug}">{{category.name}} </a></span></div>
       <div class="categories disabled"><a>Mostrar las categorías<span></span></a></div>
     </div>
   </header>

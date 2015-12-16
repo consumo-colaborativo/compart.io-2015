@@ -1,0 +1,37 @@
+[
+	{
+		"id" : "0",
+		"slug" : "cordoba",
+		"name" : "Córdoba"
+	},
+	{
+		"id" : "1",
+		"slug" : "jaen",
+		"name" : "Jaen"
+	},
+	{
+		"id" : "2",
+		"slug" : "granada",
+		"name" : "Granada"
+	},
+	{
+		"id" : "3",
+		"slug" : "huelva",
+		"name" : "Huelva"
+	},
+	{
+		"id" : "4",
+		"slug" : "almeria",
+		"name" : "Almería"
+	},
+	{
+		"id" : "5",
+		"slug" : "malaga",
+		"name" : "Málaga"
+	},
+	{
+		"id" : "6",
+		"slug" : "cadiz",
+		"name" : "Cádiz"
+	}
+]

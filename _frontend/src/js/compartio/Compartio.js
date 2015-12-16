@@ -8,6 +8,7 @@
 //		cities: Listado de ciudades
 //		selectedCity: Ciudad seleccionada
 //		categories: Listdo de categorias
+//		selectedCategorySlug: Slug de categoría activa si la hay
 
 
 
