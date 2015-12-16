@@ -101,8 +101,10 @@ angular.module('Compartio.City')
                 $stateParams.search_string = this.searchInput;
                 city.getGivesSearch();
             } else {
-                 $rootScope.searchInput="";
-                 $state.go('city', {city_slug: $rootScope.selectedCity.slug});
+                 //$rootScope.searchInput="";
+                 $state.go('city', {city_slug: $rootScope.selectedCity.slug}, {notify: false});
+                 $stateParams.search_string = this.searchInput;
+                 city.getGivesCity();
             }
             DebugService.log("Buscando: "+this.searchInput);
         };

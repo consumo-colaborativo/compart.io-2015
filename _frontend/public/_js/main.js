@@ -612,6 +612,76 @@ angular.module('Compartio.Common')
 		}
 	};
 });
+angular.module('Compartio.Common')
+.service('CategoriesModel',
+  function ($http) { //, UtilsService
+    var service = this;
+    service.all = function ($city_slug) {
+      //return $http.jsonp('https://compartiotest.firebaseio.com/categories.json?callback=JSON_CALLBACK',  {cache: true})
+      return $http.get('/API_TEMP/'+$city_slug+'/categories.json',  {cache: true})
+        .then(
+          function(result) {
+            return result.data;
+        }
+    );
+  };
+}); 
+angular.module('Compartio.Common')
+.service('CitiesModel',
+  function ($http) { //, UtilsService
+    var service = this;
+    service.all = function () {
+      //return $http.jsonp('https://compartiotest.firebaseio.com/cities.json?callback=JSON_CALLBACK',  {cache: true})
+      return $http.get('/API_TEMP/cities.json',  {cache: true})
+        .then(
+          function(result) {
+            return result.data;
+        }
+    );
+  };
+}); 
+angular.module('Compartio.Common')
+.service('GivesModel',
+  function ($http,
+    ErrorService
+    ) { //, UtilsService
+    var service = this;
+    service.allFromCity = function ($citySlug) {
+      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      return $http.get('/API_TEMP/'+$citySlug+'/gives.json')
+        .then(function successCallback(response) {
+          return response.data;
+        }, function errorCallback(response) {
+          ErrorService.log("Error al obtener gives:", response);
+        });
+    };
+    service.categoryFromCity = function ($citySlug, $categorySlug) { 
+      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      return $http.get('/API_TEMP/'+$citySlug+'/gives_cat_'+$categorySlug+'.json')
+        .then(
+          function successCallback(response) {
+          return response.data;
+        }, function errorCallback(response) {
+          ErrorService.log("Error al obtener gives:", response);
+        });
+    };
+    service.searchFromCity = function ($citySlug, $searchString) { //@TODO
+      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      return $http.get('/API_TEMP/'+$citySlug+'/gives_search_'+$searchString+'.json')
+        .then(
+          function(result) {
+            return result.data;
+        });
+    };
+    service.searchAndCategoryFromCity = function ($citySlug, $searchString, $categoryId) { //@TODO
+      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
+      return $http.get('/API_TEMP/'+$citySlug+'/gives.json')
+        .then(
+          function(result) {
+            return result.data;
+        });
+    };
+}); 
 // angular.module('Compartio.Common')
 // 	.service('DataService', function(CitiesModel, CategoriesModel) {
 // 			var service = this;
@@ -695,75 +765,20 @@ angular.module('Compartio.Common')
 	});
 
 angular.module('Compartio.Common')
-.service('CategoriesModel',
-  function ($http) { //, UtilsService
-    var service = this;
-    service.all = function ($city_slug) {
-      //return $http.jsonp('https://compartiotest.firebaseio.com/categories.json?callback=JSON_CALLBACK',  {cache: true})
-      return $http.get('/API_TEMP/'+$city_slug+'/categories.json',  {cache: true})
-        .then(
-          function(result) {
-            return result.data;
-        }
-    );
-  };
-}); 
-angular.module('Compartio.Common')
-.service('CitiesModel',
-  function ($http) { //, UtilsService
-    var service = this;
-    service.all = function () {
-      //return $http.jsonp('https://compartiotest.firebaseio.com/cities.json?callback=JSON_CALLBACK',  {cache: true})
-      return $http.get('/API_TEMP/cities.json',  {cache: true})
-        .then(
-          function(result) {
-            return result.data;
-        }
-    );
-  };
-}); 
-angular.module('Compartio.Common')
-.service('GivesModel',
-  function ($http,
-    ErrorService
-    ) { //, UtilsService
-    var service = this;
-    service.allFromCity = function ($citySlug) {
-      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
-      return $http.get('/API_TEMP/'+$citySlug+'/gives.json')
-        .then(function successCallback(response) {
-          return response.data;
-        }, function errorCallback(response) {
-          ErrorService.log("Error al obtener gives:", response);
-        });
-    };
-    service.categoryFromCity = function ($citySlug, $categorySlug) { 
-      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
-      return $http.get('/API_TEMP/'+$citySlug+'/gives_cat_'+$categorySlug+'.json')
-        .then(
-          function successCallback(response) {
-          return response.data;
-        }, function errorCallback(response) {
-          ErrorService.log("Error al obtener gives:", response);
-        });
-    };
-    service.searchFromCity = function ($citySlug, $searchString) { //@TODO
-      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
-      return $http.get('/API_TEMP/'+$citySlug+'/gives_search_'+$searchString+'.json')
-        .then(
-          function(result) {
-            return result.data;
-        });
-    };
-    service.searchAndCategoryFromCity = function ($citySlug, $searchString, $categoryId) { //@TODO
-      // return $http.jsonp('https://compartiotest.firebaseio.com/gives/'+$citySlug+'.json?callback=JSON_CALLBACK')
-      return $http.get('/API_TEMP/'+$citySlug+'/gives.json')
-        .then(
-          function(result) {
-            return result.data;
-        });
-    };
-}); 
+  .controller('HomeCtrl', function(
+        $rootScope,
+        $scope,
+        $location,
+        DebugService
+        //, LoginService
+    ) { 
+        var home = this;
+        //main.currentUser = null;
+        DebugService.log("Entering HomeCtrl");
+        $rootScope.selectedCity = {slug:''};
+    }
+    
+);
 angular.module('Compartio.City')
   .controller('CityCtrl', function(
         $rootScope,
@@ -867,29 +882,16 @@ angular.module('Compartio.City')
                 $stateParams.search_string = this.searchInput;
                 city.getGivesSearch();
             } else {
-                 $rootScope.searchInput="";
-                 $state.go('city', {city_slug: $rootScope.selectedCity.slug});
+                 //$rootScope.searchInput="";
+                 $state.go('city', {city_slug: $rootScope.selectedCity.slug}, {notify: false});
+                 $stateParams.search_string = this.searchInput;
+                 city.getGivesCity();
             }
             DebugService.log("Buscando: "+this.searchInput);
         };
 
 
 
-    }
-    
-);
-angular.module('Compartio.Common')
-  .controller('HomeCtrl', function(
-        $rootScope,
-        $scope,
-        $location,
-        DebugService
-        //, LoginService
-    ) { 
-        var home = this;
-        //main.currentUser = null;
-        DebugService.log("Entering HomeCtrl");
-        $rootScope.selectedCity = {slug:''};
     }
     
 );
